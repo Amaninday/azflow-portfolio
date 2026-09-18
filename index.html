@@ -1,4375 +1,4409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>AZFlow.Studio | Hand-Coded Funnels, Websites & Automation</title>
-
-  <meta
-    name="description"
-    content="AZFlow.Studio builds hand-coded, conversion-focused websites, funnels, CRM workflows, booking systems, backend functionality and business automation."
-  >
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-    :root {
-      --midnight: #101828;
-      --electric: #2563EB;
-      --cyan: #22D3EE;
-      --ice: #F5F9FC;
-      --slate: #667085;
-      --white: #FFFFFF;
-
-      --border: rgba(16, 24, 40, 0.10);
-      --blue-border: rgba(37, 99, 235, 0.15);
-
-      --shadow:
-        0 18px 50px rgba(16, 24, 40, 0.08);
-
-      --shadow-dark:
-        0 20px 60px rgba(0, 0, 0, 0.20);
-
-      --font-display: "Space Grotesk", sans-serif;
-      --font-body: "Inter", sans-serif;
-      --font-mono: "JetBrains Mono", monospace;
-
-      --max: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--ice);
-      color: var(--midnight);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    body.locked {
-      overflow: hidden;
-    }
-
-    img,
-    video {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    section {
-      padding: 100px 24px;
-    }
-
-    .wrap {
-      width: min(100%, var(--max));
-      margin: 0 auto;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: var(--font-display);
-      line-height: 1.12;
-      letter-spacing: -0.025em;
-    }
-
-    h1 {
-      font-size: clamp(42px, 6vw, 74px);
-    }
-
-    h2 {
-      font-size: clamp(32px, 4.5vw, 52px);
-    }
-
-    h3 {
-      font-size: 21px;
-    }
-
-    p {
-      color: var(--slate);
-    }
-
-    strong {
-      color: inherit;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      margin-bottom: 18px;
-
-      padding: 7px 12px;
-
-      border-radius: 8px;
-
-      background: rgba(37, 99, 235, 0.08);
-
-      color: var(--electric);
-
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--cyan);
-    }
-
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 50px;
-    }
-
-    .section-head h2 {
-      margin-bottom: 18px;
-    }
-
-    .section-head p {
-      max-width: 680px;
-      font-size: 17px;
-    }
-
-    .center {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .center p {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* =========================
-       BUTTONS
-    ========================= */
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-
-      min-height: 52px;
-
-      padding: 14px 25px;
-
-      border: 0;
-      border-radius: 10px;
-
-      font-weight: 700;
-      font-size: 15px;
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        opacity 0.2s ease;
-    }
-
-    .btn-primary {
-      background:
-        linear-gradient(
-          100deg,
-          var(--electric),
-          var(--cyan)
-        );
-
-      color: var(--midnight);
-
-      box-shadow:
-        0 12px 32px rgba(34, 211, 238, 0.18);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 16px 38px rgba(34, 211, 238, 0.28);
-    }
-
-    .btn-wide {
-      min-width: 220px;
-    }
-
-    .section-cta {
-      margin-top: 42px;
-      text-align: center;
-    }
-
-    .section-cta p {
-      max-width: 650px;
-      margin: 0 auto 20px;
-    }
-
-    /* =========================
-       REVEAL
-    ========================= */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-
-      transition:
-        opacity 0.65s ease,
-        transform 0.65s ease;
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* =========================
-       PRELOADER
-    ========================= */
-
-    #preloader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-
-      display: grid;
-      place-items: center;
-
-      background: var(--midnight);
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Ariza Balasbas | Funnel &amp; Web Developer | AZFlow.Studio</title>
+
+<meta
+  content="Hand-coded funnels and websites that capture leads, book calls, and follow up automatically. Built by Ariza Balasbas, AZFlow.Studio."
+  name="description"
+/>
+
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+:root{
+  --midnight:#101828;
+  --electric:#2563EB;
+  --cyan:#22D3EE;
+  --ice:#F5F9FC;
+  --slate:#667085;
+  --white:#FFFFFF;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --maxw:1180px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:var(--font-body);
+  background:var(--ice);
+  color:var(--midnight);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+body.locked{
+  overflow:hidden;
+  height:100vh;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+ul{
+  list-style:none;
+}
+
+section{
+  padding:100px 24px;
+}
+
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+h1,
+h2,
+h3{
+  font-family:var(--font-display);
+  font-weight:600;
+  line-height:1.15;
+  letter-spacing:-.01em;
+}
+
+.eyebrow-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-mono);
+  font-size:12.5px;
+  color:var(--electric);
+  background:rgba(37,99,235,.08);
+  padding:6px 12px;
+  border-radius:6px;
+  margin-bottom:18px;
+}
+
+.eyebrow-tag::before{
+  content:'';
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--cyan);
+}
+
+/* =========================================================
+   PRELOADER
+   ========================================================= */
+
+#preloader{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:var(--midnight);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:opacity .7s ease,transform .7s ease;
+  perspective:900px;
+}
+
+#preloader.done{
+  opacity:0;
+  transform:translateY(-4%);
+  pointer-events:none;
+}
+
+.cube-stage{
+  width:70px;
+  height:70px;
+  position:relative;
+  transform-style:preserve-3d;
+  animation:cubeSpin 1.8s cubic-bezier(.6,.05,.3,.95) forwards;
+}
+
+.cube-face{
+  position:absolute;
+  width:70px;
+  height:70px;
+  border:1.5px solid rgba(34,211,238,.55);
+  background:rgba(37,99,235,.12);
+  backdrop-filter:blur(2px);
+}
+
+.cube-face.f{
+  transform:translateZ(35px);
+}
+
+.cube-face.b{
+  transform:translateZ(-35px) rotateY(180deg);
+}
+
+.cube-face.r{
+  transform:rotateY(90deg) translateZ(35px);
+}
+
+.cube-face.l{
+  transform:rotateY(-90deg) translateZ(35px);
+}
+
+.cube-face.t{
+  transform:rotateX(90deg) translateZ(35px);
+}
+
+.cube-face.bo{
+  transform:rotateX(-90deg) translateZ(35px);
+}
+
+@keyframes cubeSpin{
+  0%{
+    transform:rotateX(0) rotateY(0) scale(1);
+    opacity:1;
+  }
+
+  65%{
+    transform:rotateX(320deg) rotateY(380deg) scale(1.15);
+    opacity:1;
+  }
+
+  100%{
+    transform:rotateX(360deg) rotateY(720deg) scale(0);
+    opacity:0;
+  }
+}
+
+.preload-mark{
+  position:absolute;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:.14em;
+  color:var(--white);
+  opacity:0;
+  transform:scale(.85);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  animation:markIn .6s ease forwards;
+  animation-delay:1.15s;
+}
+
+.preload-mark .mono{
+  color:var(--cyan);
+}
+
+@keyframes markIn{
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.preload-bar{
+  width:120px;
+  height:2px;
+  background:rgba(255,255,255,.15);
+  border-radius:2px;
+  overflow:hidden;
+}
+
+.preload-bar span{
+  display:block;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--electric),var(--cyan));
+  animation:barFill 1.6s ease forwards;
+  animation-delay:.2s;
+}
+
+@keyframes barFill{
+  to{
+    width:100%;
+  }
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:500;
+  background:rgba(16,24,40,.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+nav{
+  max-width:var(--maxw);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 24px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  background:var(--white);
+  padding:6px 14px;
+  border-radius:9px;
+  transition:transform .2s ease;
+}
+
+.logo:hover{
+  transform:translateY(-1px);
+}
+
+.nav-links{
+  display:flex;
+  gap:32px;
+  align-items:center;
+}
+
+.nav-links a{
+  font-size:14.5px;
+  color:rgba(255,255,255,.75);
+  transition:color .2s ease;
+}
+
+.nav-links a:hover{
+  color:var(--cyan);
+}
+
+.nav-cta{
+  background:var(--electric);
+  color:var(--white);
+  padding:10px 20px;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:500;
+}
+
+.burger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+}
+
+.burger span{
+  width:22px;
+  height:2px;
+  background:var(--white);
+  border-radius:2px;
+}
+
+.mobile-panel{
+  position:fixed;
+  top:60px;
+  left:0;
+  right:0;
+  bottom:0;
+  background:var(--midnight);
+  z-index:400;
+  display:flex;
+  flex-direction:column;
+  padding:20px 24px;
+  transform:translateX(100%);
+  transition:transform .3s;
+}
+
+.mobile-panel.open{
+  transform:translateX(0);
+}
+
+.mobile-panel a{
+  padding:16px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:var(--white);
+  font-size:17px;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn{
+  padding:14px 26px;
+  border-radius:9px;
+  font-weight:600;
+  font-size:15px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+  cursor:pointer;
+  border:none;
+  font-family:var(--font-body);
+}
+
+.btn-primary{
+  background:linear-gradient(
+    90deg,
+    var(--electric),
+    var(--cyan)
+  );
+  color:var(--midnight);
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(34,211,238,.28);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+#hero{
+  background:var(--midnight);
+  padding:170px 24px 110px;
+  position:relative;
+  overflow:hidden;
+}
+
+#hero .wrap{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:40px;
+  align-items:center;
+}
+
+#hero h1{
+  font-size:clamp(34px,4.6vw,58px);
+  color:var(--white);
+  margin-bottom:22px;
+}
+
+#hero p.lead{
+  font-size:18px;
+  color:rgba(255,255,255,.72);
+  max-width:520px;
+  margin-bottom:24px;
+}
+
+/* HERO VISIBILITY FIX */
+
+#hero .eyebrow-tag{
+  color:#FFFFFF !important;
+  background:rgba(255,255,255,.08) !important;
+  border:1px solid rgba(34,211,238,.25) !important;
+}
+
+#hero .eyebrow-tag::before{
+  background:#22D3EE !important;
+  box-shadow:0 0 8px rgba(34,211,238,.65);
+}
+
+#hero .priority-callout{
+  color:#FFFFFF !important;
+  background:rgba(255,255,255,.06) !important;
+  border:1px solid rgba(34,211,238,.30) !important;
+}
+
+#hero .priority-callout strong{
+  color:#FFFFFF !important;
+}
+
+#hero .priority-callout p{
+  color:rgba(255,255,255,.78) !important;
+}
+
+#hero .priority-dot{
+  background:#22D3EE !important;
+  box-shadow:
+    0 0 0 5px rgba(34,211,238,.12),
+    0 0 14px rgba(34,211,238,.55) !important;
+}
+
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  width:100%;
+  align-items:start;
+}
+
+.hero-stats .stat b{
+  display:block;
+  font-family:var(--font-display);
+  font-size:22px;
+  color:var(--white);
+}
+
+.hero-stats .stat span{
+  font-size:13px;
+  color:rgba(255,255,255,.55);
+}
+
+/* =========================================================
+   HERO 3D SYSTEM
+   ========================================================= */
+
+.azc-stage{
+  perspective:1200px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:410px;
+  position:relative;
+  overflow:hidden;
+}
+
+.azc-assembly{
+  position:relative;
+  width:340px;
+  height:340px;
+  transform-style:preserve-3d;
+}
+
+.azc-whole-funnel{
+  position:absolute;
+  inset:0;
+  transform-style:preserve-3d;
+  transform-origin:50% 94%;
+  animation:azcConnectedOrbit 7s linear infinite;
+  will-change:transform;
+}
+
+.azc-ring{
+  position:absolute;
+  left:50%;
+  border:2px solid rgba(34,211,238,.72);
+  border-radius:50%;
+  transform:translateX(-50%) rotateX(74deg);
+  box-shadow:0 0 12px rgba(34,211,238,.13);
+}
+
+.azc-r1{
+  width:290px;
+  height:290px;
+  top:0;
+}
+
+.azc-r2{
+  width:215px;
+  height:215px;
+  top:88px;
+  border-color:rgba(37,99,235,.82);
+}
+
+.azc-r3{
+  width:140px;
+  height:140px;
+  top:180px;
+}
+
+.azc-r4{
+  width:72px;
+  height:72px;
+  top:286px;
+  border-color:rgba(255,255,255,.82);
+}
+
+.azc-anchor{
+  position:absolute;
+  left:50%;
+  top:321px;
+  width:6px;
+  height:6px;
+  margin-left:-3px;
+  border-radius:50%;
+  background:#22d3ee;
+  box-shadow:0 0 12px rgba(34,211,238,.9);
+  z-index:20;
+}
+
+.azc-particle{
+  position:absolute;
+  top:7px;
+  left:50%;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#22d3ee;
+  box-shadow:0 0 9px rgba(34,211,238,.8);
+  opacity:0;
+  animation:azcFallToAnchor var(--dur) ease-in infinite;
+  animation-delay:var(--delay);
+}
+
+.azc-particle.electric{
+  background:#2563eb;
+  box-shadow:0 0 9px rgba(37,99,235,.8);
+}
+
+@keyframes azcConnectedOrbit{
+  0%{
+    transform:rotateY(0) rotateZ(-5deg) rotateX(2deg);
+  }
+
+  25%{
+    transform:rotateY(90deg) rotateZ(0) rotateX(-1deg);
+  }
+
+  50%{
+    transform:rotateY(180deg) rotateZ(5deg) rotateX(2deg);
+  }
+
+  75%{
+    transform:rotateY(270deg) rotateZ(0) rotateX(-1deg);
+  }
+
+  100%{
+    transform:rotateY(360deg) rotateZ(-5deg) rotateX(2deg);
+  }
+}
+
+@keyframes azcFallToAnchor{
+  0%{
+    top:7px;
+    left:calc(50% + var(--start));
+    opacity:0;
+    transform:scale(.8);
+  }
+
+  10%{
+    opacity:1;
+  }
+
+  48%{
+    top:150px;
+    left:calc(50% + var(--mid));
+    opacity:1;
+    transform:scale(.72);
+  }
+
+  76%{
+    top:247px;
+    left:calc(50% + var(--near));
+    opacity:1;
+    transform:scale(.52);
+  }
+
+  100%{
+    top:320px;
+    left:50%;
+    opacity:0;
+    transform:scale(.3);
+  }
+}
+
+/* =========================================================
+   SALES SECTIONS
+   ========================================================= */
+
+#pain{
+  background:var(--white);
+}
+
+#pain .wrap{
+  max-width:820px;
+}
+
+.pain-grid{
+  display:grid;
+  gap:14px;
+}
+
+.pain-card{
+  padding:22px;
+  border:1px solid rgba(102,112,133,.16);
+  border-radius:14px;
+  background:var(--ice);
+}
+
+.sales-head h2,
+.section-head h2{
+  font-size:clamp(28px,3.5vw,42px);
+  margin-bottom:18px;
+}
+
+.sales-head p,
+.section-head p{
+  color:var(--slate);
+  font-size:16px;
+  margin-bottom:16px;
+}
+
+.sales-close{
+  margin-top:34px;
+  padding:26px;
+  border-left:3px solid var(--electric);
+  background:rgba(37,99,235,.06);
+  border-radius:0 14px 14px 0;
+}
+
+.sales-close strong{
+  font-size:20px;
+}
+
+.sales-close p{
+  margin:10px 0 18px;
+  color:var(--slate);
+}
+
+.sales-dark{
+  background:var(--midnight);
+  color:var(--white);
+}
+
+.sales-dark .sales-head h2,
+.sales-dark .sales-close strong{
+  color:var(--white);
+}
+
+.sales-dark .sales-head p,
+.sales-dark .sales-close p{
+  color:rgba(255,255,255,.68);
+}
+
+.sales-dark .sales-close{
+  background:rgba(255,255,255,.05);
+  border-left-color:var(--cyan);
+}
+
+.manual-flow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+  margin-top:36px;
+}
+
+.manual-flow div{
+  padding:11px 14px;
+  border:1px solid rgba(34,211,238,.24);
+  border-radius:8px;
+  font-family:var(--font-mono);
+  font-size:11px;
+}
+
+.manual-flow span{
+  color:var(--cyan);
+}
+
+/* =========================================================
+   JOURNEY
+   ========================================================= */
+
+#journey{
+  background:var(--white);
+}
+
+.journey-compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  margin-top:34px;
+}
+
+.journey-card{
+  padding:28px;
+  border-radius:16px;
+  background:var(--ice);
+  border:1px solid rgba(102,112,133,.16);
+}
+
+.journey-card.connected{
+  border-color:rgba(37,99,235,.3);
+}
+
+.journey-label{
+  display:block;
+  font-family:var(--font-mono);
+  font-size:12px;
+  color:var(--electric);
+  margin-bottom:20px;
+}
+
+.journey-chain{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.journey-chain span{
+  padding:8px 10px;
+  border-radius:7px;
+  background:var(--white);
+  font-size:12px;
+}
+
+.journey-chain b{
+  color:var(--cyan);
+}
+
+.system-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:34px;
+}
+
+.system-grid article{
+  padding:24px;
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.system-grid article>span{
+  font-family:var(--font-mono);
+  font-size:12px;
+  color:var(--cyan);
+}
+
+.system-grid h3{
+  margin:16px 0 8px;
+}
+
+.system-grid p{
+  font-size:14px;
+  color:rgba(255,255,255,.65);
+}
+
+/* =========================================================
+   HAND-CODED SECTION
+   ========================================================= */
+
+#hand-coded{
+  background:var(--white);
+}
+
+.handcoded-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  margin-top:34px;
+}
+
+.hc-card{
+  padding:28px;
+  border-radius:16px;
+  background:var(--ice);
+  border:1px solid rgba(102,112,133,.16);
+}
+
+.hc-card h3{
+  margin-bottom:12px;
+}
+
+.hc-card p{
+  color:var(--slate);
+}
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+#services{
+  background:var(--white);
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+  margin-top:40px;
+}
+
+.service-card{
+  background:var(--ice);
+  border:1px solid rgba(102,112,133,.16);
+  border-radius:16px;
+  padding:32px;
+  transform-style:preserve-3d;
+  transition:
+    transform .12s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+.service-card:hover{
+  box-shadow:0 22px 40px -20px rgba(16,24,40,.25);
+  border-color:rgba(37,99,235,.3);
+}
+
+.service-num{
+  font-family:var(--font-mono);
+  color:var(--electric);
+  font-size:13px;
+  margin-bottom:16px;
+  display:block;
+}
+
+.service-card h3{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.service-card>p{
+  color:var(--slate);
+  font-size:14.5px;
+}
+
+.section-cta{
+  text-align:center;
+  margin-top:36px;
+}
+
+.section-cta p{
+  margin-bottom:16px;
+  color:var(--slate);
+}
+
+.deliverables-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:34px;
+}
+
+.deliverables-grid span{
+  padding:14px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:9px;
+  font-size:13px;
+  color:rgba(255,255,255,.8);
+}
+
+/* =========================================================
+   PRICING
+   ========================================================= */
+
+#pricing{
+  background:var(--ice);
+}
+
+#pricing .head{
+  max-width:720px;
+  margin-bottom:48px;
+}
+
+#pricing h2{
+  font-size:clamp(26px,3vw,36px);
+  margin-bottom:14px;
+}
+
+#pricing .head p{
+  color:var(--slate);
+  font-size:16.5px;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.price-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  background:var(--white);
+  border:1px solid rgba(102,112,133,.18);
+  border-radius:16px;
+  padding:30px;
+}
+
+.price-card.featured{
+  border-color:rgba(37,99,235,.48);
+}
+
+.price-badge{
+  position:absolute;
+  top:16px;
+  right:16px;
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  font-weight:700;
+  color:var(--electric);
+  background:rgba(37,99,235,.08);
+  padding:6px 9px;
+  border-radius:999px;
+}
+
+.price-card h3{
+  font-size:20px;
+  margin-bottom:16px;
+  padding-right:74px;
+}
+
+.price-label{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  color:var(--slate);
+  text-transform:uppercase;
+}
+
+.price-main{
+  font-size:30px;
+  font-weight:800;
+  color:var(--midnight);
+}
+
+.price-currencies{
+  font-family:var(--font-mono);
+  font-size:12.5px;
+  color:var(--electric);
+  margin:8px 0 18px;
+}
+
+.price-desc{
+  color:var(--slate);
+  font-size:14.5px;
+  margin-bottom:20px;
+}
+
+.price-features{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  margin-bottom:26px;
+}
+
+.price-features li{
+  font-size:13.5px;
+  padding-left:20px;
+  position:relative;
+}
+
+.price-features li::before{
+  content:'✓';
+  position:absolute;
+  left:0;
+  color:var(--electric);
+  font-weight:800;
+}
+
+.pricing-note{
+  margin-top:24px;
+  padding:16px 18px;
+  border-left:3px solid var(--electric);
+  background:rgba(37,99,235,.06);
+  color:var(--slate);
+  font-size:12.5px;
+}
+
+.pricing-cta{
+  text-align:center;
+  margin-top:30px;
+}
+
+.mapping-note{
+  max-width:720px;
+  margin:0 auto 16px;
+  color:var(--slate);
+  font-size:14px;
+}
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+
+#process{
+  background:var(--midnight);
+  color:var(--white);
+}
+
+#process h2{
+  font-size:clamp(26px,3vw,36px);
+  margin-bottom:16px;
+}
+
+.timeline{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:0;
+  position:relative;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  top:17px;
+  left:0;
+  right:0;
+  height:1px;
+  background:rgba(255,255,255,.14);
+}
+
+.tl-step{
+  position:relative;
+  padding-right:18px;
+}
+
+.tl-dot{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:var(--midnight);
+  border:1.5px solid var(--cyan);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-mono);
+  font-size:13px;
+  color:var(--cyan);
+  margin-bottom:20px;
+  position:relative;
+  z-index:2;
+}
+
+.tl-step h3{
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+.tl-step p{
+  font-size:13.5px;
+  color:rgba(255,255,255,.55);
+}
+
+/* =========================================================
+   TOOLS
+   ========================================================= */
+
+#tools{
+  background:var(--ice);
+}
+
+#tools h2{
+  font-size:clamp(24px,2.8vw,30px);
+  margin-bottom:10px;
+}
+
+#tools p.sub{
+  color:var(--slate);
+  margin-bottom:32px;
+  max-width:560px;
+}
+
+.tool-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:11px;
+}
+
+.tool-pills span{
+  font-family:var(--font-mono);
+  font-size:13px;
+  background:var(--white);
+  border:1px solid rgba(102,112,133,.25);
+  padding:9px 16px;
+  border-radius:8px;
+}
+/* =========================================================
+   PORTFOLIO / WORK
+   ========================================================= */
+
+#work{
+  background:var(--white);
+}
+
+#work .head{
+  max-width:700px;
+  margin-bottom:50px;
+}
+
+#work h2{
+  font-size:clamp(26px,3vw,36px);
+  margin-bottom:14px;
+}
+
+#work .head p{
+  color:var(--slate);
+}
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:26px;
+}
+
+.work-card{
+  border:1px solid rgba(102,112,133,.16);
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--ice);
+  transform-style:preserve-3d;
+}
+
+.work-thumb{
+  aspect-ratio:16/10;
+  background:linear-gradient(
+    150deg,
+    rgba(37,99,235,.12),
+    rgba(34,211,238,.12)
+  );
+  position:relative;
+  overflow:hidden;
+}
+
+.gallery-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
+}
+
+.gallery-slide.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.gallery-slide img,
+.gallery-slide video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.gallery-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.45);
+  background:rgba(16,24,40,.68);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.gallery-arrow.prev{
+  left:12px;
+}
+
+.gallery-arrow.next{
+  right:12px;
+}
+
+.gallery-arrow svg{
+  width:18px;
+  fill:none;
+  stroke:#fff;
+  stroke-width:2;
+}
+
+.gallery-count{
+  position:absolute;
+  z-index:5;
+  right:12px;
+  bottom:12px;
+  padding:5px 8px;
+  border-radius:6px;
+  background:rgba(16,24,40,.7);
+  color:#fff;
+  font-size:11px;
+}
+
+.work-body{
+  padding:26px;
+}
+
+.work-body .tag{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  color:var(--electric);
+  text-transform:uppercase;
+  margin-bottom:10px;
+  display:block;
+}
+
+.work-body h3{
+  font-size:19px;
+  margin-bottom:10px;
+}
+
+.work-body p{
+  color:var(--slate);
+  font-size:14.5px;
+  margin-bottom:14px;
+}
+
+.project-disclaimer{
+  padding:11px 13px;
+  border-left:3px solid var(--electric);
+  background:rgba(37,99,235,.07);
+  font-size:12.5px !important;
+}
+
+.project-disclaimer.personal-project{
+  border-left-color:var(--cyan);
+  background:rgba(34,211,238,.09);
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+#faq{
+  background:var(--ice);
+}
+
+#faq .wrap{
+  max-width:760px;
+}
+
+#faq h2{
+  font-size:clamp(26px,3vw,34px);
+  margin-bottom:40px;
+}
+
+.faq-item{
+  border-bottom:1px solid rgba(102,112,133,.2);
+}
+
+.faq-q{
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  padding:20px 4px;
+  font-family:var(--font-body);
+  font-size:16.5px;
+  font-weight:600;
+  color:var(--midnight);
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.faq-q .plus{
+  font-family:var(--font-mono);
+  font-size:18px;
+  color:var(--electric);
+  transition:transform .25s;
+}
+
+.faq-item.open .plus{
+  transform:rotate(45deg);
+}
+
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s;
+}
+
+.faq-a p{
+  padding:0 4px 22px;
+  color:var(--slate);
+  font-size:15px;
+}
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+#cta{
+  background:linear-gradient(
+    120deg,
+    var(--midnight),
+    #152238
+  );
+  color:var(--white);
+  position:relative;
+  overflow:hidden;
+}
+
+#cta .wrap{
+  max-width:680px;
+  position:relative;
+  z-index:2;
+}
+
+#cta h2{
+  font-size:clamp(28px,3.4vw,40px);
+  margin-bottom:16px;
+}
+
+#cta p{
+  color:rgba(255,255,255,.68);
+  font-size:16.5px;
+  margin-bottom:22px;
+}
+
+#cta h3{
+  margin-bottom:18px;
+}
+
+#cta .eyebrow-tag{
+  color:#fff;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(34,211,238,.24);
+}
+
+#cta .eyebrow-tag::before{
+  background:var(--cyan);
+}
+
+.priority-callout{
+  display:flex;
+  gap:14px;
+  margin:26px 0 24px;
+  padding:20px 22px;
+  border:1px solid rgba(34,211,238,.26);
+  border-radius:16px;
+  background:rgba(34,211,238,.07);
+}
+
+.priority-dot{
+  width:9px;
+  height:9px;
+  min-width:9px;
+  margin-top:5px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 0 5px rgba(34,211,238,.12);
+}
+
+.cta-microcopy{
+  margin-top:12px !important;
+  font-size:12px !important;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer{
+  background:var(--midnight);
+  color:rgba(255,255,255,.55);
+  padding:44px 24px 30px;
+}
+
+footer .wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.brand-wordmark{
+  font-family:var(--font-display);
+  font-weight:800;
+  letter-spacing:-.04em;
+  font-size:22px;
+  color:var(--white);
+}
+
+.brand-wordmark>span{
+  color:var(--cyan);
+}
+
+.social-plugins{
+  display:flex;
+  gap:14px;
+}
+
+.social-plugins a{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.social-plugins svg{
+  width:16px;
+  height:16px;
+  fill:rgba(255,255,255,.85);
+}
+
+footer .fine{
+  font-size:13px;
+  margin-top:26px;
+}
+
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:
+    opacity .6s ease,
+    transform .6s ease;
+}
+
+.reveal.in{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .burger{
+    display:flex;
+  }
+
+  section{
+    padding:72px 20px;
+  }
+
+  #hero .wrap{
+    grid-template-columns:1fr;
+  }
+
+  .azc-stage{
+    height:330px;
+  }
+
+  .journey-compare,
+  .handcoded-grid,
+  .work-grid,
+  .pricing-grid{
+    grid-template-columns:1fr;
+  }
+
+  .system-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+
+  .deliverables-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .timeline{
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+  }
+
+  .timeline::before{
+    display:none;
+  }
+}
+
+@media(max-width:600px){
+
+  section{
+    padding:58px 16px;
+  }
+
+  #hero{
+    padding:120px 16px 70px;
+  }
+
+  #hero h1{
+    font-size:clamp(32px,10vw,42px);
+  }
+
+  #hero p.lead{
+    font-size:16px;
+  }
+
+  .azc-stage{
+    height:280px;
+  }
+
+  .azc-assembly{
+    transform:scale(.78);
+  }
+
+  .system-grid,
+  .deliverables-grid,
+  .timeline{
+    grid-template-columns:1fr;
+  }
+
+  .service-card,
+  .work-body,
+  .price-card{
+    padding:22px;
+  }
+
+  .priority-callout{
+    padding:18px;
+  }
+}
+
+</style>
+
+<link href="style.css" rel="stylesheet"/>
+<script defer src="script.js"></script>
 
-      transition:
-        opacity 0.6s ease,
-        visibility 0.6s ease;
-    }
-
-    #preloader.done {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .loader-inner {
-      text-align: center;
-    }
-
-    .loader-cube {
-      width: 62px;
-      height: 62px;
-
-      margin: 0 auto 24px;
-
-      border: 1px solid rgba(34, 211, 238, 0.7);
-
-      transform: rotate(45deg);
-
-      animation: loaderSpin 1.5s ease-in-out infinite;
-
-      box-shadow:
-        inset 0 0 30px rgba(37, 99, 235, 0.15),
-        0 0 35px rgba(34, 211, 238, 0.10);
-    }
-
-    .loader-brand {
-      color: white;
-      font-family: var(--font-display);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-
-    .loader-brand span {
-      color: var(--cyan);
-    }
-
-    @keyframes loaderSpin {
-      0% {
-        transform: rotate(45deg) scale(0.8);
-      }
-
-      50% {
-        transform: rotate(225deg) scale(1.1);
-      }
-
-      100% {
-        transform: rotate(405deg) scale(0.8);
-      }
-    }
-
-    /* =========================
-       NAV
-    ========================= */
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-
-      z-index: 500;
-
-      background: rgba(16, 24, 40, 0.88);
-      backdrop-filter: blur(16px);
-
-      border-bottom:
-        1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    nav {
-      width: min(100%, var(--max));
-      min-height: 72px;
-
-      margin: auto;
-      padding: 0 24px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-
-      padding: 8px 13px;
-
-      border-radius: 9px;
-
-      background: white;
-
-      font-family: var(--font-display);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-
-      color: var(--midnight);
-    }
-
-    .brand span {
-      color: var(--electric);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links > a:not(.nav-cta) {
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 14px;
-    }
-
-    .nav-links > a:not(.nav-cta):hover {
-      color: var(--cyan);
-    }
-
-    .nav-cta {
-      padding: 10px 18px;
-
-      border-radius: 8px;
-
-      background: var(--electric);
-      color: white;
-
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .burger {
-      display: none;
-
-      border: 0;
-      background: transparent;
-
-      padding: 8px;
-    }
-
-    .burger span {
-      display: block;
-
-      width: 23px;
-      height: 2px;
-
-      margin: 5px 0;
-
-      background: white;
-    }
-
-    .mobile-panel {
-      display: none;
-
-      padding: 16px 24px 24px;
-
-      background: var(--midnight);
-    }
-
-    .mobile-panel.open {
-      display: grid;
-      gap: 6px;
-    }
-
-    .mobile-panel a {
-      padding: 13px 4px;
-
-      color: rgba(255, 255, 255, 0.82);
-
-      border-bottom:
-        1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    .mobile-panel .mobile-cta {
-      margin-top: 10px;
-
-      padding: 13px 18px;
-
-      border: 0;
-      border-radius: 9px;
-
-      text-align: center;
-
-      background: var(--electric);
-      color: white;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    #hero {
-      position: relative;
-
-      min-height: 820px;
-
-      padding-top: 165px;
-
-      overflow: hidden;
-
-      background: var(--midnight);
-    }
-
-    #hero::before {
-      content: "";
-
-      position: absolute;
-      width: 650px;
-      height: 650px;
-
-      right: -180px;
-      top: 20px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(37, 99, 235, 0.20),
-          transparent 68%
-        );
-
-      pointer-events: none;
-    }
-
-    #hero::after {
-      content: "";
-
-      position: absolute;
-      width: 500px;
-      height: 500px;
-
-      left: -250px;
-      bottom: -300px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(34, 211, 238, 0.12),
-          transparent 68%
-        );
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 2;
-
-      display: grid;
-      grid-template-columns:
-        minmax(0, 1.08fr)
-        minmax(340px, 0.92fr);
-
-      align-items: center;
-
-      gap: 50px;
-    }
-
-    .hero-copy {
-      max-width: 700px;
-    }
-
-    #hero .eyebrow {
-      color: var(--cyan);
-      background: rgba(34, 211, 238, 0.09);
-    }
-
-    #hero h1 {
-      color: white;
-      margin-bottom: 24px;
-    }
-
-    #hero h1 span {
-      color: var(--cyan);
-    }
-
-    .hero-lead {
-      max-width: 640px;
-
-      margin-bottom: 30px;
-
-      color: rgba(255, 255, 255, 0.70);
-
-      font-size: 18px;
-    }
-
-    .hero-capabilities {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-
-      max-width: 680px;
-
-      margin-bottom: 30px;
-    }
-
-    .hero-capabilities span {
-      padding: 7px 10px;
-
-      border:
-        1px solid rgba(255, 255, 255, 0.09);
-
-      border-radius: 7px;
-
-      background:
-        rgba(255, 255, 255, 0.04);
-
-      color:
-        rgba(255, 255, 255, 0.65);
-
-      font-family: var(--font-mono);
-      font-size: 11px;
-    }
-
-    .priority-strip {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-
-      max-width: 590px;
-
-      margin-top: 24px;
-
-      padding: 15px 17px;
-
-      border:
-        1px solid rgba(34, 211, 238, 0.16);
-
-      border-radius: 11px;
-
-      background:
-        rgba(34, 211, 238, 0.055);
-    }
-
-    .priority-dot {
-      flex: 0 0 auto;
-
-      width: 9px;
-      height: 9px;
-
-      margin-top: 7px;
-
-      border-radius: 50%;
-
-      background: var(--cyan);
-
-      box-shadow:
-        0 0 15px rgba(34, 211, 238, 0.8);
-    }
-
-    .priority-strip strong {
-      display: block;
-
-      margin-bottom: 3px;
-
-      color: white;
-
-      font-size: 13px;
-    }
-
-    .priority-strip span {
-      display: block;
-
-      color: rgba(255, 255, 255, 0.62);
-
-      font-size: 12.5px;
-    }
-
-    /* =========================
-       3D FUNNEL
-    ========================= */
-
-    .funnel-stage {
-      position: relative;
-
-      height: 430px;
-
-      display: grid;
-      place-items: center;
-
-      perspective: 1100px;
-    }
-
-    .funnel {
-      position: relative;
-
-      width: 340px;
-      height: 340px;
-
-      transform-style: preserve-3d;
-
-      animation:
-        funnelOrbit 8s linear infinite;
-    }
-
-    .funnel-ring {
-      position: absolute;
-      left: 50%;
-
-      border: 2px solid rgba(34, 211, 238, 0.75);
-      border-radius: 50%;
-
-      transform:
-        translateX(-50%)
-        rotateX(74deg);
-
-      box-shadow:
-        0 0 18px rgba(34, 211, 238, 0.10);
-    }
-
-    .ring-1 {
-      width: 300px;
-      height: 300px;
-      top: 0;
-    }
-
-    .ring-2 {
-      width: 225px;
-      height: 225px;
-      top: 90px;
-
-      border-color:
-        rgba(37, 99, 235, 0.9);
-    }
-
-    .ring-3 {
-      width: 145px;
-      height: 145px;
-      top: 185px;
-    }
-
-    .ring-4 {
-      width: 70px;
-      height: 70px;
-      top: 290px;
-
-      border-color:
-        rgba(255, 255, 255, 0.8);
-    }
-
-    .particle {
-      position: absolute;
-
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--cyan);
-
-      box-shadow:
-        0 0 12px rgba(34, 211, 238, 0.9);
-
-      animation:
-        particleFall 3.5s ease-in infinite;
-
-      animation-delay: var(--delay);
-    }
-
-    @keyframes funnelOrbit {
-      to {
-        transform: rotateY(360deg);
-      }
-    }
-
-    @keyframes particleFall {
-      0% {
-        top: 25px;
-        left: var(--start);
-        opacity: 0;
-      }
-
-      15% {
-        opacity: 1;
-      }
-
-      70% {
-        left: 50%;
-        opacity: 1;
-      }
-
-      100% {
-        top: 330px;
-        left: 50%;
-        opacity: 0;
-      }
-    }
-
-    /* =========================
-       RECOGNITION
-    ========================= */
-
-    #recognition {
-      background: white;
-    }
-
-    .recognition-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 18px;
-
-      margin-top: 38px;
-    }
-
-    .recognition-card {
-      position: relative;
-
-      padding: 26px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 16px;
-
-      background: white;
-
-      box-shadow:
-        0 12px 35px rgba(16, 24, 40, 0.045);
-
-      font-size: 16px;
-      font-weight: 500;
-
-      color: var(--midnight);
-    }
-
-    .recognition-card::before {
-      content: "“";
-
-      position: absolute;
-      top: 9px;
-      right: 20px;
-
-      color:
-        rgba(37, 99, 235, 0.10);
-
-      font-family: Georgia, serif;
-      font-size: 62px;
-      line-height: 1;
-    }
-
-    .recognition-close {
-      margin-top: 35px;
-
-      padding: 25px 28px;
-
-      border-radius: 14px;
-
-      background: var(--midnight);
-
-      color: white;
-    }
-
-    .recognition-close strong {
-      display: block;
-
-      margin-bottom: 6px;
-
-      font-family: var(--font-display);
-      font-size: 20px;
-    }
-
-    .recognition-close p {
-      color:
-        rgba(255, 255, 255, 0.68);
-    }
-
-    /* =========================
-       REAL PROBLEM
-    ========================= */
-
-    #problem {
-      background: var(--ice);
-    }
-
-    .problem-layout {
-      display: grid;
-      grid-template-columns:
-        0.9fr 1.1fr;
-
-      gap: 55px;
-
-      align-items: start;
-    }
-
-    .problem-copy {
-      position: sticky;
-      top: 120px;
-    }
-
-    .handoff-list {
-      display: grid;
-      gap: 13px;
-    }
-
-    .handoff {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-
-      padding: 18px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 12px;
-
-      background: white;
-    }
-
-    .handoff-number {
-      display: grid;
-      place-items: center;
-
-      flex: 0 0 auto;
-
-      width: 34px;
-      height: 34px;
-
-      border-radius: 9px;
-
-      background:
-        rgba(37, 99, 235, 0.08);
-
-      color: var(--electric);
-
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .handoff strong {
-      display: block;
-
-      margin-bottom: 2px;
-
-      font-size: 14px;
-    }
-
-    .handoff p {
-      font-size: 13px;
-    }
-
-    /* =========================
-       JOURNEY
-    ========================= */
-
-    #journey {
-      background: var(--midnight);
-      color: white;
-    }
-
-    #journey .section-head h2 {
-      color: white;
-    }
-
-    #journey .section-head p {
-      color:
-        rgba(255, 255, 255, 0.65);
-    }
-
-    #journey .eyebrow {
-      color: var(--cyan);
-      background:
-        rgba(34, 211, 238, 0.08);
-    }
-
-    .journey-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 22px;
-    }
-
-    .journey-card {
-      padding: 30px;
-
-      border:
-        1px solid rgba(255, 255, 255, 0.08);
-
-      border-radius: 17px;
-
-      background:
-        rgba(255, 255, 255, 0.035);
-    }
-
-    .journey-card.connected {
-      border-color:
-        rgba(34, 211, 238, 0.24);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(37, 99, 235, 0.10),
-          rgba(34, 211, 238, 0.055)
-        );
-    }
-
-    .journey-card h3 {
-      color: white;
-      margin-bottom: 22px;
-    }
-
-    .journey-flow {
-      display: grid;
-      gap: 8px;
-    }
-
-    .journey-step {
-      padding: 11px 13px;
-
-      border-radius: 8px;
-
-      background:
-        rgba(255, 255, 255, 0.055);
-
-      color:
-        rgba(255, 255, 255, 0.78);
-
-      font-family: var(--font-mono);
-      font-size: 12px;
-    }
-
-    .connected .journey-step {
-      border:
-        1px solid rgba(34, 211, 238, 0.11);
-    }
-
-    .journey-arrow {
-      padding-left: 13px;
-
-      color:
-        rgba(255, 255, 255, 0.25);
-    }
-
-    .journey-card > p {
-      margin-top: 22px;
-
-      color:
-        rgba(255, 255, 255, 0.56);
-
-      font-size: 14px;
-    }
-
-    .journey-principle {
-      margin-top: 34px;
-
-      text-align: center;
-
-      color:
-        rgba(255, 255, 255, 0.65);
-    }
-
-    .journey-principle strong {
-      color: var(--cyan);
-    }
-
-    /* =========================
-       AZFLOW APPROACH CARDS
-    ========================= */
-
-    #approach {
-      background: var(--ice);
-    }
-
-    .system-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 18px;
-    }
-
-    .system-card {
-      position: relative;
-
-      min-height: 205px;
-
-      padding: 27px 24px;
-
-      overflow: hidden;
-
-      border:
-        1px solid var(--blue-border);
-
-      border-radius: 16px;
-
-      background: white;
-
-      box-shadow: var(--shadow);
-    }
-
-    .system-card::before {
-      content: "";
-
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 3px;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--electric),
-          var(--cyan)
-        );
-    }
-
-    .system-number {
-      display: grid;
-      place-items: center;
-
-      width: 35px;
-      height: 35px;
-
-      margin-bottom: 20px;
-
-      border-radius: 9px;
-
-      background:
-        rgba(37, 99, 235, 0.08);
-
-      color: var(--electric);
-
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .system-card h3 {
-      margin-bottom: 9px;
-    }
-
-    .system-card p {
-      font-size: 14px;
-    }
-
-    /* =========================
-       CUSTOM DEVELOPMENT
-    ========================= */
-
-    #custom {
-      background: white;
-    }
-
-    .custom-grid {
-      display: grid;
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 55px;
-
-      align-items: center;
-    }
-
-    .subscription-stack {
-      display: grid;
-      gap: 11px;
-    }
-
-    .subscription-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-
-      padding: 16px 18px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 10px;
-
-      background: var(--ice);
-
-      font-size: 14px;
-    }
-
-    .subscription-item span:last-child {
-      color: var(--slate);
-    }
-
-    .custom-benefits {
-      display: grid;
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 12px;
-
-      margin-top: 26px;
-    }
-
-    .custom-benefit {
-      padding: 15px;
-
-      border-radius: 10px;
-
-      background:
-        rgba(37, 99, 235, 0.06);
-
-      color: var(--midnight);
-
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .architecture-note {
-      margin-top: 24px;
-
-      padding: 19px;
-
-      border-left:
-        3px solid var(--cyan);
-
-      background: var(--ice);
-    }
-
-    .architecture-note strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .architecture-note p {
-      font-size: 13.5px;
-    }
-
-    /* =========================
-       SERVICES
-    ========================= */
-
-    #services {
-      background: var(--ice);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 18px;
-    }
-
-    .service-card {
-      padding: 25px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 15px;
-
-      background: white;
-
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-
-      border-color:
-        rgba(37, 99, 235, 0.24);
-
-      box-shadow: var(--shadow);
-    }
-
-    .service-card .service-label {
-      display: inline-block;
-
-      margin-bottom: 15px;
-
-      color: var(--electric);
-
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-    }
-
-    .service-card h3 {
-      margin-bottom: 10px;
-    }
-
-    .service-card p {
-      font-size: 14px;
-    }
-
-    /* =========================
-       TOOLS
-    ========================= */
-
-    #tools {
-      background: var(--midnight);
-    }
-
-    #tools h2 {
-      color: white;
-    }
-
-    #tools .section-head p {
-      color:
-        rgba(255, 255, 255, 0.63);
-    }
-
-    #tools .eyebrow {
-      color: var(--cyan);
-
-      background:
-        rgba(34, 211, 238, 0.08);
-    }
-
-    .tool-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tool-chip {
-      padding: 10px 13px;
-
-      border:
-        1px solid rgba(255, 255, 255, 0.09);
-
-      border-radius: 8px;
-
-      background:
-        rgba(255, 255, 255, 0.04);
-
-      color:
-        rgba(255, 255, 255, 0.72);
-
-      font-family: var(--font-mono);
-      font-size: 11px;
-    }
-
-    /* =========================
-       PROCESS
-    ========================= */
-
-    #process {
-      background: white;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-      gap: 15px;
-    }
-
-    .process-card {
-      padding: 23px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 14px;
-
-      background: white;
-    }
-
-    .process-number {
-      margin-bottom: 22px;
-
-      color: var(--electric);
-
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .process-card h3 {
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .process-card p {
-      font-size: 13px;
-    }
-
-    /* =========================
-       DELIVERABLES
-    ========================= */
-
-    #deliverables {
-      background: var(--ice);
-    }
-
-    .deliverables-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 12px;
-    }
-
-    .deliverable {
-      display: flex;
-      gap: 11px;
-
-      padding: 15px 17px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 10px;
-
-      background: white;
-
-      font-size: 13.5px;
-      font-weight: 500;
-    }
-
-    .deliverable::before {
-      content: "✓";
-
-      color: var(--electric);
-      font-weight: 800;
-    }
-
-    /* =========================
-       PORTFOLIO
-    ========================= */
-
-    #work {
-      background: white;
-    }
-
-    .project {
-      margin-bottom: 34px;
-
-      overflow: hidden;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 18px;
-
-      background: white;
-
-      box-shadow:
-        0 15px 45px rgba(16, 24, 40, 0.06);
-    }
-
-    .project:last-child {
-      margin-bottom: 0;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns:
-        1.15fr 0.85fr;
-    }
-
-    .project-media {
-      position: relative;
-
-      min-height: 430px;
-
-      overflow: hidden;
-
-      background: #0b1220;
-    }
-
-    .project-slide {
-      display: none;
-
-      width: 100%;
-      height: 100%;
-
-      min-height: 430px;
-
-      object-fit: cover;
-      object-position: top center;
-    }
-
-    .project-slide.active {
-      display: block;
-    }
-
-    video.project-slide {
-      object-fit: contain;
-      background: #0b1220;
-    }
-
-    .gallery-controls {
-      position: absolute;
-      z-index: 10;
-
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .gallery-button {
-      width: 42px;
-      height: 42px;
-
-      border: 0;
-      border-radius: 50%;
-
-      background:
-        rgba(16, 24, 40, 0.82);
-
-      color: white;
-
-      backdrop-filter: blur(8px);
-    }
-
-    .gallery-count {
-      padding: 8px 11px;
-
-      border-radius: 8px;
-
-      background:
-        rgba(16, 24, 40, 0.82);
-
-      color: white;
-
-      font-family: var(--font-mono);
-      font-size: 10px;
-    }
-
-    .project-copy {
-      padding: 34px;
-    }
-
-    .project-type {
-      display: inline-block;
-
-      margin-bottom: 13px;
-
-      color: var(--electric);
-
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .project-copy h3 {
-      margin-bottom: 13px;
-
-      font-size: 27px;
-    }
-
-    .project-copy > p {
-      margin-bottom: 17px;
-
-      font-size: 14px;
-    }
-
-    .project-points {
-      display: grid;
-      gap: 9px;
-
-      margin-top: 20px;
-    }
-
-    .project-point {
-      padding: 11px 13px;
-
-      border-radius: 8px;
-
-      background: var(--ice);
-
-      font-size: 12.5px;
-    }
-
-    .project-disclaimer {
-      margin-top: 18px !important;
-
-      padding-top: 17px;
-
-      border-top:
-        1px solid var(--border);
-
-      font-size: 11px !important;
-    }
-
-    /* =========================
-       PRICING
-    ========================= */
-
-    #pricing {
-      background: var(--ice);
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 18px;
-    }
-
-    .price-card {
-      padding: 28px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 16px;
-
-      background: white;
-    }
-
-    .price-card.featured {
-      border-color:
-        rgba(37, 99, 235, 0.28);
-
-      box-shadow: var(--shadow);
-    }
-
-    .price-card h3 {
-      margin-bottom: 8px;
-    }
-
-    .price-card > p {
-      min-height: 68px;
-
-      font-size: 13.5px;
-    }
-
-    .price-tag {
-      margin: 22px 0;
-
-      color: var(--midnight);
-
-      font-family: var(--font-display);
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    .price-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .price-list li {
-      display: flex;
-      gap: 8px;
-
-      color: var(--slate);
-
-      font-size: 13px;
-    }
-
-    .price-list li::before {
-      content: "✓";
-      color: var(--electric);
-      font-weight: 700;
-    }
-
-    /* =========================
-       FAQ
-    ========================= */
-
-    #faq {
-      background: white;
-    }
-
-    #faq .wrap {
-      max-width: 850px;
-    }
-
-    #faq h2 {
-      margin-bottom: 38px;
-    }
-
-    .faq-item {
-      border-bottom:
-        1px solid var(--border);
-    }
-
-    .faq-q {
-      width: 100%;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-
-      padding: 22px 0;
-
-      border: 0;
-
-      background: transparent;
-
-      text-align: left;
-
-      color: var(--midnight);
-
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 17px;
-    }
-
-    .faq-plus {
-      flex: 0 0 auto;
-
-      color: var(--electric);
-
-      font-size: 24px;
-
-      transition:
-        transform 0.25s ease;
-    }
-
-    .faq-item.open .faq-plus {
-      transform: rotate(45deg);
-    }
-
-    .faq-a {
-      max-height: 0;
-
-      overflow: hidden;
-
-      transition:
-        max-height 0.35s ease;
-    }
-
-    .faq-a p {
-      padding: 0 0 23px;
-
-      font-size: 14px;
-    }
-
-    /* =========================
-       FINAL CTA
-    ========================= */
-
-    #cta {
-      position: relative;
-
-      overflow: hidden;
-
-      background: var(--midnight);
-
-      text-align: center;
-    }
-
-    #cta::before {
-      content: "";
-
-      position: absolute;
-
-      width: 700px;
-      height: 700px;
-
-      left: 50%;
-      top: 50%;
-
-      transform:
-        translate(-50%, -50%);
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(37, 99, 235, 0.19),
-          transparent 65%
-        );
-    }
-
-    #cta .wrap {
-      position: relative;
-      z-index: 2;
-
-      max-width: 850px;
-    }
-
-    #cta .eyebrow {
-      color: var(--cyan);
-
-      background:
-        rgba(34, 211, 238, 0.08);
-    }
-
-    #cta h2 {
-      margin-bottom: 20px;
-      color: white;
-    }
-
-    #cta > .wrap > p {
-      max-width: 720px;
-
-      margin: 0 auto 14px;
-
-      color:
-        rgba(255, 255, 255, 0.66);
-
-      font-size: 16px;
-    }
-
-    .priority-callout {
-      max-width: 700px;
-
-      margin: 30px auto;
-
-      display: flex;
-      gap: 14px;
-
-      padding: 21px;
-
-      border:
-        1px solid rgba(34, 211, 238, 0.17);
-
-      border-radius: 13px;
-
-      background:
-        rgba(34, 211, 238, 0.055);
-
-      text-align: left;
-    }
-
-    .priority-callout strong {
-      display: block;
-
-      margin-bottom: 5px;
-
-      color: white;
-    }
-
-    .priority-callout p {
-      color:
-        rgba(255, 255, 255, 0.62);
-
-      font-size: 13px;
-    }
-
-    .cta-micro {
-      margin-top: 13px !important;
-
-      font-family: var(--font-mono);
-      font-size: 10px !important;
-
-      color:
-        rgba(255, 255, 255, 0.42) !important;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      padding: 40px 24px;
-
-      background: #0b1220;
-
-      color: white;
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .footer-brand {
-      font-family: var(--font-display);
-      font-weight: 700;
-    }
-
-    .footer-brand span {
-      color: var(--cyan);
-    }
-
-    .socials {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .socials a {
-      padding: 8px 11px;
-
-      border:
-        1px solid rgba(255, 255, 255, 0.09);
-
-      border-radius: 7px;
-
-      color:
-        rgba(255, 255, 255, 0.65);
-
-      font-size: 11px;
-    }
-
-    .footer-fine {
-      margin-top: 25px;
-
-      color:
-        rgba(255, 255, 255, 0.35);
-
-      font-size: 11px;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 980px) {
-      .nav-links {
-        display: none;
-      }
-
-      .burger {
-        display: block;
-      }
-
-      .hero-grid,
-      .problem-layout,
-      .custom-grid,
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-copy {
-        max-width: 760px;
-      }
-
-      .funnel-stage {
-        height: 370px;
-      }
-
-      .problem-copy {
-        position: static;
-      }
-
-      .system-grid,
-      .services-grid,
-      .pricing-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-      .process-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-      .deliverables-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-      .project-media,
-      .project-slide {
-        min-height: 380px;
-      }
-    }
-
-    @media (max-width: 680px) {
-      section {
-        padding: 78px 18px;
-      }
-
-      nav {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      #hero {
-        padding:
-          135px 18px
-          80px;
-      }
-
-      h1 {
-        font-size:
-          clamp(38px, 12vw, 54px);
-      }
-
-      h2 {
-        font-size:
-          clamp(29px, 9vw, 40px);
-      }
-
-      .hero-grid {
-        gap: 25px;
-      }
-
-      .hero-lead {
-        font-size: 16px;
-      }
-
-      .funnel-stage {
-        height: 330px;
-        transform: scale(0.88);
-        margin: -20px 0;
-      }
-
-      .recognition-grid,
-      .journey-grid,
-      .system-grid,
-      .services-grid,
-      .pricing-grid,
-      .process-grid,
-      .deliverables-grid,
-      .custom-benefits {
-        grid-template-columns: 1fr;
-      }
-
-      .project-media,
-      .project-slide {
-        min-height: 300px;
-      }
-
-      .project-copy {
-        padding: 25px 21px;
-      }
-
-      .footer-row {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
 </head>
 
 <body class="locked">
 
-  <!-- =========================
-       PRELOADER
-  ========================== -->
+<!-- ========================================================
+     PRELOADER
+     ======================================================== -->
 
-  <div id="preloader">
-    <div class="loader-inner">
-      <div class="loader-cube"></div>
+<div id="preloader">
 
-      <div class="loader-brand">
-        AZFLOW<span>.STUDIO</span>
-      </div>
-    </div>
+  <div class="cube-stage">
+    <div class="cube-face f"></div>
+    <div class="cube-face b"></div>
+    <div class="cube-face r"></div>
+    <div class="cube-face l"></div>
+    <div class="cube-face t"></div>
+    <div class="cube-face bo"></div>
   </div>
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
+  <div class="preload-mark">
 
-  <header>
-    <nav>
+    <span>
+      AZ
+      <span class="mono">// FLOW.STUDIO</span>
+    </span>
 
-      <a href="#hero" class="brand">
-        AZFLOW<span>.STUDIO</span>
-      </a>
-
-      <div class="nav-links">
-        <a href="#approach">What I Build</a>
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#faq">FAQ</a>
-
-        <a href="booking.html" class="nav-cta">
-          Map My System →
-        </a>
-      </div>
-
-      <button
-        class="burger"
-        id="burgerBtn"
-        aria-label="Open navigation"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-    </nav>
-
-    <div class="mobile-panel" id="mobilePanel">
-      <a href="#approach">What I Build</a>
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#faq">FAQ</a>
-
-      <a
-        href="booking.html"
-        class="mobile-cta"
-      >
-        Map My System →
-      </a>
+    <div class="preload-bar">
+      <span></span>
     </div>
-  </header>
 
-  <main>
+  </div>
+
+</div>
+
+<!-- ========================================================
+     NAVIGATION
+     ======================================================== -->
+
+<header>
+
+<nav>
+
+  <a class="logo" href="#hero">
+    <span class="brand-wordmark">
+      AZFLOW<span>.STUDIO</span>
+    </span>
+  </a>
+
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#pricing">Prices</a>
+    <a href="#process">Process</a>
+    <a href="#work">Work</a>
+    <a href="#faq">FAQ</a>
+  </div>
+
+  <button
+    aria-label="Open menu"
+    class="burger"
+    id="burgerBtn"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+</nav>
+
+</header>
+
+<div
+  class="mobile-panel"
+  id="mobilePanel"
+>
+
+  <a href="#services">Services</a>
+  <a href="#pricing">Prices</a>
+  <a href="#process">Process</a>
+  <a href="#work">Work</a>
+  <a href="#faq">FAQ</a>
+  <a href="booking.html">MAP MY SYSTEM →</a>
+
+</div>
+
+<!-- ========================================================
+     HERO
+     ======================================================== -->
+
+<section id="hero">
+
+<div class="wrap hero-content reveal">
+
+  <div>
+
+    <span class="eyebrow-tag">
+      Getting visitors, inquiries, or interest… but still doing everything after the click manually?
+    </span>
+
+    <h1>
+      Your Website May Not Need Another Redesign.
+      <span style="color:var(--cyan)">
+        It May Need a Better System Behind It.
+      </span>
+    </h1>
+
+    <p class="lead">
+      Someone finds your business.
+      They visit your page.
+      They read your offer.
+      Maybe they fill out a form, send an inquiry, or want to book.
+      <strong>And then… what happens?</strong>
+    </p>
+
+    <p class="lead">
+      AZFlow Studio builds the
+      <strong>
+        website, funnel, and systems behind the click
+      </strong>
+      so your customer journey keeps moving even when you're busy doing the actual work.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href="booking.html"
+    >
+      MAP MY SYSTEM →
+    </a>
+
+    <div class="priority-callout">
+
+      <span class="priority-dot"></span>
 
-    <!-- =========================
-         HERO
-    ========================== -->
+      <div>
 
-    <section id="hero">
-
-      <div class="wrap hero-grid">
-
-        <div class="hero-copy reveal">
-
-          <span class="eyebrow">
-            Hand-Coded Websites · Funnels · Automation
-          </span>
-
-          <h1>
-            Your Website Shouldn't
-            Just Exist.
-            <span>It Should Have a Job.</span>
-          </h1>
-
-          <p class="hero-lead">
-            I build hand-coded, conversion-focused websites,
-            funnels, and the systems behind them — so the
-            customer journey doesn't stop when someone clicks.
-          </p>
-
-          <div class="hero-capabilities">
-            <span>LEAD CAPTURE</span>
-            <span>CRM</span>
-            <span>QUALIFICATION</span>
-            <span>EMAIL AUTOMATION</span>
-            <span>BOOKING</span>
-            <span>CALENDAR</span>
-            <span>FOLLOW-UP</span>
-            <span>BACKEND</span>
-            <span>TRACKING</span>
-          </div>
-
-          <a
-            href="booking.html"
-            class="btn btn-primary btn-wide"
-          >
-            Map My System →
-          </a>
-
-          <div
-            class="priority-strip"
-            role="note"
-          >
-            <span
-              class="priority-dot"
-              aria-hidden="true"
-            ></span>
-
-            <div>
-              <strong>
-                Priority project queue
-              </strong>
-
-              <span>
-                Map your system now to be considered
-                for the next available AZFlow build slot.
-              </span>
-            </div>
-          </div>
-
-        </div>
-
-        <div
-          class="funnel-stage"
-          aria-hidden="true"
-        >
-          <div class="funnel">
-
-            <div class="funnel-ring ring-1"></div>
-            <div class="funnel-ring ring-2"></div>
-            <div class="funnel-ring ring-3"></div>
-            <div class="funnel-ring ring-4"></div>
-
-            <span
-              class="particle"
-              style="
-                --delay:0s;
-                --start:12%;
-              "
-            ></span>
-
-            <span
-              class="particle"
-              style="
-                --delay:.6s;
-                --start:78%;
-              "
-            ></span>
-
-            <span
-              class="particle"
-              style="
-                --delay:1.2s;
-                --start:27%;
-              "
-            ></span>
-
-            <span
-              class="particle"
-              style="
-                --delay:1.8s;
-                --start:68%;
-              "
-            ></span>
-
-            <span
-              class="particle"
-              style="
-                --delay:2.4s;
-                --start:45%;
-              "
-            ></span>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         SELF RECOGNITION
-    ========================== -->
-
-    <section id="recognition">
-
-      <div class="wrap">
-
-        <div class="section-head reveal">
-
-          <span class="eyebrow">
-            Does this sound like your business?
-          </span>
-
-          <h2>
-            You may not need more tools.
-            You may need a clearer path
-            from interest to action.
-          </h2>
-
-          <p>
-            If any of these feel familiar, there may
-            be a gap in the customer journey — not
-            simply a problem with how your website looks.
-          </p>
-
-        </div>
-
-        <div class="recognition-grid">
-
-          <blockquote class="recognition-card reveal">
-            My website gets visitors, but not enough
-            become leads or clients.
-          </blockquote>
-
-          <blockquote class="recognition-card reveal">
-            People show interest, but too many disappear
-            before they book or reach out.
-          </blockquote>
-
-          <blockquote class="recognition-card reveal">
-            My website looks good, but it doesn't clearly
-            move people toward the next step.
-          </blockquote>
-
-          <blockquote class="recognition-card reveal">
-            Every inquiry means more manual follow-up,
-            copying information, and checking different tools.
-          </blockquote>
-
-          <blockquote class="recognition-card reveal">
-            I need leads captured, organized, followed up,
-            and moved toward booking — not just another form.
-          </blockquote>
-
-          <blockquote class="recognition-card reveal">
-            I want something built around my business
-            instead of forcing my workflow into another
-            generic template.
-          </blockquote>
-
-        </div>
-
-        <div class="recognition-close reveal">
-
-          <strong>
-            If that sounds familiar, that's the kind
-            of problem I build around.
-          </strong>
-
-          <p>
-            AZFlow connects the customer-facing experience
-            with the systems that need to work after
-            someone clicks.
-          </p>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         REAL PROBLEM
-    ========================== -->
-
-    <section id="problem">
-
-      <div class="wrap problem-layout">
-
-        <div class="problem-copy reveal">
-
-          <span class="eyebrow">
-            The real problem
-          </span>
-
-          <h2>
-            The page may be working.
-            The handoffs behind it may not be.
-          </h2>
-
-          <p style="margin-top:20px;">
-            A visitor understands your offer and
-            submits a form.
-          </p>
-
-          <p style="margin-top:12px;">
-            That's where many websites stop.
-          </p>
-
-          <p style="margin-top:12px;">
-            But the business still needs to capture
-            the lead, record it, respond, qualify it,
-            schedule the next step, notify the right
-            person, and follow up when necessary.
-          </p>
-
-        </div>
-
-        <div class="handoff-list">
-
-          <div class="handoff reveal">
-            <span class="handoff-number">01</span>
-
-            <div>
-              <strong>Lead comes in</strong>
-              <p>
-                Someone submits an inquiry or expresses interest.
-              </p>
-            </div>
-          </div>
-
-          <div class="handoff reveal">
-            <span class="handoff-number">02</span>
-
-            <div>
-              <strong>Someone checks the inbox</strong>
-              <p>
-                The process depends on a person noticing it.
-              </p>
-            </div>
-          </div>
-
-          <div class="handoff reveal">
-            <span class="handoff-number">03</span>
-
-            <div>
-              <strong>Information gets copied</strong>
-              <p>
-                Details move manually into a sheet or CRM.
-              </p>
-            </div>
-          </div>
-
-          <div class="handoff reveal">
-            <span class="handoff-number">04</span>
-
-            <div>
-              <strong>The booking link gets sent</strong>
-              <p>
-                Another manual step before the prospect can move.
-              </p>
-            </div>
-          </div>
-
-          <div class="handoff reveal">
-            <span class="handoff-number">05</span>
-
-            <div>
-              <strong>Someone remembers to follow up</strong>
-              <p>
-                If they don't, the journey quietly stops.
-              </p>
-            </div>
-          </div>
-
-          <div class="handoff reveal">
-            <span class="handoff-number">06</span>
-
-            <div>
-              <strong>The business becomes the integration</strong>
-              <p>
-                Your team carries information from one
-                tool to the next.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         JOURNEY
-    ========================== -->
-
-    <section id="journey">
-
-      <div class="wrap">
-
-        <div class="section-head reveal">
-
-          <span class="eyebrow">
-            What happens after the click?
-          </span>
-
-          <h2>
-            Turn a collection of tools
-            into one customer journey.
-          </h2>
-
-          <p>
-            The goal isn't automation for its own sake.
-            It's making the next step clearer for the
-            customer and easier for the business to manage.
-          </p>
-
-        </div>
-
-        <div class="journey-grid">
-
-          <article class="journey-card reveal">
-
-            <h3>
-              The disconnected way
-            </h3>
-
-            <div class="journey-flow">
-
-              <div class="journey-step">
-                VISITOR
-              </div>
-
-              <div class="journey-arrow">↓</div>
-
-              <div class="journey-step">
-                FORM
-              </div>
-
-              <div class="journey-arrow">↓</div>
-
-              <div class="journey-step">
-                INBOX
-              </div>
-
-              <div class="journey-arrow">↓</div>
-
-              <div class="journey-step">
-                MANUAL UPDATES
-              </div>
-
-              <div class="journey-arrow">↓</div>
-
-              <div class="journey-step">
-                MANUAL FOLLOW-UP
-              </div>
-
-            </div>
-
-            <p>
-              Information moves between people and
-              tools manually.
-            </p>
-
-          </article>
-
-          <article class="journey-card connected reveal">
-
-            <h3>
-              Connected with AZFlow
-            </h3>
-
-            <div class="journey-flow">
-
-              <div class="journey-step">
-                VISITOR
-              </div>
-
-              <div class="journey-arrow">↓</div>
-
-              <div class="journey-step">
-                FUNNEL
-              </div>
-
-              <div class="journey-arrow">↓</div>
-
-              <div class="journey-step">
-                LEAD CAPTURE
-              </div>
-
-              <div class="journey-arrow">↓</div>
-
-              <div class="journey-step">
-                CRM / DATABASE
-              </div>
-
-              <div class="journey-arrow">↓</div>
-
-              <div class="journey-step">
-                FOLLOW-UP
-              </div>
-
-              <div class="journey-arrow">↓</div>
-
-              <div class="journey-step">
-                BOOKING
-              </div>
-
-            </div>
-
-            <p>
-              The customer journey and the business
-              workflow support each other.
-            </p>
-
-          </article>
-
-        </div>
-
-        <p class="journey-principle reveal">
-          The principle behind every build:
-          <strong>Your website should have a job.</strong>
-        </p>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         APPROACH
-    ========================== -->
-
-    <section id="approach">
-
-      <div class="wrap">
-
-        <div class="section-head reveal">
-
-          <span class="eyebrow">
-            The AZFlow approach
-          </span>
-
-          <h2>
-            The page is only one layer.
-            I can build the system behind it too.
-          </h2>
-
-          <p>
-            Your project can stay simple or connect
-            multiple layers, depending on what the
-            business actually needs.
-          </p>
-
-        </div>
-
-        <div class="system-grid">
-
-          <article class="system-card reveal">
-            <span class="system-number">01</span>
-
-            <h3>
-              Website / Funnel
-            </h3>
-
-            <p>
-              The customer-facing experience and
-              conversion path.
-            </p>
-          </article>
-
-          <article class="system-card reveal">
-            <span class="system-number">02</span>
-
-            <h3>
-              Lead Capture
-            </h3>
-
-            <p>
-              Forms and qualification built around
-              the information your business actually needs.
-            </p>
-          </article>
-
-          <article class="system-card reveal">
-            <span class="system-number">03</span>
-
-            <h3>
-              CRM / Database
-            </h3>
-
-            <p>
-              A structured place for leads, statuses,
-              sources, ownership, and relevant records.
-            </p>
-          </article>
-
-          <article class="system-card reveal">
-            <span class="system-number">04</span>
-
-            <h3>
-              Email & Follow-Up
-            </h3>
-
-            <p>
-              Confirmations, notifications, reminders,
-              and rule-based sequences.
-            </p>
-          </article>
-
-          <article class="system-card reveal">
-            <span class="system-number">05</span>
-
-            <h3>
-              Booking / Calendar
-            </h3>
-
-            <p>
-              A smoother path from interest to a
-              scheduled conversation.
-            </p>
-          </article>
-
-          <article class="system-card reveal">
-            <span class="system-number">06</span>
-
-            <h3>
-              Backend & Integrations
-            </h3>
-
-            <p>
-              APIs, business logic, workflows,
-              dashboards, and connections between systems.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         CUSTOM DEVELOPMENT
-    ========================== -->
-
-    <section id="custom">
-
-      <div class="wrap custom-grid">
-
-        <div class="reveal">
-
-          <span class="eyebrow">
-            Why custom development?
-          </span>
-
-          <h2>
-            Use the tools you need.
-            Don't automatically pay for
-            the ones you don't.
-          </h2>
-
-          <p style="margin-top:20px;">
-            A funnel stack can quickly become separate
-            subscriptions for pages, forms, CRM, email,
-            scheduling, integrations, and reporting.
-          </p>
-
-          <p style="margin-top:12px;">
-            Custom development gives us another option:
-            keep the services that make sense, integrate
-            what you already use, and build specific
-            functionality where that produces a cleaner system.
-          </p>
-
-          <div class="custom-benefits">
-
-            <div class="custom-benefit">
-              Fewer unnecessary subscriptions
-            </div>
-
-            <div class="custom-benefit">
-              More control over the workflow
-            </div>
-
-            <div class="custom-benefit">
-              Functionality shaped around the business
-            </div>
-
-            <div class="custom-benefit">
-              Less dependence on one platform
-            </div>
-
-          </div>
-
-          <div class="architecture-note">
-
-            <strong>
-              This isn't “custom code versus SaaS.”
-            </strong>
-
-            <p>
-              It's choosing the right architecture for
-              the job. Hosting, databases, email delivery,
-              APIs, security, and maintenance can still
-              have costs.
-            </p>
-
-          </div>
-
-        </div>
-
-        <div class="subscription-stack reveal">
-
-          <div class="subscription-item">
-            <strong>Website / Funnel</strong>
-            <span>One platform</span>
-          </div>
-
-          <div class="subscription-item">
-            <strong>Forms</strong>
-            <span>Another tool</span>
-          </div>
-
-          <div class="subscription-item">
-            <strong>CRM</strong>
-            <span>Another subscription</span>
-          </div>
-
-          <div class="subscription-item">
-            <strong>Scheduling</strong>
-            <span>Another subscription</span>
-          </div>
-
-          <div class="subscription-item">
-            <strong>Email Automation</strong>
-            <span>Another subscription</span>
-          </div>
-
-          <div class="subscription-item">
-            <strong>Workflow Connector</strong>
-            <span>Another subscription</span>
-          </div>
-
-          <div class="subscription-item">
-            <strong>Reporting</strong>
-            <span>Possibly another tool</span>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         SERVICES
-    ========================== -->
-
-    <section id="services">
-
-      <div class="wrap">
-
-        <div class="section-head reveal">
-
-          <span class="eyebrow">
-            What do you actually need?
-          </span>
-
-          <h2>
-            You don't have to know
-            what kind of developer you need.
-          </h2>
-
-          <p>
-            Tell me where the business is right now.
-            We'll map the system first and determine
-            what actually needs to be built.
-          </p>
-
-        </div>
-
-        <div class="services-grid">
-
-          <article class="service-card reveal">
-            <span class="service-label">
-              STARTING FROM ZERO
-            </span>
-
-            <h3>
-              Website From Scratch
-            </h3>
-
-            <p>
-              Audience, offer, structure, customer journey,
-              responsive frontend, and the functionality
-              needed behind it.
-            </p>
-          </article>
-
-          <article class="service-card reveal">
-            <span class="service-label">
-              DESIGN READY
-            </span>
-
-            <h3>
-              Figma-to-Code
-            </h3>
-
-            <p>
-              Turn an approved Figma design into a
-              responsive, functioning website.
-            </p>
-          </article>
-
-          <article class="service-card reveal">
-            <span class="service-label">
-              VISUAL CONCEPT READY
-            </span>
-
-            <h3>
-              Design-to-Code
-            </h3>
-
-            <p>
-              Turn Canva designs, visual mockups,
-              or existing concepts into a live website.
-            </p>
-          </article>
-
-          <article class="service-card reveal">
-            <span class="service-label">
-              FRONTEND READY
-            </span>
-
-            <h3>
-              Backend Development
-            </h3>
-
-            <p>
-              Databases, authentication, APIs,
-              business logic, dashboards,
-              admin tools, and workflows.
-            </p>
-          </article>
-
-          <article class="service-card reveal">
-            <span class="service-label">
-              TOO MUCH MANUAL WORK
-            </span>
-
-            <h3>
-              Automation & Integration
-            </h3>
-
-            <p>
-              Connect forms, CRM, email, booking,
-              calendars, notifications, and follow-up.
-            </p>
-          </article>
-
-          <article class="service-card reveal">
-            <span class="service-label">
-              EXISTING WEBSITE
-            </span>
-
-            <h3>
-              Website / Funnel Improvement
-            </h3>
-
-            <p>
-              Improve the customer journey, CTAs,
-              forms, backend, tracking, and systems
-              without rebuilding what already works.
-            </p>
-          </article>
-
-        </div>
-
-        <div class="section-cta reveal">
-
-          <p>
-            <strong>
-              Not sure which one you need?
-            </strong>
-            You don't have to diagnose the technical
-            solution yourself.
-          </p>
-
-          <a
-            href="booking.html"
-            class="btn btn-primary btn-wide"
-          >
-            Map My System →
-          </a>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         TOOLS
-    ========================== -->
-
-    <section id="tools">
-
-      <div class="wrap">
-
-        <div class="section-head reveal">
-
-          <span class="eyebrow">
-            What I build it with
-          </span>
-
-          <h2>
-            The stack follows the project.
-          </h2>
-
-          <p>
-            I use the tools that fit the job — from
-            custom frontend and backend development
-            to deployment, hosting, automation,
-            CRM workflows, email, calendars,
-            and integrations.
-          </p>
-
-        </div>
-
-        <div class="tool-cloud reveal">
-
-          <span class="tool-chip">HTML</span>
-          <span class="tool-chip">CSS</span>
-          <span class="tool-chip">JavaScript</span>
-          <span class="tool-chip">Python</span>
-          <span class="tool-chip">Django</span>
-          <span class="tool-chip">VS Code</span>
-
-          <span class="tool-chip">GitHub</span>
-          <span class="tool-chip">Netlify</span>
-          <span class="tool-chip">Vercel</span>
-          <span class="tool-chip">Render</span>
-          <span class="tool-chip">Railway</span>
-          <span class="tool-chip">DigitalOcean</span>
-
-          <span class="tool-chip">WordPress</span>
-          <span class="tool-chip">Canva</span>
-          <span class="tool-chip">Systeme.io</span>
-
-          <span class="tool-chip">Google Sheets</span>
-          <span class="tool-chip">Google Apps Script</span>
-          <span class="tool-chip">Google Calendar</span>
-          <span class="tool-chip">Gmail</span>
-          <span class="tool-chip">Google Drive</span>
-
-          <span class="tool-chip">REST APIs</span>
-          <span class="tool-chip">Webhooks</span>
-          <span class="tool-chip">CRM Workflows</span>
-          <span class="tool-chip">AI-Assisted Development</span>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         PROCESS
-    ========================== -->
-
-    <section id="process">
-
-      <div class="wrap">
-
-        <div class="section-head reveal">
-
-          <span class="eyebrow">
-            The process
-          </span>
-
-          <h2>
-            From “here's what's not working”
-            to a system that's live.
-          </h2>
-
-        </div>
-
-        <div class="process-grid">
-
-          <article class="process-card reveal">
-            <div class="process-number">01</div>
-            <h3>System Mapping</h3>
-            <p>
-              We understand the business, current workflow,
-              tools, lead sources, and manual gaps.
-            </p>
-          </article>
-
-          <article class="process-card reveal">
-            <div class="process-number">02</div>
-            <h3>Journey Design</h3>
-            <p>
-              We map what should happen from visitor
-              to lead, booking, follow-up, and client.
-            </p>
-          </article>
-
-          <article class="process-card reveal">
-            <div class="process-number">03</div>
-            <h3>Architecture</h3>
-            <p>
-              Determine what should stay, integrate,
-              automate, or be custom-built.
-            </p>
-          </article>
-
-          <article class="process-card reveal">
-            <div class="process-number">04</div>
-            <h3>Build</h3>
-            <p>
-              Frontend, backend, forms, database,
-              APIs, dashboards, and functionality.
-            </p>
-          </article>
-
-          <article class="process-card reveal">
-            <div class="process-number">05</div>
-            <h3>Automate</h3>
-            <p>
-              Connect repetitive and rule-based
-              workflows where automation makes sense.
-            </p>
-          </article>
-
-          <article class="process-card reveal">
-            <div class="process-number">06</div>
-            <h3>Test</h3>
-            <p>
-              Test the complete journey — not simply
-              whether the page loads.
-            </p>
-          </article>
-
-          <article class="process-card reveal">
-            <div class="process-number">07</div>
-            <h3>Launch</h3>
-            <p>
-              Deploy the system and verify the live
-              customer journey.
-            </p>
-          </article>
-
-          <article class="process-card reveal">
-            <div class="process-number">08</div>
-            <h3>Improve</h3>
-            <p>
-              Use real activity and tracking data
-              to guide future improvements.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         DELIVERABLES
-    ========================== -->
-
-    <section id="deliverables">
-
-      <div class="wrap">
-
-        <div class="section-head reveal">
-
-          <span class="eyebrow">
-            What you walk away with
-          </span>
-
-          <h2>
-            Not just files.
-            A working business asset.
-          </h2>
-
-          <p>
-            Your exact deliverables depend on the
-            system we map and the scope we agree on.
-          </p>
-
-        </div>
-
-        <div class="deliverables-grid">
-
-          <div class="deliverable reveal">
-            Responsive website or funnel
-          </div>
-
-          <div class="deliverable reveal">
-            Clear customer journey
-          </div>
-
-          <div class="deliverable reveal">
-            Conversion-focused CTAs
-          </div>
-
-          <div class="deliverable reveal">
-            Lead-capture forms
-          </div>
-
-          <div class="deliverable reveal">
-            Qualification rules
-          </div>
-
-          <div class="deliverable reveal">
-            CRM or database
-          </div>
-
-          <div class="deliverable reveal">
-            Pipeline stages
-          </div>
-
-          <div class="deliverable reveal">
-            Automated confirmations
-          </div>
-
-          <div class="deliverable reveal">
-            Automated follow-up
-          </div>
-
-          <div class="deliverable reveal">
-            Booking / calendar integration
-          </div>
-
-          <div class="deliverable reveal">
-            Team notifications
-          </div>
-
-          <div class="deliverable reveal">
-            Backend functionality
-          </div>
-
-          <div class="deliverable reveal">
-            API integrations
-          </div>
-
-          <div class="deliverable reveal">
-            Admin functionality
-          </div>
-
-          <div class="deliverable reveal">
-            Tracking and analytics
-          </div>
-
-          <div class="deliverable reveal">
-            Journey testing
-          </div>
-
-          <div class="deliverable reveal">
-            Live deployment
-          </div>
-
-          <div class="deliverable reveal">
-            Documentation / handoff
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         PORTFOLIO
-    ========================== -->
-
-    <section id="work">
-
-      <div class="wrap">
-
-        <div class="section-head reveal">
-
-          <span class="eyebrow">
-            Selected work
-          </span>
-
-          <h2>
-            Don't just look at the page.
-            Look at what the system does.
-          </h2>
-
-          <p>
-            These projects show how I think about
-            frontend experience, backend functionality,
-            workflows, and customer journeys.
-          </p>
-
-        </div>
-
-        <!-- NEXCHART -->
-
-        <article
-          class="project reveal"
-          data-gallery
-        >
-
-          <div class="project-grid">
-
-            <div class="project-media">
-
-              <img
-                src="media/nexchart/dashboard.png"
-                alt="NexChart dashboard"
-                class="project-slide active"
-              >
-
-              <img
-                src="media/nexchart/pharmacy-request-inventory.png"
-                alt="NexChart pharmacy inventory"
-                class="project-slide"
-              >
-
-              <video
-                src="media/nexchart/walkthrough.mp4"
-                class="project-slide"
-                controls
-                preload="metadata"
-              ></video>
-
-              <div class="gallery-controls">
-
-                <button
-                  class="gallery-button prev"
-                  aria-label="Previous media"
-                >
-                  ←
-                </button>
-
-                <span class="gallery-count">
-                  1 / 3
-                </span>
-
-                <button
-                  class="gallery-button next"
-                  aria-label="Next media"
-                >
-                  →
-                </button>
-
-              </div>
-
-            </div>
-
-            <div class="project-copy">
-
-              <span class="project-type">
-                PERSONAL SAAS PROJECT
-              </span>
-
-              <h3>
-                NexChart
-              </h3>
-
-              <p>
-                A healthcare information system built
-                around clinical workflows, patient records,
-                reporting, referrals, pharmacy operations,
-                and role-based access.
-              </p>
-
-              <div class="project-points">
-
-                <div class="project-point">
-                  <strong>Frontend:</strong>
-                  Healthcare workflow interfaces and dashboards
-                </div>
-
-                <div class="project-point">
-                  <strong>Backend:</strong>
-                  Django-based business logic and data workflows
-                </div>
-
-                <div class="project-point">
-                  <strong>System thinking:</strong>
-                  Roles, records, reports, referrals,
-                  pharmacy, and clinical processes
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- DR JACK -->
-
-        <article
-          class="project reveal"
-          data-gallery
-        >
-
-          <div class="project-grid">
-
-            <div class="project-media">
-
-              <img
-                src="media/dr-jack-dating/homepage.png"
-                alt="Dr Jack Dating homepage"
-                class="project-slide active"
-              >
-
-              <img
-                src="media/dr-jack-dating/about-page.png"
-                alt="Dr Jack Dating about page"
-                class="project-slide"
-              >
-
-              <img
-                src="media/dr-jack-dating/booking-page.png"
-                alt="Dr Jack Dating booking page"
-                class="project-slide"
-              >
-
-              <img
-                src="media/dr-jack-dating/email-automation.png"
-                alt="Dr Jack Dating email automation"
-                class="project-slide"
-              >
-
-              <img
-                src="media/dr-jack-dating/thank-you-page.png"
-                alt="Dr Jack Dating thank you page"
-                class="project-slide"
-              >
-
-              <video
-                src="media/dr-jack-dating/walkthrough.mp4"
-                class="project-slide"
-                controls
-                preload="metadata"
-              ></video>
-
-              <div class="gallery-controls">
-
-                <button
-                  class="gallery-button prev"
-                  aria-label="Previous media"
-                >
-                  ←
-                </button>
-
-                <span class="gallery-count">
-                  1 / 6
-                </span>
-
-                <button
-                  class="gallery-button next"
-                  aria-label="Next media"
-                >
-                  →
-                </button>
-
-              </div>
-
-            </div>
-
-            <div class="project-copy">
-
-              <span class="project-type">
-                WEBSITE · FUNNEL · AUTOMATION
-              </span>
-
-              <h3>
-                Dr. Jack Dating
-              </h3>
-
-              <p>
-                A relationship coaching and matchmaking
-                customer journey designed to move visitors
-                from education and trust-building toward
-                private consultation.
-              </p>
-
-              <div class="project-points">
-
-                <div class="project-point">
-                  Conversion-focused service journey
-                </div>
-
-                <div class="project-point">
-                  Booking and consultation path
-                </div>
-
-                <div class="project-point">
-                  Email automation and follow-up planning
-                </div>
-
-                <div class="project-point">
-                  Responsive hand-coded frontend
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- SOLARPEAK -->
-
-        <article
-          class="project reveal"
-          data-gallery
-        >
-
-          <div class="project-grid">
-
-            <div class="project-media">
-
-              <video
-                src="media/solarpeak/walkthrough.mp4"
-                class="project-slide active"
-                controls
-                preload="metadata"
-              ></video>
-
-              <div class="gallery-controls">
-
-                <button
-                  class="gallery-button prev"
-                  aria-label="Previous media"
-                >
-                  ←
-                </button>
-
-                <span class="gallery-count">
-                  1 / 1
-                </span>
-
-                <button
-                  class="gallery-button next"
-                  aria-label="Next media"
-                >
-                  →
-                </button>
-
-              </div>
-
-            </div>
-
-            <div class="project-copy">
-
-              <span class="project-type">
-                FUNNEL CONCEPT
-              </span>
-
-              <h3>
-                SolarPeak
-              </h3>
-
-              <p>
-                A conversion-focused solar service
-                concept designed around clearer offer
-                positioning and lead generation.
-              </p>
-
-              <div class="project-points">
-
-                <div class="project-point">
-                  Service positioning
-                </div>
-
-                <div class="project-point">
-                  Lead-generation journey
-                </div>
-
-                <div class="project-point">
-                  Responsive frontend concept
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- OUTSTANDING COMPLIANCE -->
-
-        <article
-          class="project reveal"
-          data-gallery
-        >
-
-          <div class="project-grid">
-
-            <div class="project-media">
-
-              <img
-                src="media/outstanding-compliance/homepage.png"
-                alt="Outstanding Compliance homepage"
-                class="project-slide active"
-              >
-
-              <img
-                src="media/outstanding-compliance/about-page.png"
-                alt="Outstanding Compliance about page"
-                class="project-slide"
-              >
-
-              <img
-                src="media/outstanding-compliance/services-page.png"
-                alt="Outstanding Compliance services"
-                class="project-slide"
-              >
-
-              <img
-                src="media/outstanding-compliance/compliance-suite-page.png"
-                alt="Outstanding Compliance suite"
-                class="project-slide"
-              >
-
-              <img
-                src="media/outstanding-compliance/policy-library-page.png"
-                alt="Outstanding Compliance policy library"
-                class="project-slide"
-              >
-
-              <img
-                src="media/outstanding-compliance/resources-page.png"
-                alt="Outstanding Compliance resources"
-                class="project-slide"
-              >
-
-              <video
-                src="media/outstanding-compliance/walkthrough.mp4"
-                class="project-slide"
-                controls
-                preload="metadata"
-              ></video>
-
-              <div class="gallery-controls">
-
-                <button
-                  class="gallery-button prev"
-                  aria-label="Previous media"
-                >
-                  ←
-                </button>
-
-                <span class="gallery-count">
-                  1 / 7
-                </span>
-
-                <button
-                  class="gallery-button next"
-                  aria-label="Next media"
-                >
-                  →
-                </button>
-
-              </div>
-
-            </div>
-
-            <div class="project-copy">
-
-              <span class="project-type">
-                WEBSITE CONCEPT
-              </span>
-
-              <h3>
-                Outstanding Compliance
-              </h3>
-
-              <p>
-                A professional compliance-services website
-                concept focused on positioning, service
-                discovery, educational resources, and
-                inquiry paths.
-              </p>
-
-              <div class="project-points">
-
-                <div class="project-point">
-                  Professional service positioning
-                </div>
-
-                <div class="project-point">
-                  Resource and policy architecture
-                </div>
-
-                <div class="project-point">
-                  Conversion-focused service pages
-                </div>
-
-              </div>
-
-              <p class="project-disclaimer">
-                <strong>Portfolio disclosure:</strong>
-                This concept was created as part of my pitch
-                and is shown with the business owner's permission.
-                It was not commissioned or completed as paid client work.
-              </p>
-
-            </div>
-
-          </div>
-
-        </article>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         PRICING
-    ========================== -->
-
-    <section id="pricing">
-
-      <div class="wrap">
-
-        <div class="section-head center reveal">
-
-          <span class="eyebrow">
-            Project scope
-          </span>
-
-          <h2>
-            Start with the system,
-            not the package.
-          </h2>
-
-          <p>
-            The right scope depends on what you already
-            have, what needs to happen after the click,
-            and how much of the customer journey needs
-            to be built or connected.
-          </p>
-
-        </div>
-
-        <div class="pricing-grid">
-
-          <article class="price-card reveal">
-
-            <h3>
-              Website / Funnel Build
-            </h3>
-
-            <p>
-              For businesses that need the customer-facing
-              experience built or improved.
-            </p>
-
-            <div class="price-tag">
-              Custom Scope
-            </div>
-
-            <ul class="price-list">
-              <li>Responsive frontend</li>
-              <li>Customer journey structure</li>
-              <li>Conversion-focused CTAs</li>
-              <li>Lead capture</li>
-              <li>Deployment</li>
-            </ul>
-
-          </article>
-
-          <article class="price-card featured reveal">
-
-            <h3>
-              Funnel + Business System
-            </h3>
-
-            <p>
-              For businesses that need the page and
-              what happens behind it connected.
-            </p>
-
-            <div class="price-tag">
-              Custom Scope
-            </div>
-
-            <ul class="price-list">
-              <li>Website / funnel</li>
-              <li>CRM / database workflow</li>
-              <li>Email automation</li>
-              <li>Booking / calendar</li>
-              <li>Follow-up logic</li>
-            </ul>
-
-          </article>
-
-          <article class="price-card reveal">
-
-            <h3>
-              Backend / Automation
-            </h3>
-
-            <p>
-              For businesses that already have the
-              frontend but need the system behind it.
-            </p>
-
-            <div class="price-tag">
-              Custom Scope
-            </div>
-
-            <ul class="price-list">
-              <li>Backend functionality</li>
-              <li>Database</li>
-              <li>APIs / webhooks</li>
-              <li>Workflow automation</li>
-              <li>Integrations</li>
-            </ul>
-
-          </article>
-
-        </div>
-
-        <div class="section-cta reveal">
-
-          <p>
-            <strong>
-              Don't choose a package yet.
-            </strong>
-            Map your current journey first so we can
-            determine what actually needs to be built,
-            connected, improved, or automated.
-          </p>
-
-          <a
-            href="booking.html"
-            class="btn btn-primary btn-wide"
-          >
-            Map My System →
-          </a>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         FAQ
-    ========================== -->
-
-    <section id="faq">
-
-      <div class="wrap">
-
-        <span class="eyebrow reveal">
-          Before we map it
-        </span>
-
-        <h2 class="reveal">
-          Questions before you tell me
-          about your project.
-        </h2>
-
-        <div class="faq-item">
-
-          <button class="faq-q">
-            I already have a website.
-            Do we need to rebuild everything?
-
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-a">
-            <p>
-              No. If the existing website can be improved,
-              connected, or extended, there's no reason to
-              rebuild working parts unnecessarily. We first
-              identify where the customer journey or technical
-              workflow is actually breaking.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="faq-item">
-
-          <button class="faq-q">
-            I already have a Figma, Canva design,
-            or designer. Can you work from that?
-
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-a">
-            <p>
-              Yes. I can turn an approved Figma, Canva
-              mockup, or other visual design into a
-              responsive functioning website while
-              preserving the intended visual direction.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="faq-item">
-
-          <button class="faq-q">
-            Do I have to stop using SaaS?
-
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-a">
-            <p>
-              No. The goal isn't to replace useful
-              software simply because custom code is
-              possible. We determine what should stay,
-              what can integrate, and where custom
-              functionality makes more sense.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="faq-item">
-
-          <button class="faq-q">
-            Does hand-coded mean there are
-            no recurring costs?
-
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-a">
-            <p>
-              No. Domains, hosting, databases,
-              transactional email, APIs, SMS, security,
-              maintenance, and other infrastructure can
-              still have costs. The objective is a sensible
-              stack — not a stack full of subscriptions
-              simply because a platform bundles them that way.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="faq-item">
-
-          <button class="faq-q">
-            Can you guarantee a specific conversion rate?
-
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-a">
-            <p>
-              No responsible developer can guarantee an
-              exact conversion rate before qualified traffic
-              uses the funnel. I can build around conversion
-              readiness, test the technical journey, and
-              track important actions so later improvements
-              can be based on evidence.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="faq-item">
-
-          <button class="faq-q">
-            Can you automate everything?
-
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-a">
-            <p>
-              Not everything should be automated.
-              Automation works best for repetitive,
-              predictable, rule-based, time-sensitive,
-              and administrative work. Human judgment,
-              empathy, negotiation, and expertise should
-              stay human where they matter.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="faq-item">
-
-          <button class="faq-q">
-            What if I don't know what I need?
-
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-a">
-            <p>
-              That's exactly why the first step is
-              System Mapping. Show me what currently
-              happens from “a lead comes in” to
-              “they become a client.” We'll identify
-              the gaps from there.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         FINAL CTA
-    ========================== -->
-
-    <section id="cta">
-
-      <div class="wrap reveal">
-
-        <span class="eyebrow">
-          Free AZFlow System Mapping
-        </span>
-
-        <h2>
-          Map the journey first.
-          Then build what your business
-          actually needs.
-        </h2>
+        <strong>
+          Priority Project Queue
+        </strong>
 
         <p>
-          You don't need to know whether the answer
-          is a new funnel, backend, CRM workflow,
-          booking automation, or a combination of them.
-        </p>
-
-        <p>
-          Show me what happens from the moment someone
-          finds your business to the moment they become
-          a client.
-        </p>
-
-        <p>
-          We'll identify what's already working,
-          where the journey is disconnected,
-          what your team still handles manually,
-          and what may need to be
-          <strong>
-            built, connected, improved, or automated.
-          </strong>
-        </p>
-
-        <div class="priority-callout">
-
-          <span
-            class="priority-dot"
-            aria-hidden="true"
-          ></span>
-
-          <div>
-
-            <strong>
-              Want priority for the next available
-              AZFlow build slot?
-            </strong>
-
-            <p>
-              I intentionally keep my active project
-              queue small so I can stay directly involved
-              from system mapping through testing and launch.
-              Projects that are a good fit and ready to
-              move forward can receive priority consideration
-              for the next available opening.
-            </p>
-
-          </div>
-
-        </div>
-
-        <a
-          href="booking.html"
-          class="btn btn-primary btn-wide"
-        >
-          Map My System →
-        </a>
-
-        <p class="cta-micro">
-          Free 20-minute System Mapping ·
-          No commitment required
+          Map your system now to be considered for the next available AZFlow build slot.
         </p>
 
       </div>
-    </section>
 
-  </main>
+    </div>
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+  </div>
 
-  <footer>
+  <!-- 3D HERO GRAPHIC -->
 
-    <div class="wrap">
+  <div class="azc-stage">
 
-      <div class="footer-row">
+    <div class="azc-assembly">
 
-        <div class="footer-brand">
-          AZFLOW<span>.STUDIO</span>
-        </div>
+      <div class="azc-whole-funnel">
 
-        <div class="socials">
+        <div class="azc-ring azc-r1"></div>
+        <div class="azc-ring azc-r2"></div>
+        <div class="azc-ring azc-r3"></div>
+        <div class="azc-ring azc-r4"></div>
 
-          <a
-            href="https://www.linkedin.com/in/amaniixx"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-
-          <a
-            href="https://www.facebook.com/azflow.studio/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Facebook
-          </a>
-
-          <a
-            href="https://www.instagram.com/acexxspace/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </a>
-
-          <a
-            href="https://www.onlinejobs.ph/jobseekers/info/2254364"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            OnlineJobs.ph
-          </a>
-
-        </div>
+        <div class="azc-anchor"></div>
 
       </div>
 
-      <p class="footer-fine">
-        © 2026 AZFlow.Studio.
-        Built by hand, one line of code at a time.
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     SELF-RECOGNITION / PAIN
+     ======================================================== -->
+
+<section id="pain">
+
+<div class="wrap">
+
+  <div class="sales-head reveal">
+
+    <span class="eyebrow-tag">
+      The real reason things still feel manual
+    </span>
+
+    <h2>
+      Maybe You've Been Thinking Something Like This...
+    </h2>
+
+    <p>
+      You may not need another tool.
+      You may have built the individual pieces before building the actual journey.
+    </p>
+
+  </div>
+
+  <div class="pain-grid">
+
+    <div class="pain-card reveal">
+      <p>
+        “I have a website, but it isn't bringing me enough leads, bookings, or clients.”
+      </p>
+    </div>
+
+    <div class="pain-card reveal">
+      <p>
+        “People visit my page, but too many leave without taking the next step.”
+      </p>
+    </div>
+
+    <div class="pain-card reveal">
+      <p>
+        “Every new inquiry creates another manual task — reply, copy their details, send the booking link, follow up, update the spreadsheet.”
+      </p>
+    </div>
+
+    <div class="pain-card reveal">
+      <p>
+        “I'm tired of checking different tools just to figure out what happened to one lead.”
+      </p>
+    </div>
+
+    <div class="pain-card reveal">
+      <p>
+        “I need leads captured and organized — not just emailed to me.”
+      </p>
+    </div>
+
+    <div class="pain-card reveal">
+      <p>
+        “I want a system that keeps things moving even when I'm busy, serving clients, or offline.”
+      </p>
+    </div>
+
+  </div>
+
+  <div class="sales-close reveal">
+
+    <strong>
+      The real reason you're still doing so much manually?
+    </strong>
+
+    <p>
+      You may have a website, form, spreadsheet, calendar, email account, CRM, and automation tools — but they don't necessarily work
+      <strong>together</strong>.
+      So you still end up being the connection between them.
+    </p>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     REAL PROBLEM
+     ======================================================== -->
+
+<section
+  class="sales-dark"
+  id="real-problem"
+>
+
+<div class="wrap">
+
+  <div class="sales-head reveal">
+
+    <span class="eyebrow-tag">
+      The real problem
+    </span>
+
+    <h2>
+      Your Business Is Depending on You to Carry Information From One Step to the Next.
+    </h2>
+
+    <p>
+      When business gets busy, that's when things start slipping.
+      An inquiry gets buried.
+      A follow-up happens late.
+      Someone forgets to update the CRM.
+      A booked lead never gets reminded.
+      A prospect says “I'll think about it,” and nobody follows up.
+    </p>
+
+    <p>
+      <strong>
+        Because the system stops when the human stops.
+      </strong>
+    </p>
+
+  </div>
+
+  <div class="manual-flow reveal">
+
+    <div>CAPTURE</div>
+    <span>→</span>
+
+    <div>RECORD</div>
+    <span>→</span>
+
+    <div>QUALIFY</div>
+    <span>→</span>
+
+    <div>RESPOND</div>
+    <span>→</span>
+
+    <div>BOOK</div>
+    <span>→</span>
+
+    <div>FOLLOW UP</div>
+    <span>→</span>
+
+    <div>TRACK</div>
+
+  </div>
+
+  <div class="sales-close reveal">
+
+    <strong>
+      Your Team Should Run the Business.
+      The System Should Handle the Repetition.
+    </strong>
+
+    <p>
+      People step in where human judgment, expertise, and conversation actually matter.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href="booking.html"
+    >
+      MAP MY SYSTEM →
+    </a>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     OLD WAY VS CONNECTED WAY
+     ======================================================== -->
+
+<section id="journey">
+
+<div class="wrap">
+
+  <div class="sales-head reveal">
+
+    <span class="eyebrow-tag">
+      The old way vs. the connected way
+    </span>
+
+    <h2>
+      Most Websites Stop at “Submit.”
+    </h2>
+
+    <p>
+      A visitor arrives, looks around, submits an inquiry — and then someone has to manually carry that lead through the rest of the process.
+    </p>
+
+  </div>
+
+  <div class="journey-compare">
+
+    <article class="journey-card reveal">
+
+      <span class="journey-label">
+        THE DISCONNECTED WAY
+      </span>
+
+      <div class="journey-chain">
+
+        <span>Visitor</span>
+        <b>→</b>
+
+        <span>Form</span>
+        <b>→</b>
+
+        <span>Inbox</span>
+        <b>→</b>
+
+        <span>Manual Reply</span>
+        <b>→</b>
+
+        <span>Manual Updates</span>
+        <b>→</b>
+
+        <span>Manual Follow-Up</span>
+
+      </div>
+
+      <p>
+        If nobody completes one of those steps, the customer journey stops.
+      </p>
+
+    </article>
+
+    <article class="journey-card connected reveal">
+
+      <span class="journey-label">
+        THE CONNECTED WAY
+      </span>
+
+      <div class="journey-chain">
+
+        <span>Visitor</span>
+        <b>→</b>
+
+        <span>Conversion-Focused Page</span>
+        <b>→</b>
+
+        <span>Lead Capture</span>
+        <b>→</b>
+
+        <span>Qualification</span>
+        <b>→</b>
+
+        <span>CRM</span>
+        <b>→</b>
+
+        <span>Response</span>
+        <b>→</b>
+
+        <span>Booking</span>
+        <b>→</b>
+
+        <span>Follow-Up</span>
+        <b>→</b>
+
+        <span>Human Conversation</span>
+        <b>→</b>
+
+        <span>Client</span>
+
+      </div>
+
+      <p>
+        <strong>
+          Your Website Should Have a Job.
+        </strong>
+      </p>
+
+    </article>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     CONNECTED SOLUTION
+     ======================================================== -->
+
+<section
+  class="sales-dark"
+  id="connected-solution"
+>
+
+<div class="wrap">
+
+  <div class="sales-head reveal">
+
+    <span class="eyebrow-tag">
+      The AZFlow approach
+    </span>
+
+    <h2>
+      That's Why I Don't Just Build Websites.
+      I Build Connected Customer Journeys.
+    </h2>
+
+    <p>
+      Your business may not need every feature below.
+      The point is to determine which pieces actually support the journey you need.
+    </p>
+
+  </div>
+
+  <div class="system-grid">
+
+    <article>
+
+      <span>01</span>
+
+      <h3>
+        Website / Funnel
+      </h3>
+
+      <p>
+        A customer-facing experience built around your audience, offer, message, and desired action.
+      </p>
+
+    </article>
+
+    <article>
+
+      <span>02</span>
+
+      <h3>
+        Lead Capture &amp; Qualification
+      </h3>
+
+      <p>
+        Collect useful information and route different leads toward the right next step.
+      </p>
+
+    </article>
+
+    <article>
+
+      <span>03</span>
+
+      <h3>
+        CRM / Database
+      </h3>
+
+      <p>
+        Record leads, organize details, track status, source, ownership, and interaction history.
+      </p>
+
+    </article>
+
+    <article>
+
+      <span>04</span>
+
+      <h3>
+        Email &amp; Follow-Up
+      </h3>
+
+      <p>
+        Automate acknowledgments, confirmations, reminders, follow-ups, no-show messages, nurture, and onboarding.
+      </p>
+
+    </article>
+
+    <article>
+
+      <span>05</span>
+
+      <h3>
+        Booking / Calendar &amp; Pipeline
+      </h3>
+
+      <p>
+        Move qualified prospects toward appointments and give the business a clearer view of what needs attention.
+      </p>
+
+    </article>
+
+    <article>
+
+      <span>06</span>
+
+      <h3>
+        Backend, Integrations &amp; Tracking
+      </h3>
+
+      <p>
+        Databases, APIs, business logic, dashboards, existing tools, analytics, and conversion tracking.
+      </p>
+
+    </article>
+
+  </div>
+
+</div>
+
+</section>
+<!-- ========================================================
+     HAND-CODED DIFFERENCE
+     ======================================================== -->
+
+<section id="hand-coded">
+
+<div class="wrap">
+
+  <div class="sales-head reveal">
+
+    <span class="eyebrow-tag">
+      The hand-coded difference
+    </span>
+
+    <h2>
+      The Expensive Part Isn't Always the Website.
+      Sometimes It's Everything You Keep Paying For Behind It.
+    </h2>
+
+    <p>
+      One subscription for the website.
+      Another for the funnel.
+      Another for forms, CRM, scheduling, email automation,
+      workflows, analytics, and another just to connect
+      everything together.
+    </p>
+
+    <p>
+      <strong>
+        You're not paying for one system.
+        You're maintaining a stack of subscriptions just to
+        keep the customer journey running.
+      </strong>
+    </p>
+
+  </div>
+
+  <div class="handcoded-grid">
+
+    <div class="hc-card reveal">
+
+      <h3>
+        Hand-coded does NOT mean “replace everything.”
+      </h3>
+
+      <p>
+        Before building anything, I look at what your business
+        actually needs, what already works, what should stay,
+        what can be integrated, what causes unnecessary manual
+        work, and what should remain human.
       </p>
 
     </div>
 
-  </footer>
+    <div class="hc-card reveal">
 
-  <script>
-    /* =========================
-       PRELOADER
-    ========================== */
+      <h3>
+        Build the most sensible system for the business.
+      </h3>
 
-    const preloader = document.getElementById("preloader");
+      <p>
+        That may mean a custom website, form, database or CRM,
+        automation logic, email, booking, calendar,
+        notifications, and follow-up — without automatically
+        forcing a premium all-in-one SaaS platform into every
+        step.
+      </p>
 
-    function removePreloader() {
-      if (!preloader) return;
+    </div>
 
-      preloader.classList.add("done");
-      document.body.classList.remove("locked");
+  </div>
+
+  <div class="sales-close reveal">
+
+    <strong>
+      Fewer unnecessary subscriptions.
+      More control.
+      More customization.
+      Less dependence on one platform.
+    </strong>
+
+    <p>
+      If an existing SaaS tool genuinely makes more sense,
+      we use it. The goal isn't “SaaS bad. Code good.”
+      The goal is the right architecture for the business.
+    </p>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     SERVICES / WHAT DO YOU NEED?
+     ======================================================== -->
+
+<section id="services">
+
+<div class="wrap">
+
+  <div class="section-head reveal">
+
+    <span class="eyebrow-tag">
+      What do you actually need?
+    </span>
+
+    <h2>
+      You Don't Have to Know What Kind of Developer You Need.
+    </h2>
+
+    <p>
+      Just tell me where your business is right now.
+      We'll map the journey first and determine what actually
+      needs to be built, connected, improved, or automated.
+    </p>
+
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “I only have the idea.”
+      </span>
+
+      <h3>
+        Start From the Beginning
+      </h3>
+
+      <p>
+        We define the offer, audience, customer journey,
+        website structure, functionality, and what needs to
+        happen behind the pages.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “I already have the branding and content.”
+      </span>
+
+      <h3>
+        UI + Website Development
+      </h3>
+
+      <p>
+        Turn your existing assets into a responsive,
+        functioning digital experience.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “My designer already gave me the Figma.”
+      </span>
+
+      <h3>
+        Figma-to-Code Development
+      </h3>
+
+      <p>
+        Turn the approved design into a responsive,
+        functioning website while preserving the intended
+        visual direction.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “I designed something in Canva or made a mockup.”
+      </span>
+
+      <h3>
+        Design-to-Code Development
+      </h3>
+
+      <p>
+        Turn your visual concept into an actual working site
+        instead of leaving it as a static design.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “My frontend already exists.”
+      </span>
+
+      <h3>
+        Backend Development
+      </h3>
+
+      <p>
+        Build or connect databases, authentication, APIs,
+        business logic, admin functionality, and the systems
+        needed behind the interface.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “My website works. Everything after the form is manual.”
+      </span>
+
+      <h3>
+        Automation &amp; Integration
+      </h3>
+
+      <p>
+        Connect the customer journey from lead capture to CRM,
+        qualification, email, booking, notifications, and
+        follow-up.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “We get leads, but keeping track of them is messy.”
+      </span>
+
+      <h3>
+        Lead System &amp; CRM Workflow
+      </h3>
+
+      <p>
+        Organize lead capture, pipeline stages, statuses,
+        ownership, follow-up, and reporting so information
+        doesn't live across disconnected places.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “Booking still requires too much back-and-forth.”
+      </span>
+
+      <h3>
+        Booking &amp; Calendar Workflow
+      </h3>
+
+      <p>
+        Create a clearer path from qualified inquiry to
+        scheduling, confirmation, calendar events, reminders,
+        and follow-up.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “My current website looks fine, but it doesn't do enough.”
+      </span>
+
+      <h3>
+        Improve the Existing Website
+      </h3>
+
+      <p>
+        Keep what already works while improving the customer
+        journey, conversion path, functionality, backend, or
+        integrations.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “I already have tools, but they don't work together.”
+      </span>
+
+      <h3>
+        Connect My Systems
+      </h3>
+
+      <p>
+        Evaluate your existing tools and connect the pieces
+        that should exchange information automatically.
+      </p>
+
+    </div>
+
+    <div class="service-card tilt reveal">
+
+      <span class="service-num">
+        “I don't know what I need. I just know this process is too manual.”
+      </span>
+
+      <h3>
+        Start With the Manual Process
+      </h3>
+
+      <p>
+        Tell me what currently happens from the moment a lead
+        comes in. We'll identify the gaps, repeated work, and
+        technical opportunities from there.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="section-cta reveal">
+
+    <p>
+      <strong>
+        Not sure which one you need?
+      </strong>
+      You don't have to diagnose the technical solution yourself.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href="booking.html"
+    >
+      MAP MY SYSTEM →
+    </a>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     DELIVERABLES
+     ======================================================== -->
+
+<section
+  class="sales-dark"
+  id="deliverables"
+>
+
+<div class="wrap">
+
+  <div class="sales-head reveal">
+
+    <span class="eyebrow-tag">
+      What you walk away with
+    </span>
+
+    <h2>
+      Not Just Files.
+      A Working Business Asset.
+    </h2>
+
+    <p>
+      Depending on your project scope, your system may include
+      the pieces needed to support one connected customer
+      journey.
+    </p>
+
+  </div>
+
+  <div class="deliverables-grid">
+
+    <span>Responsive custom website or funnel</span>
+    <span>Clear customer journey</span>
+    <span>Conversion-focused CTAs</span>
+    <span>Lead-capture forms</span>
+
+    <span>Qualification rules</span>
+    <span>CRM or database</span>
+    <span>Pipeline stages</span>
+    <span>Automated confirmations</span>
+
+    <span>Automated follow-up</span>
+    <span>Booking/calendar integration</span>
+    <span>Appointment reminders</span>
+    <span>Team notifications</span>
+
+    <span>Backend functionality</span>
+    <span>API integrations</span>
+    <span>Admin dashboard</span>
+    <span>Tracking and analytics</span>
+
+    <span>Tested customer journeys</span>
+    <span>Live deployment</span>
+    <span>Documentation</span>
+    <span>Turnover / handoff</span>
+
+  </div>
+
+  <div class="sales-close reveal">
+
+    <strong>
+      Everything should support the same journey.
+    </strong>
+
+    <p>
+      Not feel like separate features taped together afterward.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href="booking.html"
+    >
+      MAP MY SYSTEM →
+    </a>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     PRICING
+     ======================================================== -->
+
+<section id="pricing">
+
+<div class="wrap">
+
+  <div class="head reveal">
+
+    <span class="eyebrow-tag">
+      Packages &amp; Pricing
+    </span>
+
+    <h2>
+      Start with the business problem — not a package.
+    </h2>
+
+    <p>
+      Hand-coded solutions built around your business.
+      Every project is scoped before development, so you only
+      pay for the features and integrations your business
+      actually needs.
+    </p>
+
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- STARTER -->
+
+    <article class="price-card reveal">
+
+      <h3>
+        Starter Funnel
+      </h3>
+
+      <div class="price-label">
+        Starting at
+      </div>
+
+      <div class="price-main">
+        ₱12,500
+      </div>
+
+      <div class="price-currencies">
+        $200 · €175 · £150 · A$280
+      </div>
+
+      <p class="price-desc">
+        For businesses with one clear offer that need a focused
+        page to turn visitors into leads or inquiries.
+      </p>
+
+      <ul class="price-features">
+
+        <li>
+          Hand-coded funnel or landing page
+        </li>
+
+        <li>
+          Mobile-responsive design
+        </li>
+
+        <li>
+          Lead capture or contact form
+        </li>
+
+        <li>
+          CTA setup
+        </li>
+
+        <li>
+          Thank-you page or section
+        </li>
+
+        <li>
+          Basic on-page SEO
+        </li>
+
+        <li>
+          Basic form integration
+        </li>
+
+        <li>
+          Deployment assistance
+        </li>
+
+      </ul>
+
+    </article>
+
+    <!-- GROWTH -->
+
+    <article class="price-card featured reveal">
+
+      <span class="price-badge">
+        Recommended
+      </span>
+
+      <h3>
+        Growth Funnel
+      </h3>
+
+      <div class="price-label">
+        Starting at
+      </div>
+
+      <div class="price-main">
+        ₱25,000
+      </div>
+
+      <div class="price-currencies">
+        $400 · €350 · £300 · A$560
+      </div>
+
+      <p class="price-desc">
+        For businesses that need more than a landing page,
+        with booking and connected lead automation.
+      </p>
+
+      <ul class="price-features">
+
+        <li>
+          Everything in Starter Funnel
+        </li>
+
+        <li>
+          Booking or calendar integration
+        </li>
+
+        <li>
+          CRM and lead collection
+        </li>
+
+        <li>
+          Confirmation email automation
+        </li>
+
+        <li>
+          Basic follow-up email sequence
+        </li>
+
+        <li>
+          Lead status tracking
+        </li>
+
+        <li>
+          Basic workflow automation
+        </li>
+
+      </ul>
+
+    </article>
+
+    <!-- CUSTOM -->
+
+    <article class="price-card reveal">
+
+      <h3>
+        Custom Funnel, Website + Automation
+      </h3>
+
+      <div class="price-label">
+        Starting at
+      </div>
+
+      <div class="price-main">
+        ₱40,000
+      </div>
+
+      <div class="price-currencies">
+        $650 · €550 · £475 · A$900
+      </div>
+
+      <p class="price-desc">
+        For businesses that need a more advanced funnel,
+        multi-page website, or connected business automation
+        system.
+      </p>
+
+      <ul class="price-features">
+
+        <li>
+          Advanced funnel or multi-page website
+        </li>
+
+        <li>
+          Custom forms and lead workflows
+        </li>
+
+        <li>
+          CRM integration
+        </li>
+
+        <li>
+          Booking or calendar integration
+        </li>
+
+        <li>
+          Email automation
+        </li>
+
+        <li>
+          Follow-up or nurture sequences
+        </li>
+
+        <li>
+          Lead management workflows
+        </li>
+
+        <li>
+          Custom integrations based on scope
+        </li>
+
+        <li>
+          Basic on-page SEO
+        </li>
+
+        <li>
+          Deployment assistance
+        </li>
+
+      </ul>
+
+    </article>
+
+  </div>
+
+  <p class="pricing-note reveal">
+
+    <strong>
+      Pricing note:
+    </strong>
+
+    Prices shown are starting prices.
+    Final pricing depends on project scope, number of pages,
+    integrations, automation requirements, and complexity.
+
+    Third-party subscriptions, domain, hosting, paid advertising,
+    and ongoing maintenance are not included unless specified
+    in the project quote.
+
+    International prices are fixed package prices and are not
+    live currency conversions.
+
+  </p>
+
+  <div class="pricing-cta reveal">
+
+    <p class="mapping-note">
+
+      <strong>
+        Start with the system, not the package.
+      </strong>
+
+      Map your current journey first so we can determine what
+      actually needs to be built, connected, improved, or
+      automated.
+
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href="booking.html"
+    >
+      MAP MY SYSTEM →
+    </a>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     PROCESS
+     ======================================================== -->
+
+<section id="process">
+
+<div class="wrap">
+
+  <div class="head reveal">
+
+    <h2>
+      From “Here's What's Not Working” to “It's Live.”
+    </h2>
+
+    <p>
+      You'll always know where things stand.
+    </p>
+
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-step reveal">
+
+      <div class="tl-dot">
+        1
+      </div>
+
+      <h3>
+        System Mapping
+      </h3>
+
+      <p>
+        We start with your offer, audience, objectives,
+        current tools, workflow, lead sources, manual tasks,
+        and where things are getting stuck.
+      </p>
+
+    </div>
+
+    <div class="tl-step reveal">
+
+      <div class="tl-dot">
+        2
+      </div>
+
+      <h3>
+        Journey Mapping
+      </h3>
+
+      <p>
+        We map what should happen from visitor → lead →
+        qualified prospect → booking → customer.
+      </p>
+
+    </div>
+
+    <div class="tl-step reveal">
+
+      <div class="tl-dot">
+        3
+      </div>
+
+      <h3>
+        System Design
+      </h3>
+
+      <p>
+        We determine what needs to be built, what should stay,
+        what should integrate, what should automate, and what
+        should remain human.
+      </p>
+
+    </div>
+
+    <div class="tl-step reveal">
+
+      <div class="tl-dot">
+        4
+      </div>
+
+      <h3>
+        Build
+      </h3>
+
+      <p>
+        We build the agreed frontend, backend, forms,
+        database, dashboards, APIs, integrations, and
+        business logic.
+      </p>
+
+    </div>
+
+    <div class="tl-step reveal">
+
+      <div class="tl-dot">
+        5
+      </div>
+
+      <h3>
+        Automate, Test &amp; Launch
+      </h3>
+
+      <p>
+        We connect the workflows, test the complete customer
+        journey, launch, and use real activity to guide future
+        improvements.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     TOOLS
+     ======================================================== -->
+
+<section id="tools">
+
+<div class="wrap reveal">
+
+  <h2>
+    What I build it with
+  </h2>
+
+  <p class="sub">
+    I use the stack that fits the project — from custom
+    frontend and backend development to deployment, hosting,
+    automation, CRM workflows, email, calendars, and
+    integrations.
+  </p>
+
+  <div class="tool-pills">
+
+    <span>VS Code</span>
+    <span>GitHub</span>
+    <span>Netlify</span>
+    <span>Vercel</span>
+    <span>Render</span>
+    <span>Railway</span>
+    <span>DigitalOcean</span>
+    <span>WordPress</span>
+    <span>HTML / CSS / JS</span>
+    <span>Canva</span>
+    <span>Systeme.io</span>
+    <span>Google Sheets</span>
+    <span>Google Apps Script</span>
+    <span>Gmail</span>
+    <span>Google Drive</span>
+    <span>Google Calendar</span>
+    <span>AI-assisted coding</span>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     PORTFOLIO
+     ======================================================== -->
+
+<section id="work">
+
+<div class="wrap">
+
+  <div class="head reveal">
+
+    <h2>
+      Don't Just Look at Screenshots.
+      Look at What the System Actually Does.
+    </h2>
+
+    <p>
+      Hand-coded funnels, websites, and working systems built
+      end to end. Explore the screenshots and walkthrough
+      videos below to see how each project was designed,
+      built, and automated.
+    </p>
+
+  </div>
+
+  <div class="work-grid">
+
+    <!-- ====================================================
+         NEXCHART
+         ==================================================== -->
+
+    <div class="work-card tilt reveal">
+
+      <div
+        aria-label="NexChart project gallery"
+        class="work-thumb project-gallery"
+        data-gallery
+      >
+
+        <figure class="gallery-slide active">
+
+          <img
+            alt="NexChart dashboard"
+            loading="lazy"
+            src="media/nexchart/dashboard.png"
+          />
+
+        </figure>
+
+        <figure class="gallery-slide">
+
+          <img
+            alt="NexChart pharmacy inventory request interface"
+            loading="lazy"
+            src="media/nexchart/pharmacy-request-inventory.png"
+          />
+
+        </figure>
+
+        <figure class="gallery-slide">
+
+          <video
+            aria-label="NexChart walkthrough video"
+            controls
+            preload="metadata"
+            src="media/nexchart/walkthrough.mp4"
+          ></video>
+
+        </figure>
+
+        <button
+          aria-label="Show previous NexChart file"
+          class="gallery-arrow prev"
+          type="button"
+        >
+
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+
+        </button>
+
+        <button
+          aria-label="Show next NexChart file"
+          class="gallery-arrow next"
+          type="button"
+        >
+
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+
+        </button>
+
+        <span
+          aria-live="polite"
+          class="gallery-count"
+        >
+          1 / 3
+        </span>
+
+      </div>
+
+      <div class="work-body">
+
+        <span class="tag">
+          Healthcare Ops Platform
+        </span>
+
+        <h3>
+          NexChart
+        </h3>
+
+        <p>
+          <strong>Problem:</strong>
+          Healthcare teams often rely on disconnected records
+          and workflows that create delays, missed information,
+          and unnecessary manual work.
+        </p>
+
+        <p>
+          <strong>What I built:</strong>
+          A configurable healthcare operations platform covering
+          patient records, clinical workflows, referrals,
+          pharmacy processes, reporting, and facility-level
+          controls.
+        </p>
+
+        <p>
+          <strong>Built to support:</strong>
+          Clearer workflows, more organized records, and a
+          system that can adapt to different healthcare
+          facilities instead of forcing one fixed process.
+        </p>
+
+        <p class="project-disclaimer personal-project">
+
+          <strong>
+            Personal SaaS project:
+          </strong>
+
+          NexChart is my independently conceived and developed
+          healthcare operations platform. I am building it as my
+          own software product based on problems I have
+          experienced across different healthcare settings.
+
+        </p>
+
+      </div>
+
+    </div>
+    <!-- ====================================================
+         DR. JACK DATING
+         ==================================================== -->
+
+    <div class="work-card tilt reveal">
+
+      <div
+        aria-label="Dr. Jack Dating project gallery"
+        class="work-thumb project-gallery"
+        data-gallery
+      >
+
+        <figure class="gallery-slide active">
+          <img
+            alt="Dr. Jack Dating homepage"
+            loading="lazy"
+            src="media/dr-jack-dating/homepage.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <img
+            alt="Dr. Jack Dating about page"
+            loading="lazy"
+            src="media/dr-jack-dating/about-page.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <img
+            alt="Dr. Jack Dating booking page"
+            loading="lazy"
+            src="media/dr-jack-dating/booking-page.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <img
+            alt="Dr. Jack Dating email automation"
+            loading="lazy"
+            src="media/dr-jack-dating/email-automation.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <img
+            alt="Dr. Jack Dating thank-you page"
+            loading="lazy"
+            src="media/dr-jack-dating/thank-you-page.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <video
+            aria-label="Dr. Jack Dating walkthrough video"
+            controls
+            preload="metadata"
+            src="media/dr-jack-dating/walkthrough.mp4"
+          ></video>
+        </figure>
+
+        <button
+          aria-label="Show previous Dr. Jack Dating file"
+          class="gallery-arrow prev"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+        </button>
+
+        <button
+          aria-label="Show next Dr. Jack Dating file"
+          class="gallery-arrow next"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </button>
+
+        <span
+          aria-live="polite"
+          class="gallery-count"
+        >
+          1 / 6
+        </span>
+
+      </div>
+
+      <div class="work-body">
+
+        <span class="tag">
+          Matchmaking &amp; Counseling Funnel
+        </span>
+
+        <h3>
+          Dr. Jack Dating
+        </h3>
+
+        <p>
+          <strong>Problem:</strong>
+          Visitors could learn about the practice but lacked a
+          focused journey toward the right service and a clear
+          consultation request.
+        </p>
+
+        <p>
+          <strong>What I built:</strong>
+          A multi-page website and long-form funnel with
+          interactive service path-finding, lead capture,
+          booking, CRM tracking, calendar integration, and
+          branded email follow-up.
+        </p>
+
+        <p>
+          <strong>Built to support:</strong>
+          Fewer lost inquiries, clearer visitor routing, and a
+          more organized booking and follow-up process.
+        </p>
+
+        <p class="project-disclaimer">
+
+          <strong>
+            Portfolio disclosure:
+          </strong>
+
+          This concept was created as part of my pitch and is
+          shown with the business owner's permission. It was
+          not commissioned or completed as paid client work.
+
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- ====================================================
+         SOLARPEAK
+         ==================================================== -->
+
+    <div class="work-card tilt reveal">
+
+      <div
+        aria-label="SolarPeak project gallery"
+        class="work-thumb project-gallery"
+        data-gallery
+      >
+
+        <figure class="gallery-slide active">
+
+          <video
+            aria-label="SolarPeak walkthrough video"
+            controls
+            preload="metadata"
+            src="media/solarpeak/walkthrough.mp4"
+          ></video>
+
+        </figure>
+
+        <button
+          aria-label="Show previous SolarPeak file"
+          class="gallery-arrow prev"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+        </button>
+
+        <button
+          aria-label="Show next SolarPeak file"
+          class="gallery-arrow next"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </button>
+
+        <span
+          aria-live="polite"
+          class="gallery-count"
+        >
+          1 / 1
+        </span>
+
+      </div>
+
+      <div class="work-body">
+
+        <span class="tag">
+          Solar Installation Quiz Funnel
+        </span>
+
+        <h3>
+          SolarPeak
+        </h3>
+
+        <p>
+          <strong>Problem:</strong>
+          A solar installer needs more than contact details.
+          It needs enough information to identify suitable
+          homeowners before spending time on a consultation.
+        </p>
+
+        <p>
+          <strong>What I built:</strong>
+          A quiz-style funnel that collects key homeowner
+          details, qualifies leads as they answer, and routes
+          suitable prospects toward a consultation.
+        </p>
+
+        <p>
+          <strong>Built to support:</strong>
+          Better-qualified inquiries and less time spent
+          manually screening unsuitable leads.
+        </p>
+
+        <p class="project-disclaimer">
+
+          <strong>
+            Portfolio disclosure:
+          </strong>
+
+          This concept was created for portfolio and pitch
+          purposes. It was not commissioned or completed as
+          paid client work.
+
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- ====================================================
+         OUTSTANDING COMPLIANCE
+         ==================================================== -->
+
+    <div class="work-card tilt reveal">
+
+      <div
+        aria-label="Outstanding Compliance project gallery"
+        class="work-thumb project-gallery"
+        data-gallery
+      >
+
+        <figure class="gallery-slide active">
+          <img
+            alt="Outstanding Compliance homepage"
+            loading="lazy"
+            src="media/outstanding-compliance/homepage.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <img
+            alt="Outstanding Compliance about page"
+            loading="lazy"
+            src="media/outstanding-compliance/about-page.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <img
+            alt="Outstanding Compliance services page"
+            loading="lazy"
+            src="media/outstanding-compliance/services-page.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <img
+            alt="Outstanding Compliance compliance suite page"
+            loading="lazy"
+            src="media/outstanding-compliance/compliance-suite-page.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <img
+            alt="Outstanding Compliance policy library page"
+            loading="lazy"
+            src="media/outstanding-compliance/policy-library-page.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <img
+            alt="Outstanding Compliance resources page"
+            loading="lazy"
+            src="media/outstanding-compliance/resources-page.png"
+          />
+        </figure>
+
+        <figure class="gallery-slide">
+          <video
+            aria-label="Outstanding Compliance walkthrough video"
+            controls
+            preload="metadata"
+            src="media/outstanding-compliance/walkthrough.mp4"
+          ></video>
+        </figure>
+
+        <button
+          aria-label="Show previous Outstanding Compliance file"
+          class="gallery-arrow prev"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+        </button>
+
+        <button
+          aria-label="Show next Outstanding Compliance file"
+          class="gallery-arrow next"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+          >
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </button>
+
+        <span
+          aria-live="polite"
+          class="gallery-count"
+        >
+          1 / 7
+        </span>
+
+      </div>
+
+      <div class="work-body">
+
+        <span class="tag">
+          Aesthetics Compliance Consultancy
+        </span>
+
+        <h3>
+          Outstanding Compliance
+        </h3>
+
+        <p>
+          <strong>Problem:</strong>
+          A specialist compliance consultancy needed a clearer
+          way to organize its expertise, services, resources,
+          and value for aesthetic practitioners and clinics.
+        </p>
+
+        <p>
+          <strong>What I built:</strong>
+          A multi-page website concept supported by
+          conversion-focused copywriting, service positioning,
+          resource pages, and social content strategy.
+        </p>
+
+        <p>
+          <strong>Built to support:</strong>
+          Stronger professional positioning, clearer service
+          discovery, and a more credible path from education
+          to inquiry.
+        </p>
+
+        <p class="project-disclaimer">
+
+          <strong>
+            Portfolio disclosure:
+          </strong>
+
+          This concept was created as part of my pitch and is
+          shown with the business owner's permission. It was
+          not commissioned or completed as paid client work.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     FAQ
+     ======================================================== -->
+
+<section id="faq">
+
+<div class="wrap">
+
+  <h2 class="reveal">
+    Questions Before You Tell Me About Your Project
+  </h2>
+
+  <!-- FAQ 1 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      I already have a website.
+      Do we need to rebuild everything?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        No. If the existing website can be improved,
+        connected, or extended, there's no reason to rebuild
+        working parts unnecessarily. We first identify where
+        the customer journey or technical workflow is actually
+        breaking.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ 2 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      I already have a Figma, Canva design, or designer.
+      Can you work from that?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        Yes. I can turn an approved Figma, Canva mockup, or
+        other visual design into a responsive, functioning
+        website while preserving the intended visual direction.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ 3 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      I already have a CRM or Calendly.
+      Can we keep it?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        Yes. If an existing tool already does its job well,
+        we can keep it and determine whether it should be
+        integrated into the wider customer journey.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ 4 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      Do I have to stop using SaaS?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        No. The goal isn't to replace useful software just
+        because custom code is possible. We determine what
+        should stay, what can be integrated, and where custom
+        functionality may provide more control or reduce
+        unnecessary subscriptions.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ 5 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      Does hand-coded automatically mean cheaper?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        No. Custom development has its own build and
+        maintenance costs. Its advantage is control: the
+        architecture can be designed around the functionality
+        your business actually needs instead of automatically
+        paying for large platforms filled with features you
+        may never use.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ 6 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      Does hand-coded mean there are no recurring costs?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        No. Domains, hosting, databases, transactional email,
+        APIs, SMS, security, maintenance, and other
+        infrastructure can still have costs.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ 7 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      Can you automate everything?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        Not everything should be automated. I focus on
+        repetitive, rule-based parts of the workflow where
+        automation genuinely saves time, improves consistency,
+        or reduces manual handoffs.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ 8 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      Can you guarantee more sales or a specific conversion rate?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        No responsible developer can guarantee an exact
+        conversion rate before qualified traffic uses the
+        funnel. Conversion depends on traffic quality, offer,
+        pricing, market, audience, sales process, competition,
+        trust, and visitor behavior. I build for conversion
+        readiness and use real activity to guide optimization.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ 9 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      I'm a small business.
+      Do I need all of this?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        Probably not. That's exactly why the system is mapped
+        first. A smaller business may only need a focused
+        funnel, useful lead capture, a simple CRM workflow,
+        booking, and a few carefully chosen automations.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ 10 -->
+
+  <div class="faq-item">
+
+    <button class="faq-q">
+
+      What if I don't know what should be automated?
+
+      <span class="plus">
+        +
+      </span>
+
+    </button>
+
+    <div class="faq-a">
+
+      <p>
+        You don't need to know. Tell me what currently happens
+        when a lead comes in and what your team repeatedly does
+        afterward. We'll identify the gaps and repetitive work
+        from there.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     FINAL CTA
+     ======================================================== -->
+
+<section id="cta">
+
+<div class="wrap reveal">
+
+  <span class="eyebrow-tag">
+    Free AZFlow System Mapping
+  </span>
+
+  <h2>
+    Your Business Doesn't Need Another Website That Just Sits There.
+  </h2>
+
+  <p>
+    Maybe your website looks good but doesn't generate enough
+    action.
+    Maybe inquiries arrive, but everything afterward is manual.
+    Maybe leads are scattered across email, spreadsheets, DMs,
+    and calendars.
+    Maybe bookings still require too much back-and-forth.
+  </p>
+
+  <p>
+    <strong>
+      You don't have to know the technical solution yet.
+    </strong>
+
+    Start with the business problem.
+  </p>
+
+  <p>
+    Tell me what happens when someone finds you, what you want
+    them to do, what currently happens after they take action,
+    what your team still does manually, what tools you already
+    use, and where leads or tasks are getting stuck.
+  </p>
+
+  <h3>
+    Let's Build the System Behind the Click.
+  </h3>
+
+  <div class="priority-callout">
+
+    <span class="priority-dot"></span>
+
+    <div>
+
+      <strong>
+        Want priority for the next available AZFlow build slot?
+      </strong>
+
+      <p>
+        I intentionally keep my active project queue small so
+        I can stay directly involved from system mapping through
+        testing and launch. If your project is a good fit and
+        you're ready to move forward, it can receive priority
+        consideration for the next available opening.
+      </p>
+
+    </div>
+
+  </div>
+
+  <a
+    class="btn btn-primary"
+    href="booking.html"
+  >
+    MAP MY SYSTEM →
+  </a>
+
+  <p class="cta-microcopy">
+    Free 20-minute System Mapping · No commitment required
+  </p>
+
+  <p>
+    <strong>
+      I Don't Just Build the Page Your Customers See.
+      I Build What Happens After They Click.
+    </strong>
+  </p>
+
+</div>
+
+</section>
+
+<!-- ========================================================
+     FOOTER
+     ======================================================== -->
+
+<footer>
+
+<div class="wrap">
+
+  <span class="brand-wordmark">
+    AZFLOW<span>.STUDIO</span>
+  </span>
+
+  <div class="social-plugins">
+
+    <!-- LinkedIn -->
+
+    <a
+      aria-label="LinkedIn"
+      href="https://www.linkedin.com/in/amaniixx"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+
+      <svg viewBox="0 0 24 24">
+        <path d="M4.98 3.5a2.5 2.5 0 11-.02 5.02A2.5 2.5 0 014.98 3.5zM3 9h4v12H3zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.15 1.46-2.15 2.97V21h-4z"></path>
+      </svg>
+
+    </a>
+
+    <!-- Facebook -->
+
+    <a
+      aria-label="Facebook"
+      href="https://www.facebook.com/azflow.studio/"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+
+      <svg viewBox="0 0 24 24">
+        <path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.93.26-1.56 1.6-1.56h1.7V3.3C15.86 3.16 14.9 3 13.77 3 11.4 3 9.8 4.42 9.8 7.13v2.67H7v3.2h2.8V21z"></path>
+      </svg>
+
+    </a>
+
+    <!-- Instagram -->
+
+    <a
+      aria-label="Instagram"
+      href="https://www.instagram.com/acexxspace/"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2.2c2.7 0 3 .01 4.1.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.05 1.06-.22 1.79-.47 2.43-.26.66-.6 1.22-1.15 1.77-.55.55-1.11.9-1.77 1.15-.64.25-1.37.42-2.43.47-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1.06-.05-1.79-.22-2.43-.47-.66-.26-1.22-.6-1.77-1.15-.55-.55-.9-1.11-1.15-1.77-.25-.64-.42-1.37-.47-2.43C1.03 15.07 1.02 14.77 1.02 12s.01-3 .06-4.1c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.9 1.77-1.15.64-.25 1.37-.42 2.43-.47C7.99 2.03 8.3 2.02 11 2.02zm0 4.7a5.1 5.1 0 110 10.2 5.1 5.1 0 010-10.2zm0 1.8a3.3 3.3 0 100 6.6 3.3 3.3 0 000-6.6z"></path>
+      </svg>
+
+    </a>
+
+    <!-- OnlineJobs -->
+
+    <a
+      aria-label="OnlineJobs.ph"
+      href="https://www.onlinejobs.ph/jobseekers/info/2254364"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+
+      <svg viewBox="0 0 24 24">
+        <path d="M4 4h16v16H4V4zm3 3v10h2V7H7zm4 0v10h2v-4.8c0-1.3.6-2.2 1.8-2.2 1.1 0 1.5.8 1.5 2.1V17h2v-5.4c0-2.5-1.3-3.6-3.1-3.6-1.1 0-1.9.5-2.3 1.2V7H11z"></path>
+      </svg>
+
+    </a>
+
+  </div>
+
+</div>
+
+<p class="fine wrap">
+  © 2026 AZFlow.Studio, Ariza Balasbas.
+  Built by hand, one line of code at a time.
+</p>
+
+</footer>
+
+<!-- ========================================================
+     JAVASCRIPT
+     ======================================================== -->
+
+<script>
+
+/* =========================================================
+   PRELOADER
+   ========================================================= */
+
+window.addEventListener('load', () => {
+
+  setTimeout(() => {
+
+    const preloader =
+      document.getElementById('preloader');
+
+    if (preloader) {
+      preloader.classList.add('done');
     }
 
-    window.addEventListener("load", () => {
-      setTimeout(removePreloader, 900);
+    document.body.classList.remove('locked');
+
+  }, 1900);
+
+});
+
+
+/* Fallback in case a resource delays the load event */
+
+setTimeout(() => {
+
+  const preloader =
+    document.getElementById('preloader');
+
+  if (preloader) {
+    preloader.classList.add('done');
+  }
+
+  document.body.classList.remove('locked');
+
+}, 3500);
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+const burger =
+  document.getElementById('burgerBtn');
+
+const panel =
+  document.getElementById('mobilePanel');
+
+
+if (burger && panel) {
+
+  burger.addEventListener('click', () => {
+
+    panel.classList.toggle('open');
+
+  });
+
+
+  panel
+    .querySelectorAll('a')
+    .forEach(link => {
+
+      link.addEventListener('click', () => {
+
+        panel.classList.remove('open');
+
+      });
+
     });
 
-    setTimeout(removePreloader, 3000);
+}
 
 
-    /* =========================
-       MOBILE NAVIGATION
-    ========================== */
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
 
-    const burgerBtn =
-      document.getElementById("burgerBtn");
+const revealObserver =
+  new IntersectionObserver(
 
-    const mobilePanel =
-      document.getElementById("mobilePanel");
+    entries => {
 
-    if (burgerBtn && mobilePanel) {
+      entries.forEach(entry => {
 
-      burgerBtn.addEventListener("click", () => {
-        mobilePanel.classList.toggle("open");
-      });
+        if (entry.isIntersecting) {
 
-      mobilePanel
-        .querySelectorAll("a")
-        .forEach((link) => {
+          entry.target.classList.add('in');
 
-          link.addEventListener("click", () => {
-            mobilePanel.classList.remove("open");
-          });
-
-        });
-    }
-
-
-    /* =========================
-       SCROLL REVEAL
-    ========================== */
-
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-    if ("IntersectionObserver" in window) {
-
-      const revealObserver =
-        new IntersectionObserver(
-          (entries, observer) => {
-
-            entries.forEach((entry) => {
-
-              if (!entry.isIntersecting) {
-                return;
-              }
-
-              entry.target.classList.add("in");
-
-              observer.unobserve(
-                entry.target
-              );
-
-            });
-
-          },
-          {
-            threshold: 0.12
-          }
-        );
-
-      revealElements.forEach((element) => {
-        revealObserver.observe(element);
-      });
-
-    } else {
-
-      revealElements.forEach((element) => {
-        element.classList.add("in");
-      });
-
-    }
-
-
-    /* =========================
-       FAQ
-    ========================== */
-
-    document
-      .querySelectorAll(".faq-item")
-      .forEach((item) => {
-
-        const question =
-          item.querySelector(".faq-q");
-
-        const answer =
-          item.querySelector(".faq-a");
-
-        if (!question || !answer) {
-          return;
-        }
-
-        question.addEventListener(
-          "click",
-          () => {
-
-            const alreadyOpen =
-              item.classList.contains("open");
-
-            document
-              .querySelectorAll(".faq-item.open")
-              .forEach((openItem) => {
-
-                openItem
-                  .classList
-                  .remove("open");
-
-                const openAnswer =
-                  openItem.querySelector(".faq-a");
-
-                if (openAnswer) {
-                  openAnswer.style.maxHeight = null;
-                }
-
-              });
-
-            if (!alreadyOpen) {
-
-              item.classList.add("open");
-
-              answer.style.maxHeight =
-                answer.scrollHeight + "px";
-            }
-
-          }
-        );
-
-      });
-
-
-    /* =========================
-       PORTFOLIO GALLERIES
-    ========================== */
-
-    document
-      .querySelectorAll("[data-gallery]")
-      .forEach((gallery) => {
-
-        const slides =
-          Array.from(
-            gallery.querySelectorAll(
-              ".project-slide"
-            )
+          revealObserver.unobserve(
+            entry.target
           );
 
-        const previousButton =
-          gallery.querySelector(".prev");
-
-        const nextButton =
-          gallery.querySelector(".next");
-
-        const counter =
-          gallery.querySelector(
-            ".gallery-count"
-          );
-
-        if (!slides.length) {
-          return;
         }
 
-        let currentIndex = 0;
+      });
+
+    },
+
+    {
+      threshold:0.15
+    }
+
+  );
 
 
-        function stopVideos() {
+document
+  .querySelectorAll('.reveal')
+  .forEach(element => {
 
-          slides.forEach((slide) => {
+    revealObserver.observe(element);
 
-            if (
-              slide.tagName
-                .toLowerCase() === "video"
-            ) {
-
-              slide.pause();
-
-            }
-
-          });
-
-        }
+  });
 
 
-        function showSlide(index) {
+/* =========================================================
+   CARD TILT
+   ========================================================= */
 
-          stopVideos();
+if (
+  window.matchMedia('(hover:hover)').matches
+) {
 
-          currentIndex =
+  document
+    .querySelectorAll('.tilt')
+    .forEach(card => {
+
+      card.addEventListener(
+        'mousemove',
+        event => {
+
+          const rect =
+            card.getBoundingClientRect();
+
+          const x =
             (
-              index +
-              slides.length
-            ) %
-            slides.length;
+              event.clientX -
+              rect.left
+            ) /
+            rect.width -
+            0.5;
 
-          slides.forEach(
-            (slide, slideIndex) => {
+          const y =
+            (
+              event.clientY -
+              rect.top
+            ) /
+            rect.height -
+            0.5;
 
-              slide.classList.toggle(
-                "active",
-                slideIndex === currentIndex
-              );
-
-            }
-          );
-
-          if (counter) {
-
-            counter.textContent =
-              `${currentIndex + 1} / ${slides.length}`;
-
-          }
+          card.style.transform =
+            `perspective(700px)
+             rotateY(${x * 6}deg)
+             rotateX(${-y * 6}deg)
+             translateY(-2px)`;
 
         }
+      );
 
 
-        if (previousButton) {
+      card.addEventListener(
+        'mouseleave',
+        () => {
 
-          previousButton.addEventListener(
-            "click",
-            () => {
-
-              showSlide(
-                currentIndex - 1
-              );
-
-            }
-          );
+          card.style.transform =
+            'perspective(700px) rotateY(0) rotateX(0)';
 
         }
+      );
+
+    });
+
+}
 
 
-        if (nextButton) {
+/* =========================================================
+   FAQ ACCORDION
+   ========================================================= */
 
-          nextButton.addEventListener(
-            "click",
-            () => {
+document
+  .querySelectorAll('.faq-item')
+  .forEach(item => {
 
-              showSlide(
-                currentIndex + 1
-              );
+    const question =
+      item.querySelector('.faq-q');
 
-            }
-          );
-
-        }
-
-
-        showSlide(0);
-
-      });
+    const answer =
+      item.querySelector('.faq-a');
 
 
-    /* =========================
-       STOP HIDDEN VIDEOS
-       WHEN TAB IS CHANGED
-    ========================== */
+    if (!question || !answer) {
+      return;
+    }
 
-    document.addEventListener(
-      "visibilitychange",
+
+    question.addEventListener(
+      'click',
       () => {
 
-        if (!document.hidden) {
-          return;
-        }
+        const currentlyOpen =
+          item.classList.contains('open');
+
 
         document
-          .querySelectorAll("video")
-          .forEach((video) => {
+          .querySelectorAll('.faq-item.open')
+          .forEach(openItem => {
 
-            if (!video.paused) {
-              video.pause();
+            openItem.classList.remove('open');
+
+            const openAnswer =
+              openItem.querySelector('.faq-a');
+
+            if (openAnswer) {
+              openAnswer.style.maxHeight = null;
             }
 
           });
+
+
+        if (!currentlyOpen) {
+
+          item.classList.add('open');
+
+          answer.style.maxHeight =
+            answer.scrollHeight + 'px';
+
+        }
 
       }
     );
-  </script>
+
+  });
+
+
+/* =========================================================
+   PORTFOLIO GALLERIES
+   ========================================================= */
+
+document
+  .querySelectorAll('[data-gallery]')
+  .forEach(gallery => {
+
+    const slides = [
+      ...gallery.querySelectorAll(
+        '.gallery-slide'
+      )
+    ];
+
+    const previousButton =
+      gallery.querySelector('.prev');
+
+    const nextButton =
+      gallery.querySelector('.next');
+
+    const count =
+      gallery.querySelector(
+        '.gallery-count'
+      );
+
+
+    if (!slides.length) {
+      return;
+    }
+
+
+    let currentIndex = 0;
+
+
+    function showSlide(newIndex) {
+
+      const oldSlide =
+        slides[currentIndex];
+
+      oldSlide.classList.remove(
+        'active'
+      );
+
+
+      const oldVideo =
+        oldSlide.querySelector(
+          'video'
+        );
+
+      if (oldVideo) {
+        oldVideo.pause();
+      }
+
+
+      currentIndex =
+        (
+          newIndex +
+          slides.length
+        ) %
+        slides.length;
+
+
+      slides[currentIndex]
+        .classList.add('active');
+
+
+      if (count) {
+
+        count.textContent =
+          `${currentIndex + 1} / ${slides.length}`;
+
+      }
+
+    }
+
+
+    if (previousButton) {
+
+      previousButton.addEventListener(
+        'click',
+        () => {
+
+          showSlide(
+            currentIndex - 1
+          );
+
+        }
+      );
+
+    }
+
+
+    if (nextButton) {
+
+      nextButton.addEventListener(
+        'click',
+        () => {
+
+          showSlide(
+            currentIndex + 1
+          );
+
+        }
+      );
+
+    }
+
+
+    /* Hide unnecessary arrows when
+       the gallery only contains one item */
+
+    if (slides.length === 1) {
+
+      if (previousButton) {
+        previousButton.style.display =
+          'none';
+      }
+
+      if (nextButton) {
+        nextButton.style.display =
+          'none';
+      }
+
+    }
+
+  });
+
+</script>
 
 </body>
 </html>
