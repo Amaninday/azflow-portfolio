@@ -20,6 +20,7 @@
 />
 
 <style>
+
 :root{
   --midnight:#101828;
   --electric:#2563EB;
@@ -27,9 +28,11 @@
   --ice:#F5F9FC;
   --slate:#667085;
   --white:#FFFFFF;
+
   --font-display:'Space Grotesk',sans-serif;
   --font-body:'Inter',sans-serif;
   --font-mono:'JetBrains Mono',monospace;
+
   --maxw:1180px;
 }
 
@@ -92,22 +95,29 @@ h3{
   display:inline-flex;
   align-items:center;
   gap:8px;
+
   font-family:var(--font-mono);
   font-size:12.5px;
+
   color:var(--electric);
   background:rgba(37,99,235,.08);
+
   padding:6px 12px;
   border-radius:6px;
+
   margin-bottom:18px;
 }
 
 .eyebrow-tag::before{
   content:'';
+
   width:6px;
   height:6px;
+
   border-radius:50%;
   background:var(--cyan);
 }
+
 
 /* =========================================================
    PRELOADER
@@ -116,12 +126,19 @@ h3{
 #preloader{
   position:fixed;
   inset:0;
+
   z-index:9999;
+
   background:var(--midnight);
+
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:opacity .7s ease,transform .7s ease;
+
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
+
   perspective:900px;
 }
 
@@ -134,17 +151,30 @@ h3{
 .cube-stage{
   width:70px;
   height:70px;
+
   position:relative;
+
   transform-style:preserve-3d;
-  animation:cubeSpin 1.8s cubic-bezier(.6,.05,.3,.95) forwards;
+
+  animation:
+    cubeSpin 1.8s
+    cubic-bezier(.6,.05,.3,.95)
+    forwards;
 }
 
 .cube-face{
   position:absolute;
+
   width:70px;
   height:70px;
-  border:1.5px solid rgba(34,211,238,.55);
-  background:rgba(37,99,235,.12);
+
+  border:
+    1.5px solid
+    rgba(34,211,238,.55);
+
+  background:
+    rgba(37,99,235,.12);
+
   backdrop-filter:blur(2px);
 }
 
@@ -153,56 +183,86 @@ h3{
 }
 
 .cube-face.b{
-  transform:translateZ(-35px) rotateY(180deg);
+  transform:
+    translateZ(-35px)
+    rotateY(180deg);
 }
 
 .cube-face.r{
-  transform:rotateY(90deg) translateZ(35px);
+  transform:
+    rotateY(90deg)
+    translateZ(35px);
 }
 
 .cube-face.l{
-  transform:rotateY(-90deg) translateZ(35px);
+  transform:
+    rotateY(-90deg)
+    translateZ(35px);
 }
 
 .cube-face.t{
-  transform:rotateX(90deg) translateZ(35px);
+  transform:
+    rotateX(90deg)
+    translateZ(35px);
 }
 
 .cube-face.bo{
-  transform:rotateX(-90deg) translateZ(35px);
+  transform:
+    rotateX(-90deg)
+    translateZ(35px);
 }
 
 @keyframes cubeSpin{
+
   0%{
-    transform:rotateX(0) rotateY(0) scale(1);
+    transform:
+      rotateX(0)
+      rotateY(0)
+      scale(1);
+
     opacity:1;
   }
 
   65%{
-    transform:rotateX(320deg) rotateY(380deg) scale(1.15);
+    transform:
+      rotateX(320deg)
+      rotateY(380deg)
+      scale(1.15);
+
     opacity:1;
   }
 
   100%{
-    transform:rotateX(360deg) rotateY(720deg) scale(0);
+    transform:
+      rotateX(360deg)
+      rotateY(720deg)
+      scale(0);
+
     opacity:0;
   }
 }
 
 .preload-mark{
   position:absolute;
+
   font-family:var(--font-display);
   font-weight:700;
   font-size:15px;
   letter-spacing:.14em;
+
   color:var(--white);
+
   opacity:0;
   transform:scale(.85);
+
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:16px;
-  animation:markIn .6s ease forwards;
+
+  animation:
+    markIn .6s ease forwards;
+
   animation-delay:1.15s;
 }
 
@@ -220,17 +280,31 @@ h3{
 .preload-bar{
   width:120px;
   height:2px;
-  background:rgba(255,255,255,.15);
+
+  background:
+    rgba(255,255,255,.15);
+
   border-radius:2px;
+
   overflow:hidden;
 }
 
 .preload-bar span{
   display:block;
+
   height:100%;
   width:0;
-  background:linear-gradient(90deg,var(--electric),var(--cyan));
-  animation:barFill 1.6s ease forwards;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--electric),
+      var(--cyan)
+    );
+
+  animation:
+    barFill 1.6s ease forwards;
+
   animation-delay:.2s;
 }
 
@@ -240,41 +314,84 @@ h3{
   }
 }
 
+
 /* =========================================================
    NAVIGATION
    ========================================================= */
 
 header{
   position:fixed;
+
   top:0;
   left:0;
   right:0;
+
   z-index:500;
-  background:rgba(16,24,40,.86);
+
+  background:
+    rgba(16,24,40,.86);
+
   backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,255,255,.06);
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.06);
 }
 
 nav{
   max-width:var(--maxw);
+
   margin:0 auto;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   padding:16px 24px;
 }
+
+
+/*
+   ORIGINAL AZFLOW LOGO CONTAINER
+*/
 
 .logo{
   display:flex;
   align-items:center;
+  justify-content:center;
+
   background:var(--white);
+
   padding:6px 14px;
+
   border-radius:9px;
-  transition:transform .2s ease;
+
+  transition:
+    transform .2s ease;
+
+  flex-shrink:0;
 }
 
 .logo:hover{
   transform:translateY(-1px);
+}
+
+
+/*
+   Restored image-based AZFlow logo.
+   The actual image is embedded directly into the HTML
+   in the navigation section later in this same file.
+*/
+
+.logo-img{
+  display:block;
+
+  width:auto;
+  height:26px;
+
+  max-width:220px;
+
+  object-fit:contain;
 }
 
 .nav-links{
@@ -285,8 +402,12 @@ nav{
 
 .nav-links a{
   font-size:14.5px;
-  color:rgba(255,255,255,.75);
-  transition:color .2s ease;
+
+  color:
+    rgba(255,255,255,.75);
+
+  transition:
+    color .2s ease;
 }
 
 .nav-links a:hover{
@@ -296,42 +417,60 @@ nav{
 .nav-cta{
   background:var(--electric);
   color:var(--white);
+
   padding:10px 20px;
+
   border-radius:8px;
+
   font-size:14px;
   font-weight:500;
 }
 
 .burger{
   display:none;
+
   flex-direction:column;
+
   gap:5px;
+
   background:none;
   border:none;
+
   cursor:pointer;
+
   padding:6px;
 }
 
 .burger span{
   width:22px;
   height:2px;
+
   background:var(--white);
+
   border-radius:2px;
 }
 
 .mobile-panel{
   position:fixed;
+
   top:60px;
   left:0;
   right:0;
   bottom:0;
+
   background:var(--midnight);
+
   z-index:400;
+
   display:flex;
   flex-direction:column;
+
   padding:20px 24px;
+
   transform:translateX(100%);
-  transition:transform .3s;
+
+  transition:
+    transform .3s;
 }
 
 .mobile-panel.open{
@@ -340,10 +479,16 @@ nav{
 
 .mobile-panel a{
   padding:16px 0;
-  border-bottom:1px solid rgba(255,255,255,.08);
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.08);
+
   color:var(--white);
+
   font-size:17px;
 }
+
 
 /* =========================================================
    BUTTONS
@@ -351,34 +496,47 @@ nav{
 
 .btn{
   padding:14px 26px;
+
   border-radius:9px;
+
   font-weight:600;
   font-size:15px;
+
   display:inline-flex;
   align-items:center;
   gap:8px;
+
   transition:
     transform .2s ease,
     box-shadow .2s ease,
     background .2s ease;
+
   cursor:pointer;
+
   border:none;
+
   font-family:var(--font-body);
 }
 
 .btn-primary{
-  background:linear-gradient(
-    90deg,
-    var(--electric),
-    var(--cyan)
-  );
+  background:
+    linear-gradient(
+      90deg,
+      var(--electric),
+      var(--cyan)
+    );
+
   color:var(--midnight);
 }
 
 .btn-primary:hover{
   transform:translateY(-2px);
-  box-shadow:0 10px 28px rgba(34,211,238,.28);
+
+  box-shadow:
+    0 10px 28px
+    rgba(34,211,238,.28);
 }
+
 
 /* =========================================================
    HERO
@@ -386,48 +544,84 @@ nav{
 
 #hero{
   background:var(--midnight);
-  padding:170px 24px 110px;
+
+  padding:
+    170px 24px 110px;
+
   position:relative;
+
   overflow:hidden;
 }
 
 #hero .wrap{
   display:grid;
-  grid-template-columns:1.1fr .9fr;
+
+  grid-template-columns:
+    1.1fr .9fr;
+
   gap:40px;
+
   align-items:center;
 }
 
 #hero h1{
-  font-size:clamp(34px,4.6vw,58px);
+  font-size:
+    clamp(
+      34px,
+      4.6vw,
+      58px
+    );
+
   color:var(--white);
+
   margin-bottom:22px;
 }
 
 #hero p.lead{
   font-size:18px;
-  color:rgba(255,255,255,.72);
+
+  color:
+    rgba(255,255,255,.72);
+
   max-width:520px;
+
   margin-bottom:24px;
 }
 
-/* HERO VISIBILITY FIX */
+
+/* =========================================================
+   HERO VISIBILITY FIX
+   ========================================================= */
 
 #hero .eyebrow-tag{
   color:#FFFFFF !important;
-  background:rgba(255,255,255,.08) !important;
-  border:1px solid rgba(34,211,238,.25) !important;
+
+  background:
+    rgba(255,255,255,.08) !important;
+
+  border:
+    1px solid
+    rgba(34,211,238,.25) !important;
 }
 
 #hero .eyebrow-tag::before{
-  background:#22D3EE !important;
-  box-shadow:0 0 8px rgba(34,211,238,.65);
+  background:
+    #22D3EE !important;
+
+  box-shadow:
+    0 0 8px
+    rgba(34,211,238,.65);
 }
 
 #hero .priority-callout{
   color:#FFFFFF !important;
-  background:rgba(255,255,255,.06) !important;
-  border:1px solid rgba(34,211,238,.30) !important;
+
+  background:
+    rgba(255,255,255,.06) !important;
+
+  border:
+    1px solid
+    rgba(34,211,238,.30) !important;
 }
 
 #hero .priority-callout strong{
@@ -435,35 +629,56 @@ nav{
 }
 
 #hero .priority-callout p{
-  color:rgba(255,255,255,.78) !important;
+  color:
+    rgba(255,255,255,.78) !important;
 }
 
 #hero .priority-dot{
-  background:#22D3EE !important;
+  background:
+    #22D3EE !important;
+
   box-shadow:
-    0 0 0 5px rgba(34,211,238,.12),
-    0 0 14px rgba(34,211,238,.55) !important;
+    0 0 0 5px
+      rgba(34,211,238,.12),
+    0 0 14px
+      rgba(34,211,238,.55)
+      !important;
 }
 
 .hero-stats{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+
   gap:18px;
+
   width:100%;
+
   align-items:start;
 }
 
 .hero-stats .stat b{
   display:block;
-  font-family:var(--font-display);
+
+  font-family:
+    var(--font-display);
+
   font-size:22px;
+
   color:var(--white);
 }
 
 .hero-stats .stat span{
   font-size:13px;
-  color:rgba(255,255,255,.55);
+
+  color:
+    rgba(255,255,255,.55);
 }
+
 
 /* =========================================================
    HERO 3D SYSTEM
@@ -471,124 +686,208 @@ nav{
 
 .azc-stage{
   perspective:1200px;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   height:410px;
+
   position:relative;
+
   overflow:hidden;
 }
 
 .azc-assembly{
   position:relative;
+
   width:340px;
   height:340px;
+
   transform-style:preserve-3d;
 }
 
 .azc-whole-funnel{
   position:absolute;
+
   inset:0;
+
   transform-style:preserve-3d;
-  transform-origin:50% 94%;
-  animation:azcConnectedOrbit 7s linear infinite;
+
+  transform-origin:
+    50% 94%;
+
+  animation:
+    azcConnectedOrbit
+    7s linear infinite;
+
   will-change:transform;
 }
 
 .azc-ring{
   position:absolute;
+
   left:50%;
-  border:2px solid rgba(34,211,238,.72);
+
+  border:
+    2px solid
+    rgba(34,211,238,.72);
+
   border-radius:50%;
-  transform:translateX(-50%) rotateX(74deg);
-  box-shadow:0 0 12px rgba(34,211,238,.13);
+
+  transform:
+    translateX(-50%)
+    rotateX(74deg);
+
+  box-shadow:
+    0 0 12px
+    rgba(34,211,238,.13);
 }
 
 .azc-r1{
   width:290px;
   height:290px;
+
   top:0;
 }
 
 .azc-r2{
   width:215px;
   height:215px;
+
   top:88px;
-  border-color:rgba(37,99,235,.82);
+
+  border-color:
+    rgba(37,99,235,.82);
 }
 
 .azc-r3{
   width:140px;
   height:140px;
+
   top:180px;
 }
 
 .azc-r4{
   width:72px;
   height:72px;
+
   top:286px;
-  border-color:rgba(255,255,255,.82);
+
+  border-color:
+    rgba(255,255,255,.82);
 }
 
 .azc-anchor{
   position:absolute;
+
   left:50%;
   top:321px;
+
   width:6px;
   height:6px;
+
   margin-left:-3px;
+
   border-radius:50%;
+
   background:#22d3ee;
-  box-shadow:0 0 12px rgba(34,211,238,.9);
+
+  box-shadow:
+    0 0 12px
+    rgba(34,211,238,.9);
+
   z-index:20;
 }
 
 .azc-particle{
   position:absolute;
+
   top:7px;
   left:50%;
+
   width:6px;
   height:6px;
+
   border-radius:50%;
+
   background:#22d3ee;
-  box-shadow:0 0 9px rgba(34,211,238,.8);
+
+  box-shadow:
+    0 0 9px
+    rgba(34,211,238,.8);
+
   opacity:0;
-  animation:azcFallToAnchor var(--dur) ease-in infinite;
-  animation-delay:var(--delay);
+
+  animation:
+    azcFallToAnchor
+    var(--dur)
+    ease-in
+    infinite;
+
+  animation-delay:
+    var(--delay);
 }
 
 .azc-particle.electric{
   background:#2563eb;
-  box-shadow:0 0 9px rgba(37,99,235,.8);
+
+  box-shadow:
+    0 0 9px
+    rgba(37,99,235,.8);
 }
 
 @keyframes azcConnectedOrbit{
+
   0%{
-    transform:rotateY(0) rotateZ(-5deg) rotateX(2deg);
+    transform:
+      rotateY(0)
+      rotateZ(-5deg)
+      rotateX(2deg);
   }
 
   25%{
-    transform:rotateY(90deg) rotateZ(0) rotateX(-1deg);
+    transform:
+      rotateY(90deg)
+      rotateZ(0)
+      rotateX(-1deg);
   }
 
   50%{
-    transform:rotateY(180deg) rotateZ(5deg) rotateX(2deg);
+    transform:
+      rotateY(180deg)
+      rotateZ(5deg)
+      rotateX(2deg);
   }
 
   75%{
-    transform:rotateY(270deg) rotateZ(0) rotateX(-1deg);
+    transform:
+      rotateY(270deg)
+      rotateZ(0)
+      rotateX(-1deg);
   }
 
   100%{
-    transform:rotateY(360deg) rotateZ(-5deg) rotateX(2deg);
+    transform:
+      rotateY(360deg)
+      rotateZ(-5deg)
+      rotateX(2deg);
   }
 }
 
 @keyframes azcFallToAnchor{
+
   0%{
     top:7px;
-    left:calc(50% + var(--start));
+
+    left:
+      calc(
+        50% + var(--start)
+      );
+
     opacity:0;
+
     transform:scale(.8);
   }
 
@@ -598,25 +897,41 @@ nav{
 
   48%{
     top:150px;
-    left:calc(50% + var(--mid));
+
+    left:
+      calc(
+        50% + var(--mid)
+      );
+
     opacity:1;
+
     transform:scale(.72);
   }
 
   76%{
     top:247px;
-    left:calc(50% + var(--near));
+
+    left:
+      calc(
+        50% + var(--near)
+      );
+
     opacity:1;
+
     transform:scale(.52);
   }
 
   100%{
     top:320px;
+
     left:50%;
+
     opacity:0;
+
     transform:scale(.3);
   }
 }
+
 
 /* =========================================================
    SALES SECTIONS
@@ -637,30 +952,51 @@ nav{
 
 .pain-card{
   padding:22px;
-  border:1px solid rgba(102,112,133,.16);
+
+  border:
+    1px solid
+    rgba(102,112,133,.16);
+
   border-radius:14px;
+
   background:var(--ice);
 }
 
 .sales-head h2,
 .section-head h2{
-  font-size:clamp(28px,3.5vw,42px);
+  font-size:
+    clamp(
+      28px,
+      3.5vw,
+      42px
+    );
+
   margin-bottom:18px;
 }
 
 .sales-head p,
 .section-head p{
   color:var(--slate);
+
   font-size:16px;
+
   margin-bottom:16px;
 }
 
 .sales-close{
   margin-top:34px;
+
   padding:26px;
-  border-left:3px solid var(--electric);
-  background:rgba(37,99,235,.06);
-  border-radius:0 14px 14px 0;
+
+  border-left:
+    3px solid
+    var(--electric);
+
+  background:
+    rgba(37,99,235,.06);
+
+  border-radius:
+    0 14px 14px 0;
 }
 
 .sales-close strong{
@@ -668,12 +1004,15 @@ nav{
 }
 
 .sales-close p{
-  margin:10px 0 18px;
+  margin:
+    10px 0 18px;
+
   color:var(--slate);
 }
 
 .sales-dark{
   background:var(--midnight);
+
   color:var(--white);
 }
 
@@ -684,33 +1023,49 @@ nav{
 
 .sales-dark .sales-head p,
 .sales-dark .sales-close p{
-  color:rgba(255,255,255,.68);
+  color:
+    rgba(255,255,255,.68);
 }
 
 .sales-dark .sales-close{
-  background:rgba(255,255,255,.05);
-  border-left-color:var(--cyan);
+  background:
+    rgba(255,255,255,.05);
+
+  border-left-color:
+    var(--cyan);
 }
 
 .manual-flow{
   display:flex;
+
   flex-wrap:wrap;
+
   align-items:center;
+
   gap:12px;
+
   margin-top:36px;
 }
 
 .manual-flow div{
   padding:11px 14px;
-  border:1px solid rgba(34,211,238,.24);
+
+  border:
+    1px solid
+    rgba(34,211,238,.24);
+
   border-radius:8px;
-  font-family:var(--font-mono);
+
+  font-family:
+    var(--font-mono);
+
   font-size:11px;
 }
 
 .manual-flow span{
   color:var(--cyan);
 }
+
 
 /* =========================================================
    JOURNEY
@@ -722,42 +1077,64 @@ nav{
 
 .journey-compare{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:22px;
+
   margin-top:34px;
 }
 
 .journey-card{
   padding:28px;
+
   border-radius:16px;
+
   background:var(--ice);
-  border:1px solid rgba(102,112,133,.16);
+
+  border:
+    1px solid
+    rgba(102,112,133,.16);
 }
 
 .journey-card.connected{
-  border-color:rgba(37,99,235,.3);
+  border-color:
+    rgba(37,99,235,.3);
 }
 
 .journey-label{
   display:block;
-  font-family:var(--font-mono);
+
+  font-family:
+    var(--font-mono);
+
   font-size:12px;
+
   color:var(--electric);
+
   margin-bottom:20px;
 }
 
 .journey-chain{
   display:flex;
+
   flex-wrap:wrap;
+
   gap:8px;
+
   align-items:center;
+
   margin-bottom:20px;
 }
 
 .journey-chain span{
   padding:8px 10px;
+
   border-radius:7px;
+
   background:var(--white);
+
   font-size:12px;
 }
 
@@ -767,32 +1144,49 @@ nav{
 
 .system-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:18px;
+
   margin-top:34px;
 }
 
 .system-grid article{
   padding:24px;
+
   border-radius:14px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.1);
+
+  background:
+    rgba(255,255,255,.06);
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
 }
 
 .system-grid article>span{
-  font-family:var(--font-mono);
+  font-family:
+    var(--font-mono);
+
   font-size:12px;
+
   color:var(--cyan);
 }
 
 .system-grid h3{
-  margin:16px 0 8px;
+  margin:
+    16px 0 8px;
 }
 
 .system-grid p{
   font-size:14px;
-  color:rgba(255,255,255,.65);
+
+  color:
+    rgba(255,255,255,.65);
 }
+
 
 /* =========================================================
    HAND-CODED SECTION
@@ -804,16 +1198,25 @@ nav{
 
 .handcoded-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:22px;
+
   margin-top:34px;
 }
 
 .hc-card{
   padding:28px;
+
   border-radius:16px;
+
   background:var(--ice);
-  border:1px solid rgba(102,112,133,.16);
+
+  border:
+    1px solid
+    rgba(102,112,133,.16);
 }
 
 .hc-card h3{
@@ -823,6 +1226,7 @@ nav{
 .hc-card p{
   color:var(--slate);
 }
+
 
 /* =========================================================
    SERVICES
@@ -834,17 +1238,28 @@ nav{
 
 .services-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+    repeat(2,1fr);
+
   gap:22px;
+
   margin-top:40px;
 }
 
 .service-card{
   background:var(--ice);
-  border:1px solid rgba(102,112,133,.16);
+
+  border:
+    1px solid
+    rgba(102,112,133,.16);
+
   border-radius:16px;
+
   padding:32px;
+
   transform-style:preserve-3d;
+
   transition:
     transform .12s ease,
     box-shadow .3s ease,
@@ -852,52 +1267,77 @@ nav{
 }
 
 .service-card:hover{
-  box-shadow:0 22px 40px -20px rgba(16,24,40,.25);
-  border-color:rgba(37,99,235,.3);
+  box-shadow:
+    0 22px 40px -20px
+    rgba(16,24,40,.25);
+
+  border-color:
+    rgba(37,99,235,.3);
 }
 
 .service-num{
-  font-family:var(--font-mono);
+  font-family:
+    var(--font-mono);
+
   color:var(--electric);
+
   font-size:13px;
+
   margin-bottom:16px;
+
   display:block;
 }
 
 .service-card h3{
   font-size:20px;
+
   margin-bottom:10px;
 }
 
 .service-card>p{
   color:var(--slate);
+
   font-size:14.5px;
 }
 
 .section-cta{
   text-align:center;
+
   margin-top:36px;
 }
 
 .section-cta p{
   margin-bottom:16px;
+
   color:var(--slate);
 }
 
 .deliverables-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:12px;
+
   margin-top:34px;
 }
 
 .deliverables-grid span{
   padding:14px;
-  border:1px solid rgba(255,255,255,.12);
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
   border-radius:9px;
+
   font-size:13px;
-  color:rgba(255,255,255,.8);
+
+  color:
+    rgba(255,255,255,.8);
 }
+
 
 /* =========================================================
    PRICING
@@ -909,125 +1349,191 @@ nav{
 
 #pricing .head{
   max-width:720px;
+
   margin-bottom:48px;
 }
 
 #pricing h2{
-  font-size:clamp(26px,3vw,36px);
+  font-size:
+    clamp(
+      26px,
+      3vw,
+      36px
+    );
+
   margin-bottom:14px;
 }
 
 #pricing .head p{
   color:var(--slate);
+
   font-size:16.5px;
 }
 
 .pricing-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:22px;
 }
 
 .price-card{
   position:relative;
+
   display:flex;
   flex-direction:column;
+
   background:var(--white);
-  border:1px solid rgba(102,112,133,.18);
+
+  border:
+    1px solid
+    rgba(102,112,133,.18);
+
   border-radius:16px;
+
   padding:30px;
 }
 
 .price-card.featured{
-  border-color:rgba(37,99,235,.48);
+  border-color:
+    rgba(37,99,235,.48);
 }
 
 .price-badge{
   position:absolute;
+
   top:16px;
   right:16px;
-  font-family:var(--font-mono);
+
+  font-family:
+    var(--font-mono);
+
   font-size:10.5px;
   font-weight:700;
+
   color:var(--electric);
-  background:rgba(37,99,235,.08);
+
+  background:
+    rgba(37,99,235,.08);
+
   padding:6px 9px;
+
   border-radius:999px;
 }
 
 .price-card h3{
   font-size:20px;
+
   margin-bottom:16px;
+
   padding-right:74px;
 }
 
 .price-label{
-  font-family:var(--font-mono);
+  font-family:
+    var(--font-mono);
+
   font-size:11.5px;
+
   color:var(--slate);
+
   text-transform:uppercase;
 }
 
 .price-main{
   font-size:30px;
+
   font-weight:800;
+
   color:var(--midnight);
 }
 
 .price-currencies{
-  font-family:var(--font-mono);
+  font-family:
+    var(--font-mono);
+
   font-size:12.5px;
+
   color:var(--electric);
-  margin:8px 0 18px;
+
+  margin:
+    8px 0 18px;
 }
 
 .price-desc{
   color:var(--slate);
+
   font-size:14.5px;
+
   margin-bottom:20px;
 }
 
 .price-features{
   display:flex;
+
   flex-direction:column;
+
   gap:9px;
+
   margin-bottom:26px;
 }
 
 .price-features li{
   font-size:13.5px;
+
   padding-left:20px;
+
   position:relative;
 }
 
 .price-features li::before{
   content:'✓';
+
   position:absolute;
+
   left:0;
+
   color:var(--electric);
+
   font-weight:800;
 }
 
 .pricing-note{
   margin-top:24px;
+
   padding:16px 18px;
-  border-left:3px solid var(--electric);
-  background:rgba(37,99,235,.06);
+
+  border-left:
+    3px solid
+    var(--electric);
+
+  background:
+    rgba(37,99,235,.06);
+
   color:var(--slate);
+
   font-size:12.5px;
 }
 
 .pricing-cta{
   text-align:center;
+
   margin-top:30px;
 }
 
 .mapping-note{
   max-width:720px;
-  margin:0 auto 16px;
+
+  margin:
+    0 auto 16px;
+
   color:var(--slate);
+
   font-size:14px;
 }
+
 
 /* =========================================================
    PROCESS
@@ -1035,62 +1541,97 @@ nav{
 
 #process{
   background:var(--midnight);
+
   color:var(--white);
 }
 
 #process h2{
-  font-size:clamp(26px,3vw,36px);
+  font-size:
+    clamp(
+      26px,
+      3vw,
+      36px
+    );
+
   margin-bottom:16px;
 }
 
 .timeline{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+
+  grid-template-columns:
+    repeat(5,1fr);
+
   gap:0;
+
   position:relative;
 }
 
 .timeline::before{
   content:'';
+
   position:absolute;
+
   top:17px;
   left:0;
   right:0;
+
   height:1px;
-  background:rgba(255,255,255,.14);
+
+  background:
+    rgba(255,255,255,.14);
 }
 
 .tl-step{
   position:relative;
+
   padding-right:18px;
 }
 
 .tl-dot{
   width:34px;
   height:34px;
+
   border-radius:50%;
+
   background:var(--midnight);
-  border:1.5px solid var(--cyan);
+
+  border:
+    1.5px solid
+    var(--cyan);
+
   display:flex;
+
   align-items:center;
   justify-content:center;
-  font-family:var(--font-mono);
+
+  font-family:
+    var(--font-mono);
+
   font-size:13px;
+
   color:var(--cyan);
+
   margin-bottom:20px;
+
   position:relative;
+
   z-index:2;
 }
 
 .tl-step h3{
   font-size:16px;
+
   margin-bottom:8px;
 }
 
 .tl-step p{
   font-size:13.5px;
-  color:rgba(255,255,255,.55);
+
+  color:
+    rgba(255,255,255,.55);
 }
+
 
 /* =========================================================
    TOOLS
@@ -1101,87 +1642,215 @@ nav{
 }
 
 #tools h2{
-  font-size:clamp(24px,2.8vw,30px);
+  font-size:
+    clamp(
+      24px,
+      2.8vw,
+      30px
+    );
+
   margin-bottom:10px;
 }
 
 #tools p.sub{
   color:var(--slate);
+
   margin-bottom:32px;
+
   max-width:560px;
 }
 
 .tool-pills{
   display:flex;
+
   flex-wrap:wrap;
+
   gap:11px;
 }
 
 .tool-pills span{
-  font-family:var(--font-mono);
+  font-family:
+    var(--font-mono);
+
   font-size:13px;
+
   background:var(--white);
-  border:1px solid rgba(102,112,133,.25);
+
+  border:
+    1px solid
+    rgba(102,112,133,.25);
+
   padding:9px 16px;
+
   border-radius:8px;
 }
+
 /* =========================================================
    PORTFOLIO / WORK
-   ========================================================= */
+========================================================= */
 
 #work{
   background:var(--white);
+  position:relative;
+  overflow:hidden;
 }
 
-#work .head{
-  max-width:700px;
-  margin-bottom:50px;
+#work::before{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(37,99,235,.07),
+    transparent 68%
+  );
+  top:-220px;
+  right:-180px;
+  pointer-events:none;
 }
 
-#work h2{
-  font-size:clamp(26px,3vw,36px);
-  margin-bottom:14px;
+.work-intro{
+  max-width:760px;
+  margin-bottom:48px;
 }
 
-#work .head p{
-  color:var(--slate);
+.work-intro h2{
+  margin-bottom:18px;
+}
+
+.work-intro p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.8;
 }
 
 .work-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:26px;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px;
 }
 
 .work-card{
-  border:1px solid rgba(102,112,133,.16);
-  border-radius:16px;
+  position:relative;
   overflow:hidden;
-  background:var(--ice);
+  border-radius:22px;
+  background:var(--white);
+  border:1px solid rgba(16,24,40,.10);
+  box-shadow:
+    0 20px 60px rgba(16,24,40,.08),
+    0 4px 16px rgba(16,24,40,.04);
   transform-style:preserve-3d;
+  transition:
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.work-card:hover{
+  border-color:rgba(37,99,235,.25);
+  box-shadow:
+    0 28px 80px rgba(16,24,40,.12),
+    0 8px 24px rgba(16,24,40,.06);
 }
 
 .work-thumb{
-  aspect-ratio:16/10;
-  background:linear-gradient(
-    150deg,
-    rgba(37,99,235,.12),
-    rgba(34,211,238,.12)
-  );
   position:relative;
+  width:100%;
+  aspect-ratio:16/10;
   overflow:hidden;
+  background:#EAF0F8;
+  border-bottom:1px solid rgba(16,24,40,.08);
+}
+
+.work-thumb img,
+.work-thumb video{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.work-body{
+  padding:28px;
+}
+
+.work-body .tag{
+  display:inline-flex;
+  align-items:center;
+  font-family:var(--font-mono);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--blue);
+  background:rgba(37,99,235,.07);
+  border:1px solid rgba(37,99,235,.12);
+  border-radius:999px;
+  padding:7px 11px;
+  margin-bottom:16px;
+}
+
+.work-body h3{
+  font-family:var(--font-display);
+  font-size:clamp(24px,3vw,32px);
+  line-height:1.15;
+  letter-spacing:-.04em;
+  color:var(--navy);
+  margin-bottom:18px;
+}
+
+.work-body p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.75;
+  margin-bottom:14px;
+}
+
+.work-body p:last-child{
+  margin-bottom:0;
+}
+
+.work-body strong{
+  color:var(--navy);
+  font-weight:700;
+}
+
+.project-disclaimer{
+  margin-top:20px;
+  padding:16px 18px;
+  border-radius:12px;
+  background:var(--soft);
+  border:1px solid rgba(16,24,40,.08);
+}
+
+.personal-project{
+  border-left:3px solid var(--cyan);
+}
+
+
+/* =========================================================
+   PROJECT GALLERIES
+========================================================= */
+
+.project-gallery{
+  position:relative;
 }
 
 .gallery-slide{
   position:absolute;
   inset:0;
   opacity:0;
+  visibility:hidden;
   pointer-events:none;
-  transition:opacity .25s ease;
+  transition:
+    opacity .35s ease,
+    visibility .35s ease;
 }
 
 .gallery-slide.active{
   opacity:1;
+  visibility:visible;
   pointer-events:auto;
 }
 
@@ -1195,293 +1864,408 @@ nav{
 .gallery-arrow{
   position:absolute;
   top:50%;
-  transform:translateY(-50%);
-  z-index:5;
-  width:36px;
-  height:36px;
+  z-index:6;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.24);
   border-radius:50%;
-  border:1px solid rgba(255,255,255,.45);
-  background:rgba(16,24,40,.68);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  background:rgba(16,24,40,.72);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
   cursor:pointer;
+  transform:translateY(-50%);
+  transition:
+    background .2s ease,
+    transform .2s ease,
+    border-color .2s ease;
+}
+
+.gallery-arrow:hover{
+  background:rgba(37,99,235,.92);
+  border-color:rgba(255,255,255,.4);
 }
 
 .gallery-arrow.prev{
-  left:12px;
+  left:16px;
 }
 
 .gallery-arrow.next{
-  right:12px;
+  right:16px;
 }
 
 .gallery-arrow svg{
-  width:18px;
+  width:19px;
+  height:19px;
   fill:none;
   stroke:#fff;
   stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 .gallery-count{
   position:absolute;
-  z-index:5;
-  right:12px;
-  bottom:12px;
-  padding:5px 8px;
-  border-radius:6px;
-  background:rgba(16,24,40,.7);
-  color:#fff;
-  font-size:11px;
-}
-
-.work-body{
-  padding:26px;
-}
-
-.work-body .tag{
+  right:16px;
+  bottom:14px;
+  z-index:6;
   font-family:var(--font-mono);
-  font-size:11.5px;
-  color:var(--electric);
-  text-transform:uppercase;
-  margin-bottom:10px;
-  display:block;
+  font-size:11px;
+  color:#fff;
+  background:rgba(16,24,40,.74);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  padding:6px 10px;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
 }
 
-.work-body h3{
-  font-size:19px;
-  margin-bottom:10px;
-}
-
-.work-body p{
-  color:var(--slate);
-  font-size:14.5px;
-  margin-bottom:14px;
-}
-
-.project-disclaimer{
-  padding:11px 13px;
-  border-left:3px solid var(--electric);
-  background:rgba(37,99,235,.07);
-  font-size:12.5px !important;
-}
-
-.project-disclaimer.personal-project{
-  border-left-color:var(--cyan);
-  background:rgba(34,211,238,.09);
-}
 
 /* =========================================================
    FAQ
-   ========================================================= */
+========================================================= */
 
 #faq{
-  background:var(--ice);
+  background:var(--soft);
 }
 
-#faq .wrap{
-  max-width:760px;
+.faq-head{
+  max-width:720px;
+  margin-bottom:44px;
 }
 
-#faq h2{
-  font-size:clamp(26px,3vw,34px);
-  margin-bottom:40px;
+.faq-head p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+}
+
+.faq-list{
+  max-width:900px;
 }
 
 .faq-item{
-  border-bottom:1px solid rgba(102,112,133,.2);
+  background:var(--white);
+  border:1px solid rgba(16,24,40,.09);
+  border-radius:16px;
+  margin-bottom:12px;
+  overflow:hidden;
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.faq-item:hover,
+.faq-item.open{
+  border-color:rgba(37,99,235,.22);
+  box-shadow:0 12px 35px rgba(16,24,40,.06);
 }
 
 .faq-q{
   width:100%;
-  text-align:left;
-  background:none;
-  border:none;
-  padding:20px 4px;
-  font-family:var(--font-body);
-  font-size:16.5px;
-  font-weight:600;
-  color:var(--midnight);
-  cursor:pointer;
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  gap:20px;
+  gap:24px;
+  text-align:left;
+  border:0;
+  background:transparent;
+  padding:22px 24px;
+  cursor:pointer;
+  color:var(--navy);
+  font-family:var(--font-display);
+  font-size:17px;
+  font-weight:700;
 }
 
-.faq-q .plus{
+.faq-q span:last-child{
+  flex:0 0 auto;
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--soft);
+  color:var(--blue);
   font-family:var(--font-mono);
-  font-size:18px;
-  color:var(--electric);
-  transition:transform .25s;
+  font-size:20px;
+  font-weight:400;
+  transition:
+    transform .25s ease,
+    background .25s ease;
 }
 
-.faq-item.open .plus{
+.faq-item.open .faq-q span:last-child{
   transform:rotate(45deg);
+  background:rgba(37,99,235,.09);
 }
 
 .faq-a{
   max-height:0;
   overflow:hidden;
-  transition:max-height .3s;
+  transition:max-height .35s ease;
 }
 
-.faq-a p{
-  padding:0 4px 22px;
-  color:var(--slate);
+.faq-a-inner{
+  padding:0 24px 24px;
+  color:var(--muted);
   font-size:15px;
+  line-height:1.8;
 }
+
 
 /* =========================================================
    FINAL CTA
-   ========================================================= */
+========================================================= */
 
 #cta{
-  background:linear-gradient(
-    120deg,
-    var(--midnight),
-    #152238
-  );
-  color:var(--white);
   position:relative;
   overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(34,211,238,.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(37,99,235,.24),
+      transparent 35%
+    ),
+    var(--navy);
+  color:var(--white);
+}
+
+#cta::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
+  background-size:52px 52px;
+  mask-image:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.8),
+    transparent
+  );
 }
 
 #cta .wrap{
-  max-width:680px;
   position:relative;
   z-index:2;
-}
-
-#cta h2{
-  font-size:clamp(28px,3.4vw,40px);
-  margin-bottom:16px;
-}
-
-#cta p{
-  color:rgba(255,255,255,.68);
-  font-size:16.5px;
-  margin-bottom:22px;
-}
-
-#cta h3{
-  margin-bottom:18px;
+  max-width:900px;
+  text-align:center;
 }
 
 #cta .eyebrow-tag{
   color:#fff;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(34,211,238,.24);
+  background:rgba(255,255,255,.07);
+  border-color:rgba(34,211,238,.28);
 }
 
-#cta .eyebrow-tag::before{
-  background:var(--cyan);
+#cta h2{
+  color:#fff;
+  margin:20px auto 22px;
+  max-width:850px;
 }
 
-.priority-callout{
-  display:flex;
-  gap:14px;
-  margin:26px 0 24px;
-  padding:20px 22px;
-  border:1px solid rgba(34,211,238,.26);
-  border-radius:16px;
-  background:rgba(34,211,238,.07);
+#cta h3{
+  font-family:var(--font-display);
+  font-size:clamp(25px,4vw,38px);
+  letter-spacing:-.04em;
+  line-height:1.15;
+  color:#fff;
+  margin:36px 0 24px;
 }
 
-.priority-dot{
-  width:9px;
-  height:9px;
-  min-width:9px;
-  margin-top:5px;
-  border-radius:50%;
-  background:var(--cyan);
-  box-shadow:0 0 0 5px rgba(34,211,238,.12);
+#cta p{
+  color:rgba(255,255,255,.72);
+  max-width:760px;
+  margin:0 auto 16px;
+  font-size:16px;
+  line-height:1.8;
 }
 
-.cta-microcopy{
-  margin-top:12px !important;
-  font-size:12px !important;
+#cta p strong{
+  color:#fff;
 }
+
+#cta .priority-callout{
+  max-width:720px;
+  margin:30px auto;
+  text-align:left;
+  color:#fff;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(34,211,238,.28);
+}
+
+#cta .priority-callout strong{
+  color:#fff;
+}
+
+#cta .priority-callout p{
+  margin:5px 0 0;
+  color:rgba(255,255,255,.7);
+  font-size:14px;
+}
+
+#cta .btn{
+  margin-top:8px;
+}
+
+#cta .cta-microcopy{
+  margin-top:14px;
+  font-family:var(--font-mono);
+  font-size:12px;
+  color:rgba(255,255,255,.55);
+}
+
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 footer{
-  background:var(--midnight);
-  color:rgba(255,255,255,.55);
-  padding:44px 24px 30px;
+  background:#080F1D;
+  color:rgba(255,255,255,.64);
+  border-top:1px solid rgba(255,255,255,.07);
 }
 
 footer .wrap{
+  padding-top:42px;
+  padding-bottom:42px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  flex-wrap:wrap;
-  gap:20px;
+  justify-content:space-between;
+  gap:28px;
 }
 
-.brand-wordmark{
-  font-family:var(--font-display);
-  font-weight:800;
-  letter-spacing:-.04em;
-  font-size:22px;
-  color:var(--white);
-}
-
-.brand-wordmark>span{
-  color:var(--cyan);
+footer .brand-wordmark{
+  flex:0 0 auto;
 }
 
 .social-plugins{
   display:flex;
-  gap:14px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
 }
 
 .social-plugins a{
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.18);
-  display:flex;
+  display:inline-flex;
   align-items:center;
   justify-content:center;
+  min-height:38px;
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:9px;
+  color:rgba(255,255,255,.68);
+  font-family:var(--font-mono);
+  font-size:11px;
+  text-decoration:none;
+  transition:
+    color .2s ease,
+    border-color .2s ease,
+    background .2s ease,
+    transform .2s ease;
 }
 
-.social-plugins svg{
-  width:16px;
-  height:16px;
-  fill:rgba(255,255,255,.85);
+.social-plugins a:hover{
+  color:#fff;
+  border-color:rgba(34,211,238,.30);
+  background:rgba(34,211,238,.06);
+  transform:translateY(-2px);
 }
 
-footer .fine{
-  font-size:13px;
-  margin-top:26px;
+.footer-copy{
+  max-width:340px;
+  text-align:right;
+  font-family:var(--font-mono);
+  font-size:11px;
+  line-height:1.7;
 }
+
 
 /* =========================================================
    REVEAL ANIMATION
-   ========================================================= */
+========================================================= */
 
 .reveal{
   opacity:0;
-  transform:translateY(18px);
+  transform:translateY(24px);
   transition:
-    opacity .6s ease,
-    transform .6s ease;
+    opacity .7s cubic-bezier(.2,.8,.2,1),
+    transform .7s cubic-bezier(.2,.8,.2,1);
 }
 
 .reveal.in{
   opacity:1;
-  transform:translateY(0);
+  transform:none;
 }
+
 
 /* =========================================================
    RESPONSIVE
-   ========================================================= */
+========================================================= */
+
+@media(max-width:1080px){
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:56px;
+  }
+
+  .hero-copy{
+    max-width:760px;
+  }
+
+  .hero-visual{
+    max-width:720px;
+    width:100%;
+    margin:0 auto;
+  }
+
+  .system-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .services-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .pricing-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .process-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .work-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
 
 @media(max-width:900px){
 
-  .nav-links{
+  .desktop-nav{
+    display:none;
+  }
+
+  .nav-actions .btn{
     display:none;
   }
 
@@ -1489,88 +2273,177 @@ footer .fine{
     display:flex;
   }
 
-  section{
-    padding:72px 20px;
-  }
-
-  #hero .wrap{
+  .journey-grid{
     grid-template-columns:1fr;
   }
 
-  .azc-stage{
-    height:330px;
-  }
-
-  .journey-compare,
-  .handcoded-grid,
-  .work-grid,
-  .pricing-grid{
+  .handcoded-grid{
     grid-template-columns:1fr;
+    gap:40px;
   }
 
-  .system-grid{
-    grid-template-columns:repeat(2,1fr);
+  footer .wrap{
+    flex-direction:column;
+    text-align:center;
   }
 
-  .services-grid{
-    grid-template-columns:1fr;
+  .footer-copy{
+    text-align:center;
+    max-width:600px;
   }
 
-  .deliverables-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .timeline{
-    grid-template-columns:repeat(2,1fr);
-    gap:30px;
-  }
-
-  .timeline::before{
-    display:none;
-  }
 }
 
-@media(max-width:600px){
+
+@media(max-width:768px){
 
   section{
-    padding:58px 16px;
+    padding:82px 0;
+  }
+
+  .wrap{
+    width:min(100% - 34px,var(--wrap));
+  }
+
+  nav .wrap{
+    min-height:70px;
+  }
+
+  .brand-wordmark{
+    font-size:19px;
   }
 
   #hero{
-    padding:120px 16px 70px;
+    padding-top:118px;
+    padding-bottom:78px;
   }
 
-  #hero h1{
-    font-size:clamp(32px,10vw,42px);
+  .hero-copy h1{
+    font-size:clamp(42px,12vw,64px);
   }
 
-  #hero p.lead{
-    font-size:16px;
+  .hero-copy .lead{
+    font-size:17px;
   }
 
-  .azc-stage{
-    height:280px;
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
   }
 
-  .azc-assembly{
-    transform:scale(.78);
+  .hero-actions .btn{
+    width:100%;
   }
 
-  .system-grid,
-  .deliverables-grid,
-  .timeline{
+  .hero-proof{
     grid-template-columns:1fr;
   }
 
-  .service-card,
-  .work-body,
-  .price-card{
+  .priority-callout{
+    align-items:flex-start;
+  }
+
+  .system-grid,
+  .services-grid,
+  .pricing-grid,
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+
+  .work-body{
     padding:22px;
   }
 
-  .priority-callout{
-    padding:18px;
+  .gallery-arrow{
+    width:38px;
+    height:38px;
   }
+
+  .gallery-arrow.prev{
+    left:10px;
+  }
+
+  .gallery-arrow.next{
+    right:10px;
+  }
+
+  .faq-q{
+    padding:19px 18px;
+    font-size:16px;
+  }
+
+  .faq-a-inner{
+    padding:0 18px 20px;
+  }
+
+  #cta .priority-callout{
+    text-align:left;
+  }
+
+}
+
+
+@media(max-width:520px){
+
+  .wrap{
+    width:min(100% - 26px,var(--wrap));
+  }
+
+  section{
+    padding:72px 0;
+  }
+
+  #hero{
+    padding-top:106px;
+  }
+
+  .hero-copy h1{
+    font-size:clamp(38px,12vw,54px);
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .mobile-panel .btn{
+    width:100%;
+  }
+
+  .sales-head h2,
+  .section-head h2,
+  .work-intro h2,
+  .faq-head h2,
+  #cta h2{
+    font-size:clamp(32px,10vw,44px);
+  }
+
+  .work-thumb{
+    aspect-ratio:4/3;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+
 }
 
 </style>
@@ -1582,129 +2455,2629 @@ footer .fine{
 
 <body class="locked">
 
-<!-- ========================================================
+
+<!-- ======================================================
      PRELOADER
-     ======================================================== -->
+====================================================== -->
 
 <div id="preloader">
 
-  <div class="cube-stage">
-    <div class="cube-face f"></div>
-    <div class="cube-face b"></div>
-    <div class="cube-face r"></div>
-    <div class="cube-face l"></div>
-    <div class="cube-face t"></div>
-    <div class="cube-face bo"></div>
+  <div class="preloader-inner">
+
+    <div class="preloader-mark">
+      AZ
+      <span class="mono">
+        // FLOW.STUDIO
+      </span>
+    </div>
+
+    <div class="preloader-line">
+      <span></span>
+    </div>
+
+    <p>
+      Mapping the system behind the click...
+    </p>
+
   </div>
 
-  <div class="preload-mark">
+</div>
 
-    <span>
-      AZ
-      <span class="mono">// FLOW.STUDIO</span>
-    </span>
 
-    <div class="preload-bar">
-      <span></span>
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+
+<header class="site-header">
+
+  <nav>
+
+    <div class="wrap nav-inner">
+
+      <a
+        class="logo"
+        href="#hero"
+        aria-label="AZFlow.Studio Home"
+      >
+
+        <span class="brand-wordmark">
+          AZFLOW<span>.STUDIO</span>
+        </span>
+
+      </a>
+
+      <div class="desktop-nav">
+
+        <a href="#problem">
+          The Problem
+        </a>
+
+        <a href="#system">
+          The System
+        </a>
+
+        <a href="#services">
+          Services
+        </a>
+
+        <a href="#work">
+          Work
+        </a>
+
+        <a href="#faq">
+          FAQ
+        </a>
+
+      </div>
+
+      <div class="nav-actions">
+
+        <a
+          class="btn btn-primary"
+          href="booking.html"
+        >
+          MAP MY SYSTEM →
+        </a>
+
+        <button
+          aria-label="Open navigation"
+          aria-expanded="false"
+          class="burger"
+          id="burgerBtn"
+          type="button"
+        >
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- MOBILE NAVIGATION -->
+
+  <div
+    class="mobile-panel"
+    id="mobilePanel"
+  >
+
+    <div class="wrap">
+
+      <a href="#problem">
+        The Problem
+      </a>
+
+      <a href="#system">
+        The System
+      </a>
+
+      <a href="#services">
+        Services
+      </a>
+
+      <a href="#work">
+        Work
+      </a>
+
+      <a href="#faq">
+        FAQ
+      </a>
+
+      <a
+        class="btn btn-primary"
+        href="booking.html"
+      >
+        MAP MY SYSTEM →
+      </a>
+
     </div>
 
   </div>
 
-</div>
-
-<!-- ========================================================
-     NAVIGATION
-     ======================================================== -->
-
-<header>
-
-<nav>
-
-  <a class="logo" href="#hero">
-    <span class="brand-wordmark">
-      AZFLOW<span>.STUDIO</span>
-    </span>
-  </a>
-
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#pricing">Prices</a>
-    <a href="#process">Process</a>
-    <a href="#work">Work</a>
-    <a href="#faq">FAQ</a>
-  </div>
-
-  <button
-    aria-label="Open menu"
-    class="burger"
-    id="burgerBtn"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-</nav>
-
 </header>
 
-<div
-  class="mobile-panel"
-  id="mobilePanel"
->
 
-  <a href="#services">Services</a>
-  <a href="#pricing">Prices</a>
-  <a href="#process">Process</a>
-  <a href="#work">Work</a>
-  <a href="#faq">FAQ</a>
-  <a href="booking.html">MAP MY SYSTEM →</a>
+<main>
 
-</div>
 
-<!-- ========================================================
+<!-- ======================================================
      HERO
-     ======================================================== -->
+====================================================== -->
 
 <section id="hero">
 
-<div class="wrap hero-content reveal">
+  <div class="wrap hero-grid">
 
-  <div>
+    <div class="hero-copy reveal">
+
+      <span class="eyebrow-tag">
+        For Service Businesses That Are Tired of Doing Everything Manually
+      </span>
+
+      <h1>
+        Your Website Should
+        <span>Work.</span>
+        Not Just Exist.
+      </h1>
+
+      <p class="lead">
+        I build hand-coded websites and funnel systems that do
+        more than look professional. They help capture leads,
+        organize inquiries, book appointments, trigger
+        follow-ups, connect your tools, and move customers
+        toward the next step.
+      </p>
+
+      <p class="hero-support">
+        No bloated all-in-one platform just because everyone
+        else uses one. We map what your business actually needs,
+        then build the system around that.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          class="btn btn-primary"
+          href="booking.html"
+        >
+          MAP MY SYSTEM →
+        </a>
+
+        <a
+          class="btn btn-secondary"
+          href="#system"
+        >
+          SEE HOW IT WORKS
+        </a>
+
+      </div>
+
+      <p class="hero-microcopy">
+        Free 20-minute AZFlow System Mapping · No commitment required
+      </p>
+
+      <div class="priority-callout">
+
+        <span class="priority-dot"></span>
+
+        <div>
+
+          <strong>
+            Built around a small active project queue.
+          </strong>
+
+          <p>
+            I keep the number of active builds limited so I can
+            stay directly involved in the strategy, development,
+            integrations, testing, and launch.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="hero-proof">
+
+        <div>
+          <strong>
+            Hand-Coded
+          </strong>
+          <span>
+            Custom front-end and backend development
+          </span>
+        </div>
+
+        <div>
+          <strong>
+            Connected
+          </strong>
+          <span>
+            CRM, booking, email, calendar and workflows
+          </span>
+        </div>
+
+        <div>
+          <strong>
+            Built for Action
+          </strong>
+          <span>
+            Designed around what should happen after the click
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- HERO SYSTEM VISUAL -->
+
+    <div class="hero-visual reveal">
+
+      <div class="system-window tilt">
+
+        <div class="system-window-top">
+
+          <div class="window-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <span class="mono">
+            azflow.system
+          </span>
+
+        </div>
+
+        <div class="system-window-body">
+
+          <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+              CUSTOMER JOURNEY ACTIVE
+            </span>
+
+          </div>
+
+          <div class="flow-stack">
+
+            <div class="flow-node">
+
+              <span class="node-number">
+                01
+              </span>
+
+              <div>
+                <strong>
+                  Visitor Lands
+                </strong>
+                <small>
+                  Website / Funnel
+                </small>
+              </div>
+
+              <span class="node-status">
+                ACTIVE
+              </span>
+
+            </div>
+
+            <span class="flow-line"></span>
+
+            <div class="flow-node">
+
+              <span class="node-number">
+                02
+              </span>
+
+              <div>
+                <strong>
+                  Lead Captured
+                </strong>
+                <small>
+                  Form / Qualification
+                </small>
+              </div>
+
+              <span class="node-status">
+                SAVED
+              </span>
+
+            </div>
+
+            <span class="flow-line"></span>
+
+            <div class="flow-node">
+
+              <span class="node-number">
+                03
+              </span>
+
+              <div>
+                <strong>
+                  CRM Updated
+                </strong>
+                <small>
+                  Lead Record Created
+                </small>
+              </div>
+
+              <span class="node-status">
+                SYNCED
+              </span>
+
+            </div>
+
+            <span class="flow-line"></span>
+
+            <div class="flow-node">
+
+              <span class="node-number">
+                04
+              </span>
+
+              <div>
+                <strong>
+                  Follow-Up Triggered
+                </strong>
+                <small>
+                  Email / Reminder
+                </small>
+              </div>
+
+              <span class="node-status">
+                SENT
+              </span>
+
+            </div>
+
+            <span class="flow-line"></span>
+
+            <div class="flow-node">
+
+              <span class="node-number">
+                05
+              </span>
+
+              <div>
+                <strong>
+                  Next Step
+                </strong>
+                <small>
+                  Booking / Sales / Onboarding
+                </small>
+              </div>
+
+              <span class="node-status">
+                READY
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     PAIN / PROBLEM
+====================================================== -->
+
+<section
+  class="sales-light"
+  id="problem"
+>
+
+  <div class="wrap">
+
+    <div class="sales-head reveal">
+
+      <span class="eyebrow-tag">
+        The problem isn't always traffic
+      </span>
+
+      <h2>
+        You're Getting Inquiries.
+        But Too Much Still Depends on You.
+      </h2>
+
+      <p>
+        A potential customer fills out a form.
+        Someone has to notice it.
+        Someone has to copy the information somewhere.
+        Someone has to reply.
+        Someone has to send the booking link.
+        Someone has to update the calendar.
+        Someone has to remember to follow up.
+      </p>
+
+    </div>
+
+    <div class="pain-grid">
+
+      <article class="reveal">
+
+        <span class="pain-number">
+          01
+        </span>
+
+        <h3>
+          Leads are scattered.
+        </h3>
+
+        <p>
+          Website forms, DMs, email, spreadsheets, notes,
+          calendars, and different inboxes all hold pieces of
+          the customer journey.
+        </p>
+
+      </article>
+
+      <article class="reveal">
+
+        <span class="pain-number">
+          02
+        </span>
+
+        <h3>
+          Follow-up depends on memory.
+        </h3>
+
+        <p>
+          A busy day is enough for a promising inquiry to sit
+          unanswered or for a follow-up to happen later than it
+          should.
+        </p>
+
+      </article>
+
+      <article class="reveal">
+
+        <span class="pain-number">
+          03
+        </span>
+
+        <h3>
+          Booking creates more admin.
+        </h3>
+
+        <p>
+          Instead of reducing work, scheduling can create
+          another chain of confirmations, reminders, calendar
+          updates, reschedules, and no-show follow-ups.
+        </p>
+
+      </article>
+
+      <article class="reveal">
+
+        <span class="pain-number">
+          04
+        </span>
+
+        <h3>
+          Your website stops too early.
+        </h3>
+
+        <p>
+          The page collects the click or inquiry—but the
+          important work that happens afterward is still being
+          handled manually.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     REAL REASON
+====================================================== -->
+
+<section class="sales-dark">
+
+  <div class="wrap">
+
+    <div class="sales-head reveal">
+
+      <span class="eyebrow-tag">
+        The real reason you're stuck
+      </span>
+
+      <h2>
+        The Problem Isn't That Your Business Needs More Software.
+      </h2>
+
+      <p>
+        The problem is that the pieces you already have often
+        don't work together as one clear customer journey.
+      </p>
+
+    </div>
+
+    <div class="reason-layout">
+
+      <div class="reason-copy reveal">
+
+        <p>
+          Most businesses don't start with a system.
+          They add tools one at a time.
+        </p>
+
+        <p>
+          A website here.
+          A form there.
+          A spreadsheet for leads.
+          A calendar for appointments.
+          An inbox for follow-ups.
+          Maybe a CRM that nobody really wants to open.
+        </p>
+
+        <p>
+          Each tool may work on its own.
+          But your team still has to move information between
+          them, remember what happens next, and keep the entire
+          process together manually.
+        </p>
+
+        <p class="reason-emphasis">
+          <strong>
+            The real issue is not the lack of another tool.
+          </strong>
+          It's the lack of a connected system behind the tools.
+        </p>
+
+      </div>
+
+      <div class="reason-panel reveal">
+
+        <span class="mono">
+          MANUAL WORKFLOW
+        </span>
+
+        <div class="broken-flow">
+
+          <div>
+            Website
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Inbox
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Spreadsheet
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Calendar
+          </div>
+
+          <span>→</span>
+
+          <div>
+            Memory
+          </div>
+
+        </div>
+
+        <p>
+          The more your business grows, the harder this becomes
+          to manage consistently.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     CUSTOMER JOURNEY
+====================================================== -->
+
+<section
+  class="sales-light"
+  id="system"
+>
+
+  <div class="wrap">
+
+    <div class="sales-head reveal">
+
+      <span class="eyebrow-tag">
+        What should happen instead
+      </span>
+
+      <h2>
+        Your Customer Should Move Through a Clear Journey.
+      </h2>
+
+      <p>
+        Different leads need different next steps.
+        The system should help handle those steps without making
+        your team manually rebuild the process every time.
+      </p>
+
+    </div>
+
+
+    <div class="journey-grid">
+
+      <article class="journey-card reveal">
+
+        <div class="journey-label">
+          JOURNEY 01
+        </div>
+
+        <h3>
+          They're Interested.
+          But They're Not Ready Yet.
+        </h3>
+
+        <div class="journey-steps">
+
+          <div>
+            <span>01</span>
+            <p>
+              Visitor discovers your business.
+            </p>
+          </div>
+
+          <div>
+            <span>02</span>
+            <p>
+              They request information, a guide, quote, or
+              resource.
+            </p>
+          </div>
+
+          <div>
+            <span>03</span>
+            <p>
+              Their details are stored in the CRM or lead
+              database.
+            </p>
+          </div>
+
+          <div>
+            <span>04</span>
+            <p>
+              Relevant follow-up emails are triggered
+              automatically.
+            </p>
+          </div>
+
+          <div>
+            <span>05</span>
+            <p>
+              They can return when they're ready to book,
+              inquire, or buy.
+            </p>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="journey-card featured reveal">
+
+        <div class="journey-label">
+          JOURNEY 02
+        </div>
+
+        <h3>
+          They're Ready.
+          Make the Next Step Easy.
+        </h3>
+
+        <div class="journey-steps">
+
+          <div>
+            <span>01</span>
+            <p>
+              Visitor chooses to book, request a quote, or
+              start.
+            </p>
+          </div>
+
+          <div>
+            <span>02</span>
+            <p>
+              Their information is captured and organized.
+            </p>
+          </div>
+
+          <div>
+            <span>03</span>
+            <p>
+              Booking or qualification happens through the
+              appropriate workflow.
+            </p>
+          </div>
+
+          <div>
+            <span>04</span>
+            <p>
+              Confirmations, reminders, and calendar actions
+              happen automatically where appropriate.
+            </p>
+          </div>
+
+          <div>
+            <span>05</span>
+            <p>
+              Their status moves through the pipeline so the
+              business knows what needs attention next.
+            </p>
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     CONNECTED SOLUTION
+====================================================== -->
+
+<section
+  class="sales-dark"
+  id="connected-solution"
+>
+
+  <div class="wrap">
+
+    <div class="sales-head reveal">
+
+      <span class="eyebrow-tag">
+        The AZFlow approach
+      </span>
+
+      <h2>
+        That's Why I Don't Just Build Websites.
+        I Build Connected Customer Journeys.
+      </h2>
+
+      <p>
+        Your business may not need every feature below.
+        The point is to determine which pieces actually support
+        the journey you need.
+      </p>
+
+    </div>
+
+    <div class="system-grid">
+
+      <article>
+
+        <span>
+          01
+        </span>
+
+        <h3>
+          Website / Funnel
+        </h3>
+
+        <p>
+          A customer-facing experience built around your
+          audience, offer, message, and desired action.
+        </p>
+
+      </article>
+
+      <article>
+
+        <span>
+          02
+        </span>
+
+        <h3>
+          Lead Capture &amp; Qualification
+        </h3>
+
+        <p>
+          Collect useful information and route different leads
+          toward the right next step.
+        </p>
+
+      </article>
+
+      <article>
+
+        <span>
+          03
+        </span>
+
+        <h3>
+          CRM / Database
+        </h3>
+
+        <p>
+          Record leads, organize details, track status, source,
+          ownership, and interaction history.
+        </p>
+
+      </article>
+
+      <article>
+
+        <span>
+          04
+        </span>
+
+        <h3>
+          Email &amp; Follow-Up
+        </h3>
+
+        <p>
+          Automate acknowledgments, confirmations, reminders,
+          follow-ups, no-show messages, nurture, and onboarding.
+        </p>
+
+      </article>
+
+      <article>
+
+        <span>
+          05
+        </span>
+
+        <h3>
+          Booking / Calendar &amp; Pipeline
+        </h3>
+
+        <p>
+          Move qualified prospects toward appointments and give
+          the business a clearer view of what needs attention.
+        </p>
+
+      </article>
+
+      <article>
+
+        <span>
+          06
+        </span>
+
+        <h3>
+          Backend, Integrations &amp; Tracking
+        </h3>
+
+        <p>
+          Databases, APIs, business logic, dashboards, existing
+          tools, analytics, and conversion tracking.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ======================================================
+     HAND-CODED DIFFERENCE
+====================================================== -->
+
+<section
+  class="sales-light"
+  id="hand-coded"
+>
+
+  <div class="wrap handcoded-grid">
+
+    <div class="handcoded-copy reveal">
+
+      <span class="eyebrow-tag">
+        Why hand-coded?
+      </span>
+
+      <h2>
+        Your Business Shouldn't Have to Fit Inside Someone Else's Template.
+      </h2>
+
+      <p>
+        Drag-and-drop platforms can be useful.
+        But when the business needs something more specific,
+        the system often ends up being shaped around what the
+        platform allows instead of what the workflow actually
+        needs.
+      </p>
+
+      <p>
+        My approach starts with the customer journey and the
+        business process first.
+      </p>
+
+      <p>
+        Then I build the website, funnel, backend, integrations,
+        and automations around that process.
+      </p>
+
+      <div class="handcoded-note">
+
+        <strong>
+          Hand-coded doesn't mean adding complexity for the sake
+          of complexity.
+        </strong>
+
+        <p>
+          It means having more control over what gets built,
+          how the pieces connect, and what your business
+          actually needs to maintain.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="code-window reveal">
+
+      <div class="code-window-top">
+
+        <div class="window-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <span class="mono">
+          customer-journey.js
+        </span>
+
+      </div>
+
+      <div class="code-body">
+
+        <div class="code-line">
+          <span class="line-number">01</span>
+          <span>
+            <i>const</i>
+            journey =
+            <b>"your business process"</b>;
+          </span>
+        </div>
+
+        <div class="code-line">
+          <span class="line-number">02</span>
+          <span>
+            <i>const</i>
+            system =
+            <b>map</b>(journey);
+          </span>
+        </div>
+
+        <div class="code-line">
+          <span class="line-number">03</span>
+          <span>
+            lead.capture();
+          </span>
+        </div>
+
+        <div class="code-line">
+          <span class="line-number">04</span>
+          <span>
+            crm.store(lead);
+          </span>
+        </div>
+
+        <div class="code-line">
+          <span class="line-number">05</span>
+          <span>
+            workflow.trigger();
+          </span>
+        </div>
+
+        <div class="code-line">
+          <span class="line-number">06</span>
+          <span>
+            calendar.sync();
+          </span>
+        </div>
+
+        <div class="code-line">
+          <span class="line-number">07</span>
+          <span>
+            followUp.send();
+          </span>
+        </div>
+
+        <div class="code-line">
+          <span class="line-number">08</span>
+          <span>
+            pipeline.update();
+          </span>
+        </div>
+
+        <div class="code-line code-success">
+          <span class="line-number">09</span>
+          <span>
+            // system connected ✓
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     SERVICES
+====================================================== -->
+
+<section
+  class="sales-dark"
+  id="services"
+>
+
+  <div class="wrap">
+
+    <div class="sales-head reveal">
+
+      <span class="eyebrow-tag">
+        What I build
+      </span>
+
+      <h2>
+        Start With the Business Problem.
+        Not a List of Features.
+      </h2>
+
+      <p>
+        You don't need to arrive knowing whether you need a CRM,
+        webhook, database, automation, API, or custom backend.
+        Tell me what's happening in the business and where the
+        process is breaking.
+      </p>
+
+    </div>
+
+
+    <div class="services-grid">
+
+      <article class="service-card reveal">
+
+        <span class="service-number">
+          01
+        </span>
+
+        <h3>
+          “We're getting inquiries, but follow-up is inconsistent.”
+        </h3>
+
+        <p>
+          We can map how leads enter the business, where their
+          information should go, who needs to know about them,
+          and what follow-up should happen next.
+        </p>
+
+        <div class="service-tags">
+          <span>Lead Capture</span>
+          <span>CRM</span>
+          <span>Email</span>
+          <span>Follow-Up</span>
+        </div>
+
+      </article>
+
+
+      <article class="service-card reveal">
+
+        <span class="service-number">
+          02
+        </span>
+
+        <h3>
+          “Booking clients creates too much back-and-forth.”
+        </h3>
+
+        <p>
+          We can create a clearer booking journey with
+          qualification, scheduling, confirmations, reminders,
+          calendar actions, and appropriate follow-up.
+        </p>
+
+        <div class="service-tags">
+          <span>Booking</span>
+          <span>Calendar</span>
+          <span>Reminders</span>
+          <span>No-Show Flow</span>
+        </div>
+
+      </article>
+
+
+      <article class="service-card reveal">
+
+        <span class="service-number">
+          03
+        </span>
+
+        <h3>
+          “Our website looks fine, but it doesn't do enough.”
+        </h3>
+
+        <p>
+          We can improve or rebuild the customer-facing
+          experience around a stronger journey instead of
+          treating the website as a digital brochure.
+        </p>
+
+        <div class="service-tags">
+          <span>Website</span>
+          <span>Funnels</span>
+          <span>Conversion Flow</span>
+          <span>Development</span>
+        </div>
+
+      </article>
+
+
+      <article class="service-card reveal">
+
+        <span class="service-number">
+          04
+        </span>
+
+        <h3>
+          “We already use several tools, but nothing feels connected.”
+        </h3>
+
+        <p>
+          Existing tools can often stay. The goal is to determine
+          what should connect, what should remain manual, and
+          where custom development can remove unnecessary steps.
+        </p>
+
+        <div class="service-tags">
+          <span>APIs</span>
+          <span>Webhooks</span>
+          <span>Integrations</span>
+          <span>Automation</span>
+        </div>
+
+      </article>
+
+
+      <article class="service-card reveal">
+
+        <span class="service-number">
+          05
+        </span>
+
+        <h3>
+          “We need something more specific than a normal website.”
+        </h3>
+
+        <p>
+          If the project needs business logic, user roles,
+          dashboards, databases, internal workflows, or custom
+          interfaces, I can build beyond the front-end.
+        </p>
+
+        <div class="service-tags">
+          <span>Backend</span>
+          <span>Database</span>
+          <span>Dashboards</span>
+          <span>Custom Systems</span>
+        </div>
+
+      </article>
+
+
+      <article class="service-card reveal">
+
+        <span class="service-number">
+          06
+        </span>
+
+        <h3>
+          “We already have the design. We just need it built properly.”
+        </h3>
+
+        <p>
+          I can turn approved visual designs into responsive,
+          hand-coded pages and connect the front-end to the
+          backend functionality the project requires.
+        </p>
+
+        <div class="service-tags">
+          <span>Design to Code</span>
+          <span>Figma</span>
+          <span>Responsive UI</span>
+          <span>Development</span>
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     DELIVERABLES
+====================================================== -->
+
+<section class="sales-light">
+
+  <div class="wrap">
+
+    <div class="sales-head reveal">
+
+      <span class="eyebrow-tag">
+        What the project can include
+      </span>
+
+      <h2>
+        One Connected Build.
+        Based on What Your Business Actually Needs.
+      </h2>
+
+      <p>
+        Your project scope is mapped before development.
+        That keeps the build focused instead of forcing your
+        business into a giant package full of features you may
+        never use.
+      </p>
+
+    </div>
+
+
+    <div class="deliverables-grid">
+
+      <div class="deliverable reveal">
+        <span>01</span>
+        <div>
+          <h3>Strategy &amp; System Mapping</h3>
+          <p>
+            Customer journey, conversion points, manual steps,
+            system requirements, and workflow planning.
+          </p>
+        </div>
+      </div>
+
+      <div class="deliverable reveal">
+        <span>02</span>
+        <div>
+          <h3>Hand-Coded Website / Funnel</h3>
+          <p>
+            Responsive pages built around the agreed message,
+            offer, customer journey, and desired action.
+          </p>
+        </div>
+      </div>
+
+      <div class="deliverable reveal">
+        <span>03</span>
+        <div>
+          <h3>Lead Capture &amp; CRM Workflow</h3>
+          <p>
+            Forms, lead records, statuses, qualification,
+            ownership, and organized customer information.
+          </p>
+        </div>
+      </div>
+
+      <div class="deliverable reveal">
+        <span>04</span>
+        <div>
+          <h3>Booking &amp; Calendar</h3>
+          <p>
+            Scheduling workflows, confirmations, reminders,
+            calendar synchronization, and rescheduling logic
+            where required.
+          </p>
+        </div>
+      </div>
+
+      <div class="deliverable reveal">
+        <span>05</span>
+        <div>
+          <h3>Email &amp; Follow-Up Automation</h3>
+          <p>
+            Appropriate acknowledgments, reminders, nurture,
+            no-show, follow-up, or onboarding sequences.
+          </p>
+        </div>
+      </div>
+
+      <div class="deliverable reveal">
+        <span>06</span>
+        <div>
+          <h3>Backend &amp; Integrations</h3>
+          <p>
+            APIs, webhooks, databases, custom logic, dashboards,
+            and connections to supported existing tools.
+          </p>
+        </div>
+      </div>
+
+      <div class="deliverable reveal">
+        <span>07</span>
+        <div>
+          <h3>Analytics &amp; Tracking</h3>
+          <p>
+            Measurement for the important actions in the
+            customer journey where technically appropriate.
+          </p>
+        </div>
+      </div>
+
+      <div class="deliverable reveal">
+        <span>08</span>
+        <div>
+          <h3>Testing &amp; Turnover</h3>
+          <p>
+            Workflow testing, launch checks, documentation,
+            credentials handover, and practical system guidance.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     PRICING
+====================================================== -->
+
+<section
+  class="sales-dark"
+  id="pricing"
+>
+
+  <div class="wrap">
+
+    <div class="sales-head reveal">
+
+      <span class="eyebrow-tag">
+        Project investment
+      </span>
+
+      <h2>
+        Scope First.
+        Then a Clear Project Price.
+      </h2>
+
+      <p>
+        A simple landing page and a connected business system
+        are not the same project. Pricing depends on what needs
+        to be designed, developed, integrated, automated, tested,
+        and handed over.
+      </p>
+
+    </div>
+
+
+    <div class="pricing-grid">
+
+      <article class="pricing-card reveal">
+
+        <span class="pricing-label">
+          WEBSITE / FUNNEL
+        </span>
+
+        <h3>
+          Customer-Facing Build
+        </h3>
+
+        <p>
+          For businesses that primarily need a professional,
+          responsive website or funnel with a focused conversion
+          journey.
+        </p>
+
+        <ul>
+          <li>Hand-coded responsive pages</li>
+          <li>Lead capture forms</li>
+          <li>Conversion-focused customer journey</li>
+          <li>Basic integrations where required</li>
+          <li>Deployment and launch testing</li>
+        </ul>
+
+      </article>
+
+
+      <article class="pricing-card featured reveal">
+
+        <span class="pricing-label">
+          CONNECTED SYSTEM
+        </span>
+
+        <h3>
+          Website + Backend Workflow
+        </h3>
+
+        <p>
+          For businesses that need the website connected to
+          lead management, booking, follow-up, automation,
+          databases, or other operational workflows.
+        </p>
+
+        <ul>
+          <li>Everything required for the customer-facing build</li>
+          <li>CRM or structured lead database</li>
+          <li>Booking and calendar workflows</li>
+          <li>Email and follow-up automation</li>
+          <li>Backend logic and integrations</li>
+          <li>Testing and system turnover</li>
+        </ul>
+
+      </article>
+
+
+      <article class="pricing-card reveal">
+
+        <span class="pricing-label">
+          CUSTOM DEVELOPMENT
+        </span>
+
+        <h3>
+          More Complex Systems
+        </h3>
+
+        <p>
+          For projects requiring custom applications,
+          dashboards, role-based access, databases, complex
+          workflows, or functionality beyond a standard funnel.
+        </p>
+
+        <ul>
+          <li>Custom architecture</li>
+          <li>Front-end and backend development</li>
+          <li>Database design</li>
+          <li>Custom workflow logic</li>
+          <li>APIs and third-party integrations</li>
+          <li>Project-specific testing</li>
+        </ul>
+
+      </article>
+
+    </div>
+
+
+    <div class="pricing-note reveal">
+
+      <div>
+
+        <strong>
+          Not sure which one describes your project?
+        </strong>
+
+        <p>
+          That's exactly what the free AZFlow System Mapping is
+          for. We'll map the current process first and identify
+          what actually needs to be built.
+        </p>
+
+      </div>
+
+      <a
+        class="btn btn-primary"
+        href="booking.html"
+      >
+        MAP MY SYSTEM →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     PROCESS
+====================================================== -->
+
+<section
+  class="sales-light"
+  id="process"
+>
+
+  <div class="wrap">
+
+    <div class="sales-head reveal">
+
+      <span class="eyebrow-tag">
+        How we'll work
+      </span>
+
+      <h2>
+        From “This Part Is a Mess”
+        to a System You Can Actually Use.
+      </h2>
+
+      <p>
+        The project begins with your existing process—not with
+        assumptions about which software or features you should
+        buy.
+      </p>
+
+    </div>
+
+
+    <div class="process-grid">
+
+      <article class="process-card reveal">
+
+        <span>
+          01
+        </span>
+
+        <h3>
+          Map
+        </h3>
+
+        <p>
+          We identify how customers currently find you, inquire,
+          book, buy, follow up, and move through the business.
+        </p>
+
+      </article>
+
+
+      <article class="process-card reveal">
+
+        <span>
+          02
+        </span>
+
+        <h3>
+          Simplify
+        </h3>
+
+        <p>
+          We identify repetitive work, unnecessary steps,
+          disconnected tools, bottlenecks, and places where
+          information can fall through the cracks.
+        </p>
+
+      </article>
+
+
+      <article class="process-card reveal">
+
+        <span>
+          03
+        </span>
+
+        <h3>
+          Architect
+        </h3>
+
+        <p>
+          I define the pages, data, integrations, workflows,
+          automation logic, and backend requirements for the
+          approved system.
+        </p>
+
+      </article>
+
+
+      <article class="process-card reveal">
+
+        <span>
+          04
+        </span>
+
+        <h3>
+          Build &amp; Test
+        </h3>
+
+        <p>
+          I develop the system, connect the required pieces,
+          and test the important customer and business
+          workflows before launch.
+        </p>
+
+      </article>
+
+
+      <article class="process-card reveal">
+
+        <span>
+          05
+        </span>
+
+        <h3>
+          Launch &amp; Turn Over
+        </h3>
+
+        <p>
+          We launch the approved build and complete the agreed
+          turnover so you understand what you own, what you
+          manage, and how the system works.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     TOOLS / TECHNOLOGY
+====================================================== -->
+
+<section class="sales-dark">
+
+  <div class="wrap">
+
+    <div class="tools-layout">
+
+      <div class="sales-head reveal">
+
+        <span class="eyebrow-tag">
+          Technology follows the strategy
+        </span>
+
+        <h2>
+          I Don't Sell You a Tool.
+          I Choose Tools Around the Build.
+        </h2>
+
+        <p>
+          Depending on the project, I can work with custom code,
+          existing business tools, APIs, automation platforms,
+          databases, analytics, hosting services, and other
+          integrations.
+        </p>
+
+        <p>
+          The objective is not to use the largest possible tech
+          stack. It's to create a reliable stack that supports
+          the workflow without unnecessary complexity.
+        </p>
+
+      </div>
+
+
+      <div class="tool-pills reveal">
+
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Python</span>
+        <span>Django</span>
+        <span>REST APIs</span>
+        <span>Webhooks</span>
+        <span>Google Apps Script</span>
+        <span>Google Sheets</span>
+        <span>Google Calendar</span>
+        <span>GitHub</span>
+        <span>Netlify</span>
+        <span>n8n</span>
+        <span>CRM Workflows</span>
+        <span>Email Automation</span>
+        <span>Analytics</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     PORTFOLIO
+====================================================== -->
+
+<section id="work">
+
+  <div class="wrap">
+
+    <div class="work-intro reveal">
+
+      <span class="eyebrow-tag">
+        Selected work
+      </span>
+
+      <h2>
+        Systems, Websites &amp; Digital Experiences I've Built.
+      </h2>
+
+      <p>
+        Different projects require different levels of
+        development. Some focus on the customer-facing
+        experience. Others involve workflows, backend logic,
+        data, or operational systems behind the interface.
+      </p>
+
+    </div>
+
+
+    <div class="work-grid">
+
+
+      <!-- ==================================================
+           NEXCHART
+      =================================================== -->
+
+      <div class="work-card tilt reveal">
+
+        <div
+          aria-label="NexChart project gallery"
+          class="work-thumb project-gallery"
+          data-gallery
+        >
+
+          <figure class="gallery-slide active">
+
+            <img
+              alt="NexChart dashboard"
+              loading="lazy"
+              src="media/nexchart/dashboard.png"
+            />
+
+          </figure>
+
+          <figure class="gallery-slide">
+
+            <img
+              alt="NexChart pharmacy inventory request interface"
+              loading="lazy"
+              src="media/nexchart/pharmacy-request-inventory.png"
+            />
+
+          </figure>
+
+          <figure class="gallery-slide">
+
+            <video
+              aria-label="NexChart walkthrough video"
+              controls
+              preload="metadata"
+              src="media/nexchart/walkthrough.mp4"
+            ></video>
+
+          </figure>
+
+          <button
+            aria-label="Show previous NexChart file"
+            class="gallery-arrow prev"
+            type="button"
+          >
+
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+            >
+              <path d="m15 18-6-6 6-6"></path>
+            </svg>
+
+          </button>
+
+          <button
+            aria-label="Show next NexChart file"
+            class="gallery-arrow next"
+            type="button"
+          >
+
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+            >
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+
+          </button>
+
+          <span
+            aria-live="polite"
+            class="gallery-count"
+          >
+            1 / 3
+          </span>
+
+        </div>
+
+        <div class="work-body">
+
+          <span class="tag">
+            Healthcare Ops Platform
+          </span>
+
+          <h3>
+            NexChart
+          </h3>
+
+          <p>
+            <strong>Problem:</strong>
+            Healthcare teams often rely on disconnected records
+            and workflows that create delays, missed information,
+            and unnecessary manual work.
+          </p>
+
+          <p>
+            <strong>What I built:</strong>
+            A configurable healthcare operations platform covering
+            patient records, clinical workflows, referrals,
+            pharmacy processes, reporting, and facility-level
+            controls.
+          </p>
+
+          <p>
+            <strong>Built to support:</strong>
+            Clearer workflows, more organized records, and a
+            system that can adapt to different healthcare
+            facilities instead of forcing one fixed process.
+          </p>
+
+          <p class="project-disclaimer personal-project">
+
+            <strong>
+              Personal SaaS project:
+            </strong>
+
+            NexChart is my independently conceived and developed
+            healthcare operations platform. I am building it as my
+            own software product based on problems I have
+            experienced across different healthcare settings.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- ==================================================
+           DR. JACK DATING
+      =================================================== -->
+
+      <div class="work-card tilt reveal">
+
+        <div
+          aria-label="Dr. Jack Dating project gallery"
+          class="work-thumb project-gallery"
+          data-gallery
+        >
+
+          <figure class="gallery-slide active">
+            <img
+              alt="Dr. Jack Dating homepage"
+              loading="lazy"
+              src="media/dr-jack-dating/homepage.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <img
+              alt="Dr. Jack Dating about page"
+              loading="lazy"
+              src="media/dr-jack-dating/about-page.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <img
+              alt="Dr. Jack Dating booking page"
+              loading="lazy"
+              src="media/dr-jack-dating/booking-page.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <img
+              alt="Dr. Jack Dating email automation"
+              loading="lazy"
+              src="media/dr-jack-dating/email-automation.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <img
+              alt="Dr. Jack Dating thank-you page"
+              loading="lazy"
+              src="media/dr-jack-dating/thank-you-page.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <video
+              aria-label="Dr. Jack Dating walkthrough video"
+              controls
+              preload="metadata"
+              src="media/dr-jack-dating/walkthrough.mp4"
+            ></video>
+          </figure>
+
+          <button
+            aria-label="Show previous Dr. Jack Dating file"
+            class="gallery-arrow prev"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+            >
+              <path d="m15 18-6-6 6-6"></path>
+            </svg>
+          </button>
+
+          <button
+            aria-label="Show next Dr. Jack Dating file"
+            class="gallery-arrow next"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+            >
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </button>
+
+          <span
+            aria-live="polite"
+            class="gallery-count"
+          >
+            1 / 6
+          </span>
+
+        </div>
+
+        <div class="work-body">
+
+          <span class="tag">
+            Coaching &amp; Matchmaking Funnel
+          </span>
+
+          <h3>
+            Dr. Jack Dating
+          </h3>
+
+          <p>
+            <strong>Problem:</strong>
+            A professional service business needs more than an
+            attractive website when visitors arrive with
+            different levels of readiness and different reasons
+            for seeking help.
+          </p>
+
+          <p>
+            <strong>What I built:</strong>
+            A customer-facing funnel experience designed around
+            dating coaching, matchmaking, marriage coaching,
+            educational content, trust-building, consultation
+            booking, and follow-up.
+          </p>
+
+          <p>
+            <strong>Built to support:</strong>
+            A clearer path from discovering Dr. Jack's expertise
+            to understanding the available support and taking
+            the next appropriate action.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- ==================================================
+           SOLARPEAK
+      =================================================== -->
+
+      <div class="work-card tilt reveal">
+
+        <div
+          aria-label="SolarPeak project gallery"
+          class="work-thumb project-gallery"
+          data-gallery
+        >
+
+          <figure class="gallery-slide active">
+
+            <video
+              aria-label="SolarPeak walkthrough video"
+              controls
+              preload="metadata"
+              src="media/solarpeak/walkthrough.mp4"
+            ></video>
+
+          </figure>
+
+          <span
+            aria-live="polite"
+            class="gallery-count"
+          >
+            1 / 1
+          </span>
+
+        </div>
+
+        <div class="work-body">
+
+          <span class="tag">
+            Solar Lead Generation
+          </span>
+
+          <h3>
+            SolarPeak
+          </h3>
+
+          <p>
+            <strong>Problem:</strong>
+            High-consideration home services need to turn
+            interest into useful lead information without
+            overwhelming the visitor.
+          </p>
+
+          <p>
+            <strong>What I built:</strong>
+            A conversion-focused solar experience designed to
+            communicate the offer clearly and guide potential
+            customers toward the next step.
+          </p>
+
+          <p>
+            <strong>Built to support:</strong>
+            Lead generation, qualification, clearer customer
+            intent, and a smoother path toward a solar
+            consultation or quote.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- ==================================================
+           OUTSTANDING COMPLIANCE
+      =================================================== -->
+
+      <div class="work-card tilt reveal">
+
+        <div
+          aria-label="Outstanding Compliance project gallery"
+          class="work-thumb project-gallery"
+          data-gallery
+        >
+
+          <figure class="gallery-slide active">
+            <img
+              alt="Outstanding Compliance homepage"
+              loading="lazy"
+              src="media/outstanding-compliance/homepage.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <img
+              alt="Outstanding Compliance about page"
+              loading="lazy"
+              src="media/outstanding-compliance/about-page.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <img
+              alt="Outstanding Compliance services page"
+              loading="lazy"
+              src="media/outstanding-compliance/services-page.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <img
+              alt="Outstanding Compliance compliance suite page"
+              loading="lazy"
+              src="media/outstanding-compliance/compliance-suite-page.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <img
+              alt="Outstanding Compliance policy library page"
+              loading="lazy"
+              src="media/outstanding-compliance/policy-library-page.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <img
+              alt="Outstanding Compliance resources page"
+              loading="lazy"
+              src="media/outstanding-compliance/resources-page.png"
+            />
+          </figure>
+
+          <figure class="gallery-slide">
+            <video
+              aria-label="Outstanding Compliance walkthrough video"
+              controls
+              preload="metadata"
+              src="media/outstanding-compliance/walkthrough.mp4"
+            ></video>
+          </figure>
+
+          <button
+            aria-label="Show previous Outstanding Compliance file"
+            class="gallery-arrow prev"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+            >
+              <path d="m15 18-6-6 6-6"></path>
+            </svg>
+          </button>
+
+          <button
+            aria-label="Show next Outstanding Compliance file"
+            class="gallery-arrow next"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+            >
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </button>
+
+          <span
+            aria-live="polite"
+            class="gallery-count"
+          >
+            1 / 7
+          </span>
+
+        </div>
+
+        <div class="work-body">
+
+          <span class="tag">
+            Compliance Website
+          </span>
+
+          <h3>
+            Outstanding Compliance
+          </h3>
+
+          <p>
+            <strong>Problem:</strong>
+            Professional compliance services can become difficult
+            to navigate when the offer includes multiple
+            services, resources, policies, and business
+            requirements.
+          </p>
+
+          <p>
+            <strong>What I built:</strong>
+            A structured website experience organizing the
+            company's services, compliance suite, policy
+            resources, and supporting information into a clearer
+            customer journey.
+          </p>
+
+          <p>
+            <strong>Built to support:</strong>
+            Professional positioning, easier navigation, clearer
+            service discovery, and stronger paths toward
+            inquiry.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     FAQ
+====================================================== -->
+
+<section id="faq">
+
+  <div class="wrap">
+
+    <div class="faq-head reveal">
+
+      <span class="eyebrow-tag">
+        Frequently asked questions
+      </span>
+
+      <h2>
+        Before We Map Your System.
+      </h2>
+
+      <p>
+        You don't need to know the technical answer before
+        reaching out. These are some of the questions business
+        owners commonly have before starting.
+      </p>
+
+    </div>
+
+
+    <div class="faq-list">
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            I already have a website. Do we need to rebuild everything?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Not necessarily. If the existing website is working
+            well visually and technically, we can first identify
+            what is missing behind it. The project may involve
+            improving specific pages, adding a funnel, connecting
+            forms, building a CRM workflow, adding booking, or
+            automating what happens after an inquiry.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            I already have a Figma, Canva design, or designer. Can you work from that?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes. If the visual direction is already approved, I
+            can translate the design into responsive code and
+            connect the required forms, backend functionality,
+            integrations, and workflows. The design does not
+            need to be recreated simply because the final build
+            is hand-coded.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            I already have a CRM or Calendly. Can we keep it?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Often, yes. Existing tools do not automatically need
+            to be replaced. During system mapping, we can
+            determine whether they still fit the workflow and
+            whether they can be connected to the rest of the
+            system through supported integrations, APIs,
+            webhooks, or another appropriate method.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            Do I have to stop using SaaS?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No. The goal is not to remove SaaS simply because
+            custom code is available. Some SaaS products are
+            excellent at what they do. The goal is to avoid
+            paying for unnecessary all-in-one platforms when a
+            more focused combination of custom development and
+            existing tools makes better sense for the project.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            Does hand-coded automatically mean cheaper?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No. Custom development should not be presented as
+            automatically cheaper. Project cost depends on the
+            scope, complexity, integrations, backend logic,
+            testing requirements, and ongoing services involved.
+            The advantage is control: the build can be designed
+            around the requirements instead of being limited to
+            a prebuilt template or package.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            Does hand-coded mean there are no recurring costs?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No. A hand-coded system can reduce dependence on
+            expensive all-in-one subscriptions, but websites and
+            systems may still require domain registration,
+            hosting, email services, databases, APIs, automation
+            services, third-party tools, maintenance, or other
+            infrastructure. Any expected recurring services
+            should be identified during project planning.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            Can you automate everything?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Not everything should be automated. Some decisions
+            still need human judgment, approval, or direct
+            communication. The goal is to automate repetitive,
+            predictable steps where doing so improves the
+            workflow without removing important human control.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            Can you guarantee more sales or a specific conversion rate?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No. A better system can improve the customer journey,
+            reduce friction, improve follow-up consistency, and
+            give the business better operational visibility.
+            Sales and conversion results are also affected by
+            the offer, traffic quality, pricing, reputation,
+            market conditions, sales process, and many other
+            factors outside the website itself.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            I'm a small business. Do I need all of this?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Probably not all of it—and that is the point of
+            mapping the system first. A small service business
+            may only need a focused website, lead capture,
+            organized inquiries, booking, and a few important
+            follow-ups. The system should match the business,
+            not overwhelm it.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item reveal">
+
+        <button
+          class="faq-q"
+          type="button"
+        >
+          <span>
+            What if I don't know what should be automated?
+          </span>
+
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            You do not need to know. Tell me what currently
+            happens from the moment someone discovers your
+            business until they become a customer—and which
+            parts require repeated manual work. We can map the
+            process and identify where automation or custom
+            development would actually be useful.
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     FINAL CTA
+====================================================== -->
+
+<section id="cta">
+
+  <div class="wrap reveal">
 
     <span class="eyebrow-tag">
-      Getting visitors, inquiries, or interest… but still doing everything after the click manually?
+      Free AZFlow System Mapping
     </span>
 
-    <h1>
-      Your Website May Not Need Another Redesign.
-      <span style="color:var(--cyan)">
-        It May Need a Better System Behind It.
-      </span>
-    </h1>
+    <h2>
+      Your Business Doesn't Need Another Website That Just Sits There.
+    </h2>
 
-    <p class="lead">
-      Someone finds your business.
-      They visit your page.
-      They read your offer.
-      Maybe they fill out a form, send an inquiry, or want to book.
-      <strong>And then… what happens?</strong>
+    <p>
+      Maybe your website looks good but doesn't generate enough
+      action.
+      Maybe inquiries arrive, but everything afterward is manual.
+      Maybe leads are scattered across email, spreadsheets, DMs,
+      and calendars.
+      Maybe bookings still require too much back-and-forth.
     </p>
 
-    <p class="lead">
-      AZFlow Studio builds the
+    <p>
       <strong>
-        website, funnel, and systems behind the click
+        You don't have to know the technical solution yet.
       </strong>
-      so your customer journey keeps moving even when you're busy doing the actual work.
+      Start with the business problem.
     </p>
 
-    <a
-      class="btn btn-primary"
-      href="booking.html"
-    >
-      MAP MY SYSTEM →
-    </a>
+    <p>
+      Tell me what happens when someone finds you, what you want
+      them to do, what currently happens after they take action,
+      what your team still does manually, what tools you already
+      use, and where leads or tasks are getting stuck.
+    </p>
+
+    <h3>
+      Let's Build the System Behind the Click.
+    </h3>
 
     <div class="priority-callout">
 
@@ -1713,199 +5086,20 @@ footer .fine{
       <div>
 
         <strong>
-          Priority Project Queue
+          Want priority for the next available AZFlow build slot?
         </strong>
 
         <p>
-          Map your system now to be considered for the next available AZFlow build slot.
+          I intentionally keep my active project queue small so
+          I can stay directly involved from system mapping through
+          testing and launch. If your project is a good fit and
+          you're ready to move forward, it can receive priority
+          consideration for the next available opening.
         </p>
 
       </div>
 
     </div>
-
-  </div>
-
-  <!-- 3D HERO GRAPHIC -->
-
-  <div class="azc-stage">
-
-    <div class="azc-assembly">
-
-      <div class="azc-whole-funnel">
-
-        <div class="azc-ring azc-r1"></div>
-        <div class="azc-ring azc-r2"></div>
-        <div class="azc-ring azc-r3"></div>
-        <div class="azc-ring azc-r4"></div>
-
-        <div class="azc-anchor"></div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     SELF-RECOGNITION / PAIN
-     ======================================================== -->
-
-<section id="pain">
-
-<div class="wrap">
-
-  <div class="sales-head reveal">
-
-    <span class="eyebrow-tag">
-      The real reason things still feel manual
-    </span>
-
-    <h2>
-      Maybe You've Been Thinking Something Like This...
-    </h2>
-
-    <p>
-      You may not need another tool.
-      You may have built the individual pieces before building the actual journey.
-    </p>
-
-  </div>
-
-  <div class="pain-grid">
-
-    <div class="pain-card reveal">
-      <p>
-        “I have a website, but it isn't bringing me enough leads, bookings, or clients.”
-      </p>
-    </div>
-
-    <div class="pain-card reveal">
-      <p>
-        “People visit my page, but too many leave without taking the next step.”
-      </p>
-    </div>
-
-    <div class="pain-card reveal">
-      <p>
-        “Every new inquiry creates another manual task — reply, copy their details, send the booking link, follow up, update the spreadsheet.”
-      </p>
-    </div>
-
-    <div class="pain-card reveal">
-      <p>
-        “I'm tired of checking different tools just to figure out what happened to one lead.”
-      </p>
-    </div>
-
-    <div class="pain-card reveal">
-      <p>
-        “I need leads captured and organized — not just emailed to me.”
-      </p>
-    </div>
-
-    <div class="pain-card reveal">
-      <p>
-        “I want a system that keeps things moving even when I'm busy, serving clients, or offline.”
-      </p>
-    </div>
-
-  </div>
-
-  <div class="sales-close reveal">
-
-    <strong>
-      The real reason you're still doing so much manually?
-    </strong>
-
-    <p>
-      You may have a website, form, spreadsheet, calendar, email account, CRM, and automation tools — but they don't necessarily work
-      <strong>together</strong>.
-      So you still end up being the connection between them.
-    </p>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     REAL PROBLEM
-     ======================================================== -->
-
-<section
-  class="sales-dark"
-  id="real-problem"
->
-
-<div class="wrap">
-
-  <div class="sales-head reveal">
-
-    <span class="eyebrow-tag">
-      The real problem
-    </span>
-
-    <h2>
-      Your Business Is Depending on You to Carry Information From One Step to the Next.
-    </h2>
-
-    <p>
-      When business gets busy, that's when things start slipping.
-      An inquiry gets buried.
-      A follow-up happens late.
-      Someone forgets to update the CRM.
-      A booked lead never gets reminded.
-      A prospect says “I'll think about it,” and nobody follows up.
-    </p>
-
-    <p>
-      <strong>
-        Because the system stops when the human stops.
-      </strong>
-    </p>
-
-  </div>
-
-  <div class="manual-flow reveal">
-
-    <div>CAPTURE</div>
-    <span>→</span>
-
-    <div>RECORD</div>
-    <span>→</span>
-
-    <div>QUALIFY</div>
-    <span>→</span>
-
-    <div>RESPOND</div>
-    <span>→</span>
-
-    <div>BOOK</div>
-    <span>→</span>
-
-    <div>FOLLOW UP</div>
-    <span>→</span>
-
-    <div>TRACK</div>
-
-  </div>
-
-  <div class="sales-close reveal">
-
-    <strong>
-      Your Team Should Run the Business.
-      The System Should Handle the Repetition.
-    </strong>
-
-    <p>
-      People step in where human judgment, expertise, and conversation actually matter.
-    </p>
 
     <a
       class="btn btn-primary"
@@ -1914,2494 +5108,592 @@ footer .fine{
       MAP MY SYSTEM →
     </a>
 
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     OLD WAY VS CONNECTED WAY
-     ======================================================== -->
-
-<section id="journey">
-
-<div class="wrap">
-
-  <div class="sales-head reveal">
-
-    <span class="eyebrow-tag">
-      The old way vs. the connected way
-    </span>
-
-    <h2>
-      Most Websites Stop at “Submit.”
-    </h2>
-
-    <p>
-      A visitor arrives, looks around, submits an inquiry — and then someone has to manually carry that lead through the rest of the process.
-    </p>
-
-  </div>
-
-  <div class="journey-compare">
-
-    <article class="journey-card reveal">
-
-      <span class="journey-label">
-        THE DISCONNECTED WAY
-      </span>
-
-      <div class="journey-chain">
-
-        <span>Visitor</span>
-        <b>→</b>
-
-        <span>Form</span>
-        <b>→</b>
-
-        <span>Inbox</span>
-        <b>→</b>
-
-        <span>Manual Reply</span>
-        <b>→</b>
-
-        <span>Manual Updates</span>
-        <b>→</b>
-
-        <span>Manual Follow-Up</span>
-
-      </div>
-
-      <p>
-        If nobody completes one of those steps, the customer journey stops.
-      </p>
-
-    </article>
-
-    <article class="journey-card connected reveal">
-
-      <span class="journey-label">
-        THE CONNECTED WAY
-      </span>
-
-      <div class="journey-chain">
-
-        <span>Visitor</span>
-        <b>→</b>
-
-        <span>Conversion-Focused Page</span>
-        <b>→</b>
-
-        <span>Lead Capture</span>
-        <b>→</b>
-
-        <span>Qualification</span>
-        <b>→</b>
-
-        <span>CRM</span>
-        <b>→</b>
-
-        <span>Response</span>
-        <b>→</b>
-
-        <span>Booking</span>
-        <b>→</b>
-
-        <span>Follow-Up</span>
-        <b>→</b>
-
-        <span>Human Conversation</span>
-        <b>→</b>
-
-        <span>Client</span>
-
-      </div>
-
-      <p>
-        <strong>
-          Your Website Should Have a Job.
-        </strong>
-      </p>
-
-    </article>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     CONNECTED SOLUTION
-     ======================================================== -->
-
-<section
-  class="sales-dark"
-  id="connected-solution"
->
-
-<div class="wrap">
-
-  <div class="sales-head reveal">
-
-    <span class="eyebrow-tag">
-      The AZFlow approach
-    </span>
-
-    <h2>
-      That's Why I Don't Just Build Websites.
-      I Build Connected Customer Journeys.
-    </h2>
-
-    <p>
-      Your business may not need every feature below.
-      The point is to determine which pieces actually support the journey you need.
-    </p>
-
-  </div>
-
-  <div class="system-grid">
-
-    <article>
-
-      <span>01</span>
-
-      <h3>
-        Website / Funnel
-      </h3>
-
-      <p>
-        A customer-facing experience built around your audience, offer, message, and desired action.
-      </p>
-
-    </article>
-
-    <article>
-
-      <span>02</span>
-
-      <h3>
-        Lead Capture &amp; Qualification
-      </h3>
-
-      <p>
-        Collect useful information and route different leads toward the right next step.
-      </p>
-
-    </article>
-
-    <article>
-
-      <span>03</span>
-
-      <h3>
-        CRM / Database
-      </h3>
-
-      <p>
-        Record leads, organize details, track status, source, ownership, and interaction history.
-      </p>
-
-    </article>
-
-    <article>
-
-      <span>04</span>
-
-      <h3>
-        Email &amp; Follow-Up
-      </h3>
-
-      <p>
-        Automate acknowledgments, confirmations, reminders, follow-ups, no-show messages, nurture, and onboarding.
-      </p>
-
-    </article>
-
-    <article>
-
-      <span>05</span>
-
-      <h3>
-        Booking / Calendar &amp; Pipeline
-      </h3>
-
-      <p>
-        Move qualified prospects toward appointments and give the business a clearer view of what needs attention.
-      </p>
-
-    </article>
-
-    <article>
-
-      <span>06</span>
-
-      <h3>
-        Backend, Integrations &amp; Tracking
-      </h3>
-
-      <p>
-        Databases, APIs, business logic, dashboards, existing tools, analytics, and conversion tracking.
-      </p>
-
-    </article>
-
-  </div>
-
-</div>
-
-</section>
-<!-- ========================================================
-     HAND-CODED DIFFERENCE
-     ======================================================== -->
-
-<section id="hand-coded">
-
-<div class="wrap">
-
-  <div class="sales-head reveal">
-
-    <span class="eyebrow-tag">
-      The hand-coded difference
-    </span>
-
-    <h2>
-      The Expensive Part Isn't Always the Website.
-      Sometimes It's Everything You Keep Paying For Behind It.
-    </h2>
-
-    <p>
-      One subscription for the website.
-      Another for the funnel.
-      Another for forms, CRM, scheduling, email automation,
-      workflows, analytics, and another just to connect
-      everything together.
+    <p class="cta-microcopy">
+      Free 20-minute System Mapping · No commitment required
     </p>
 
     <p>
       <strong>
-        You're not paying for one system.
-        You're maintaining a stack of subscriptions just to
-        keep the customer journey running.
+        I Don't Just Build the Page Your Customers See. I Build What Happens After They Click.
       </strong>
     </p>
 
   </div>
 
-  <div class="handcoded-grid">
-
-    <div class="hc-card reveal">
-
-      <h3>
-        Hand-coded does NOT mean “replace everything.”
-      </h3>
-
-      <p>
-        Before building anything, I look at what your business
-        actually needs, what already works, what should stay,
-        what can be integrated, what causes unnecessary manual
-        work, and what should remain human.
-      </p>
-
-    </div>
-
-    <div class="hc-card reveal">
-
-      <h3>
-        Build the most sensible system for the business.
-      </h3>
-
-      <p>
-        That may mean a custom website, form, database or CRM,
-        automation logic, email, booking, calendar,
-        notifications, and follow-up — without automatically
-        forcing a premium all-in-one SaaS platform into every
-        step.
-      </p>
-
-    </div>
-
-  </div>
-
-  <div class="sales-close reveal">
-
-    <strong>
-      Fewer unnecessary subscriptions.
-      More control.
-      More customization.
-      Less dependence on one platform.
-    </strong>
-
-    <p>
-      If an existing SaaS tool genuinely makes more sense,
-      we use it. The goal isn't “SaaS bad. Code good.”
-      The goal is the right architecture for the business.
-    </p>
-
-  </div>
-
-</div>
-
 </section>
 
-<!-- ========================================================
-     SERVICES / WHAT DO YOU NEED?
-     ======================================================== -->
 
-<section id="services">
+</main>
 
-<div class="wrap">
 
-  <div class="section-head reveal">
-
-    <span class="eyebrow-tag">
-      What do you actually need?
-    </span>
-
-    <h2>
-      You Don't Have to Know What Kind of Developer You Need.
-    </h2>
-
-    <p>
-      Just tell me where your business is right now.
-      We'll map the journey first and determine what actually
-      needs to be built, connected, improved, or automated.
-    </p>
-
-  </div>
-
-  <div class="services-grid">
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “I only have the idea.”
-      </span>
-
-      <h3>
-        Start From the Beginning
-      </h3>
-
-      <p>
-        We define the offer, audience, customer journey,
-        website structure, functionality, and what needs to
-        happen behind the pages.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “I already have the branding and content.”
-      </span>
-
-      <h3>
-        UI + Website Development
-      </h3>
-
-      <p>
-        Turn your existing assets into a responsive,
-        functioning digital experience.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “My designer already gave me the Figma.”
-      </span>
-
-      <h3>
-        Figma-to-Code Development
-      </h3>
-
-      <p>
-        Turn the approved design into a responsive,
-        functioning website while preserving the intended
-        visual direction.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “I designed something in Canva or made a mockup.”
-      </span>
-
-      <h3>
-        Design-to-Code Development
-      </h3>
-
-      <p>
-        Turn your visual concept into an actual working site
-        instead of leaving it as a static design.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “My frontend already exists.”
-      </span>
-
-      <h3>
-        Backend Development
-      </h3>
-
-      <p>
-        Build or connect databases, authentication, APIs,
-        business logic, admin functionality, and the systems
-        needed behind the interface.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “My website works. Everything after the form is manual.”
-      </span>
-
-      <h3>
-        Automation &amp; Integration
-      </h3>
-
-      <p>
-        Connect the customer journey from lead capture to CRM,
-        qualification, email, booking, notifications, and
-        follow-up.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “We get leads, but keeping track of them is messy.”
-      </span>
-
-      <h3>
-        Lead System &amp; CRM Workflow
-      </h3>
-
-      <p>
-        Organize lead capture, pipeline stages, statuses,
-        ownership, follow-up, and reporting so information
-        doesn't live across disconnected places.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “Booking still requires too much back-and-forth.”
-      </span>
-
-      <h3>
-        Booking &amp; Calendar Workflow
-      </h3>
-
-      <p>
-        Create a clearer path from qualified inquiry to
-        scheduling, confirmation, calendar events, reminders,
-        and follow-up.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “My current website looks fine, but it doesn't do enough.”
-      </span>
-
-      <h3>
-        Improve the Existing Website
-      </h3>
-
-      <p>
-        Keep what already works while improving the customer
-        journey, conversion path, functionality, backend, or
-        integrations.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “I already have tools, but they don't work together.”
-      </span>
-
-      <h3>
-        Connect My Systems
-      </h3>
-
-      <p>
-        Evaluate your existing tools and connect the pieces
-        that should exchange information automatically.
-      </p>
-
-    </div>
-
-    <div class="service-card tilt reveal">
-
-      <span class="service-num">
-        “I don't know what I need. I just know this process is too manual.”
-      </span>
-
-      <h3>
-        Start With the Manual Process
-      </h3>
-
-      <p>
-        Tell me what currently happens from the moment a lead
-        comes in. We'll identify the gaps, repeated work, and
-        technical opportunities from there.
-      </p>
-
-    </div>
-
-  </div>
-
-  <div class="section-cta reveal">
-
-    <p>
-      <strong>
-        Not sure which one you need?
-      </strong>
-      You don't have to diagnose the technical solution yourself.
-    </p>
-
-    <a
-      class="btn btn-primary"
-      href="booking.html"
-    >
-      MAP MY SYSTEM →
-    </a>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     DELIVERABLES
-     ======================================================== -->
-
-<section
-  class="sales-dark"
-  id="deliverables"
->
-
-<div class="wrap">
-
-  <div class="sales-head reveal">
-
-    <span class="eyebrow-tag">
-      What you walk away with
-    </span>
-
-    <h2>
-      Not Just Files.
-      A Working Business Asset.
-    </h2>
-
-    <p>
-      Depending on your project scope, your system may include
-      the pieces needed to support one connected customer
-      journey.
-    </p>
-
-  </div>
-
-  <div class="deliverables-grid">
-
-    <span>Responsive custom website or funnel</span>
-    <span>Clear customer journey</span>
-    <span>Conversion-focused CTAs</span>
-    <span>Lead-capture forms</span>
-
-    <span>Qualification rules</span>
-    <span>CRM or database</span>
-    <span>Pipeline stages</span>
-    <span>Automated confirmations</span>
-
-    <span>Automated follow-up</span>
-    <span>Booking/calendar integration</span>
-    <span>Appointment reminders</span>
-    <span>Team notifications</span>
-
-    <span>Backend functionality</span>
-    <span>API integrations</span>
-    <span>Admin dashboard</span>
-    <span>Tracking and analytics</span>
-
-    <span>Tested customer journeys</span>
-    <span>Live deployment</span>
-    <span>Documentation</span>
-    <span>Turnover / handoff</span>
-
-  </div>
-
-  <div class="sales-close reveal">
-
-    <strong>
-      Everything should support the same journey.
-    </strong>
-
-    <p>
-      Not feel like separate features taped together afterward.
-    </p>
-
-    <a
-      class="btn btn-primary"
-      href="booking.html"
-    >
-      MAP MY SYSTEM →
-    </a>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     PRICING
-     ======================================================== -->
-
-<section id="pricing">
-
-<div class="wrap">
-
-  <div class="head reveal">
-
-    <span class="eyebrow-tag">
-      Packages &amp; Pricing
-    </span>
-
-    <h2>
-      Start with the business problem — not a package.
-    </h2>
-
-    <p>
-      Hand-coded solutions built around your business.
-      Every project is scoped before development, so you only
-      pay for the features and integrations your business
-      actually needs.
-    </p>
-
-  </div>
-
-  <div class="pricing-grid">
-
-    <!-- STARTER -->
-
-    <article class="price-card reveal">
-
-      <h3>
-        Starter Funnel
-      </h3>
-
-      <div class="price-label">
-        Starting at
-      </div>
-
-      <div class="price-main">
-        ₱12,500
-      </div>
-
-      <div class="price-currencies">
-        $200 · €175 · £150 · A$280
-      </div>
-
-      <p class="price-desc">
-        For businesses with one clear offer that need a focused
-        page to turn visitors into leads or inquiries.
-      </p>
-
-      <ul class="price-features">
-
-        <li>
-          Hand-coded funnel or landing page
-        </li>
-
-        <li>
-          Mobile-responsive design
-        </li>
-
-        <li>
-          Lead capture or contact form
-        </li>
-
-        <li>
-          CTA setup
-        </li>
-
-        <li>
-          Thank-you page or section
-        </li>
-
-        <li>
-          Basic on-page SEO
-        </li>
-
-        <li>
-          Basic form integration
-        </li>
-
-        <li>
-          Deployment assistance
-        </li>
-
-      </ul>
-
-    </article>
-
-    <!-- GROWTH -->
-
-    <article class="price-card featured reveal">
-
-      <span class="price-badge">
-        Recommended
-      </span>
-
-      <h3>
-        Growth Funnel
-      </h3>
-
-      <div class="price-label">
-        Starting at
-      </div>
-
-      <div class="price-main">
-        ₱25,000
-      </div>
-
-      <div class="price-currencies">
-        $400 · €350 · £300 · A$560
-      </div>
-
-      <p class="price-desc">
-        For businesses that need more than a landing page,
-        with booking and connected lead automation.
-      </p>
-
-      <ul class="price-features">
-
-        <li>
-          Everything in Starter Funnel
-        </li>
-
-        <li>
-          Booking or calendar integration
-        </li>
-
-        <li>
-          CRM and lead collection
-        </li>
-
-        <li>
-          Confirmation email automation
-        </li>
-
-        <li>
-          Basic follow-up email sequence
-        </li>
-
-        <li>
-          Lead status tracking
-        </li>
-
-        <li>
-          Basic workflow automation
-        </li>
-
-      </ul>
-
-    </article>
-
-    <!-- CUSTOM -->
-
-    <article class="price-card reveal">
-
-      <h3>
-        Custom Funnel, Website + Automation
-      </h3>
-
-      <div class="price-label">
-        Starting at
-      </div>
-
-      <div class="price-main">
-        ₱40,000
-      </div>
-
-      <div class="price-currencies">
-        $650 · €550 · £475 · A$900
-      </div>
-
-      <p class="price-desc">
-        For businesses that need a more advanced funnel,
-        multi-page website, or connected business automation
-        system.
-      </p>
-
-      <ul class="price-features">
-
-        <li>
-          Advanced funnel or multi-page website
-        </li>
-
-        <li>
-          Custom forms and lead workflows
-        </li>
-
-        <li>
-          CRM integration
-        </li>
-
-        <li>
-          Booking or calendar integration
-        </li>
-
-        <li>
-          Email automation
-        </li>
-
-        <li>
-          Follow-up or nurture sequences
-        </li>
-
-        <li>
-          Lead management workflows
-        </li>
-
-        <li>
-          Custom integrations based on scope
-        </li>
-
-        <li>
-          Basic on-page SEO
-        </li>
-
-        <li>
-          Deployment assistance
-        </li>
-
-      </ul>
-
-    </article>
-
-  </div>
-
-  <p class="pricing-note reveal">
-
-    <strong>
-      Pricing note:
-    </strong>
-
-    Prices shown are starting prices.
-    Final pricing depends on project scope, number of pages,
-    integrations, automation requirements, and complexity.
-
-    Third-party subscriptions, domain, hosting, paid advertising,
-    and ongoing maintenance are not included unless specified
-    in the project quote.
-
-    International prices are fixed package prices and are not
-    live currency conversions.
-
-  </p>
-
-  <div class="pricing-cta reveal">
-
-    <p class="mapping-note">
-
-      <strong>
-        Start with the system, not the package.
-      </strong>
-
-      Map your current journey first so we can determine what
-      actually needs to be built, connected, improved, or
-      automated.
-
-    </p>
-
-    <a
-      class="btn btn-primary"
-      href="booking.html"
-    >
-      MAP MY SYSTEM →
-    </a>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     PROCESS
-     ======================================================== -->
-
-<section id="process">
-
-<div class="wrap">
-
-  <div class="head reveal">
-
-    <h2>
-      From “Here's What's Not Working” to “It's Live.”
-    </h2>
-
-    <p>
-      You'll always know where things stand.
-    </p>
-
-  </div>
-
-  <div class="timeline">
-
-    <div class="tl-step reveal">
-
-      <div class="tl-dot">
-        1
-      </div>
-
-      <h3>
-        System Mapping
-      </h3>
-
-      <p>
-        We start with your offer, audience, objectives,
-        current tools, workflow, lead sources, manual tasks,
-        and where things are getting stuck.
-      </p>
-
-    </div>
-
-    <div class="tl-step reveal">
-
-      <div class="tl-dot">
-        2
-      </div>
-
-      <h3>
-        Journey Mapping
-      </h3>
-
-      <p>
-        We map what should happen from visitor → lead →
-        qualified prospect → booking → customer.
-      </p>
-
-    </div>
-
-    <div class="tl-step reveal">
-
-      <div class="tl-dot">
-        3
-      </div>
-
-      <h3>
-        System Design
-      </h3>
-
-      <p>
-        We determine what needs to be built, what should stay,
-        what should integrate, what should automate, and what
-        should remain human.
-      </p>
-
-    </div>
-
-    <div class="tl-step reveal">
-
-      <div class="tl-dot">
-        4
-      </div>
-
-      <h3>
-        Build
-      </h3>
-
-      <p>
-        We build the agreed frontend, backend, forms,
-        database, dashboards, APIs, integrations, and
-        business logic.
-      </p>
-
-    </div>
-
-    <div class="tl-step reveal">
-
-      <div class="tl-dot">
-        5
-      </div>
-
-      <h3>
-        Automate, Test &amp; Launch
-      </h3>
-
-      <p>
-        We connect the workflows, test the complete customer
-        journey, launch, and use real activity to guide future
-        improvements.
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     TOOLS
-     ======================================================== -->
-
-<section id="tools">
-
-<div class="wrap reveal">
-
-  <h2>
-    What I build it with
-  </h2>
-
-  <p class="sub">
-    I use the stack that fits the project — from custom
-    frontend and backend development to deployment, hosting,
-    automation, CRM workflows, email, calendars, and
-    integrations.
-  </p>
-
-  <div class="tool-pills">
-
-    <span>VS Code</span>
-    <span>GitHub</span>
-    <span>Netlify</span>
-    <span>Vercel</span>
-    <span>Render</span>
-    <span>Railway</span>
-    <span>DigitalOcean</span>
-    <span>WordPress</span>
-    <span>HTML / CSS / JS</span>
-    <span>Canva</span>
-    <span>Systeme.io</span>
-    <span>Google Sheets</span>
-    <span>Google Apps Script</span>
-    <span>Gmail</span>
-    <span>Google Drive</span>
-    <span>Google Calendar</span>
-    <span>AI-assisted coding</span>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     PORTFOLIO
-     ======================================================== -->
-
-<section id="work">
-
-<div class="wrap">
-
-  <div class="head reveal">
-
-    <h2>
-      Don't Just Look at Screenshots.
-      Look at What the System Actually Does.
-    </h2>
-
-    <p>
-      Hand-coded funnels, websites, and working systems built
-      end to end. Explore the screenshots and walkthrough
-      videos below to see how each project was designed,
-      built, and automated.
-    </p>
-
-  </div>
-
-  <div class="work-grid">
-
-    <!-- ====================================================
-         NEXCHART
-         ==================================================== -->
-
-    <div class="work-card tilt reveal">
-
-      <div
-        aria-label="NexChart project gallery"
-        class="work-thumb project-gallery"
-        data-gallery
-      >
-
-        <figure class="gallery-slide active">
-
-          <img
-            alt="NexChart dashboard"
-            loading="lazy"
-            src="media/nexchart/dashboard.png"
-          />
-
-        </figure>
-
-        <figure class="gallery-slide">
-
-          <img
-            alt="NexChart pharmacy inventory request interface"
-            loading="lazy"
-            src="media/nexchart/pharmacy-request-inventory.png"
-          />
-
-        </figure>
-
-        <figure class="gallery-slide">
-
-          <video
-            aria-label="NexChart walkthrough video"
-            controls
-            preload="metadata"
-            src="media/nexchart/walkthrough.mp4"
-          ></video>
-
-        </figure>
-
-        <button
-          aria-label="Show previous NexChart file"
-          class="gallery-arrow prev"
-          type="button"
-        >
-
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-          >
-            <path d="m15 18-6-6 6-6"></path>
-          </svg>
-
-        </button>
-
-        <button
-          aria-label="Show next NexChart file"
-          class="gallery-arrow next"
-          type="button"
-        >
-
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-          >
-            <path d="m9 18 6-6-6-6"></path>
-          </svg>
-
-        </button>
-
-        <span
-          aria-live="polite"
-          class="gallery-count"
-        >
-          1 / 3
-        </span>
-
-      </div>
-
-      <div class="work-body">
-
-        <span class="tag">
-          Healthcare Ops Platform
-        </span>
-
-        <h3>
-          NexChart
-        </h3>
-
-        <p>
-          <strong>Problem:</strong>
-          Healthcare teams often rely on disconnected records
-          and workflows that create delays, missed information,
-          and unnecessary manual work.
-        </p>
-
-        <p>
-          <strong>What I built:</strong>
-          A configurable healthcare operations platform covering
-          patient records, clinical workflows, referrals,
-          pharmacy processes, reporting, and facility-level
-          controls.
-        </p>
-
-        <p>
-          <strong>Built to support:</strong>
-          Clearer workflows, more organized records, and a
-          system that can adapt to different healthcare
-          facilities instead of forcing one fixed process.
-        </p>
-
-        <p class="project-disclaimer personal-project">
-
-          <strong>
-            Personal SaaS project:
-          </strong>
-
-          NexChart is my independently conceived and developed
-          healthcare operations platform. I am building it as my
-          own software product based on problems I have
-          experienced across different healthcare settings.
-
-        </p>
-
-      </div>
-
-    </div>
-    <!-- ====================================================
-         DR. JACK DATING
-         ==================================================== -->
-
-    <div class="work-card tilt reveal">
-
-      <div
-        aria-label="Dr. Jack Dating project gallery"
-        class="work-thumb project-gallery"
-        data-gallery
-      >
-
-        <figure class="gallery-slide active">
-          <img
-            alt="Dr. Jack Dating homepage"
-            loading="lazy"
-            src="media/dr-jack-dating/homepage.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <img
-            alt="Dr. Jack Dating about page"
-            loading="lazy"
-            src="media/dr-jack-dating/about-page.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <img
-            alt="Dr. Jack Dating booking page"
-            loading="lazy"
-            src="media/dr-jack-dating/booking-page.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <img
-            alt="Dr. Jack Dating email automation"
-            loading="lazy"
-            src="media/dr-jack-dating/email-automation.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <img
-            alt="Dr. Jack Dating thank-you page"
-            loading="lazy"
-            src="media/dr-jack-dating/thank-you-page.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <video
-            aria-label="Dr. Jack Dating walkthrough video"
-            controls
-            preload="metadata"
-            src="media/dr-jack-dating/walkthrough.mp4"
-          ></video>
-        </figure>
-
-        <button
-          aria-label="Show previous Dr. Jack Dating file"
-          class="gallery-arrow prev"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-          >
-            <path d="m15 18-6-6 6-6"></path>
-          </svg>
-        </button>
-
-        <button
-          aria-label="Show next Dr. Jack Dating file"
-          class="gallery-arrow next"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-          >
-            <path d="m9 18 6-6-6-6"></path>
-          </svg>
-        </button>
-
-        <span
-          aria-live="polite"
-          class="gallery-count"
-        >
-          1 / 6
-        </span>
-
-      </div>
-
-      <div class="work-body">
-
-        <span class="tag">
-          Matchmaking &amp; Counseling Funnel
-        </span>
-
-        <h3>
-          Dr. Jack Dating
-        </h3>
-
-        <p>
-          <strong>Problem:</strong>
-          Visitors could learn about the practice but lacked a
-          focused journey toward the right service and a clear
-          consultation request.
-        </p>
-
-        <p>
-          <strong>What I built:</strong>
-          A multi-page website and long-form funnel with
-          interactive service path-finding, lead capture,
-          booking, CRM tracking, calendar integration, and
-          branded email follow-up.
-        </p>
-
-        <p>
-          <strong>Built to support:</strong>
-          Fewer lost inquiries, clearer visitor routing, and a
-          more organized booking and follow-up process.
-        </p>
-
-        <p class="project-disclaimer">
-
-          <strong>
-            Portfolio disclosure:
-          </strong>
-
-          This concept was created as part of my pitch and is
-          shown with the business owner's permission. It was
-          not commissioned or completed as paid client work.
-
-        </p>
-
-      </div>
-
-    </div>
-
-    <!-- ====================================================
-         SOLARPEAK
-         ==================================================== -->
-
-    <div class="work-card tilt reveal">
-
-      <div
-        aria-label="SolarPeak project gallery"
-        class="work-thumb project-gallery"
-        data-gallery
-      >
-
-        <figure class="gallery-slide active">
-
-          <video
-            aria-label="SolarPeak walkthrough video"
-            controls
-            preload="metadata"
-            src="media/solarpeak/walkthrough.mp4"
-          ></video>
-
-        </figure>
-
-        <button
-          aria-label="Show previous SolarPeak file"
-          class="gallery-arrow prev"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-          >
-            <path d="m15 18-6-6 6-6"></path>
-          </svg>
-        </button>
-
-        <button
-          aria-label="Show next SolarPeak file"
-          class="gallery-arrow next"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-          >
-            <path d="m9 18 6-6-6-6"></path>
-          </svg>
-        </button>
-
-        <span
-          aria-live="polite"
-          class="gallery-count"
-        >
-          1 / 1
-        </span>
-
-      </div>
-
-      <div class="work-body">
-
-        <span class="tag">
-          Solar Installation Quiz Funnel
-        </span>
-
-        <h3>
-          SolarPeak
-        </h3>
-
-        <p>
-          <strong>Problem:</strong>
-          A solar installer needs more than contact details.
-          It needs enough information to identify suitable
-          homeowners before spending time on a consultation.
-        </p>
-
-        <p>
-          <strong>What I built:</strong>
-          A quiz-style funnel that collects key homeowner
-          details, qualifies leads as they answer, and routes
-          suitable prospects toward a consultation.
-        </p>
-
-        <p>
-          <strong>Built to support:</strong>
-          Better-qualified inquiries and less time spent
-          manually screening unsuitable leads.
-        </p>
-
-        <p class="project-disclaimer">
-
-          <strong>
-            Portfolio disclosure:
-          </strong>
-
-          This concept was created for portfolio and pitch
-          purposes. It was not commissioned or completed as
-          paid client work.
-
-        </p>
-
-      </div>
-
-    </div>
-
-    <!-- ====================================================
-         OUTSTANDING COMPLIANCE
-         ==================================================== -->
-
-    <div class="work-card tilt reveal">
-
-      <div
-        aria-label="Outstanding Compliance project gallery"
-        class="work-thumb project-gallery"
-        data-gallery
-      >
-
-        <figure class="gallery-slide active">
-          <img
-            alt="Outstanding Compliance homepage"
-            loading="lazy"
-            src="media/outstanding-compliance/homepage.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <img
-            alt="Outstanding Compliance about page"
-            loading="lazy"
-            src="media/outstanding-compliance/about-page.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <img
-            alt="Outstanding Compliance services page"
-            loading="lazy"
-            src="media/outstanding-compliance/services-page.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <img
-            alt="Outstanding Compliance compliance suite page"
-            loading="lazy"
-            src="media/outstanding-compliance/compliance-suite-page.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <img
-            alt="Outstanding Compliance policy library page"
-            loading="lazy"
-            src="media/outstanding-compliance/policy-library-page.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <img
-            alt="Outstanding Compliance resources page"
-            loading="lazy"
-            src="media/outstanding-compliance/resources-page.png"
-          />
-        </figure>
-
-        <figure class="gallery-slide">
-          <video
-            aria-label="Outstanding Compliance walkthrough video"
-            controls
-            preload="metadata"
-            src="media/outstanding-compliance/walkthrough.mp4"
-          ></video>
-        </figure>
-
-        <button
-          aria-label="Show previous Outstanding Compliance file"
-          class="gallery-arrow prev"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-          >
-            <path d="m15 18-6-6 6-6"></path>
-          </svg>
-        </button>
-
-        <button
-          aria-label="Show next Outstanding Compliance file"
-          class="gallery-arrow next"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-          >
-            <path d="m9 18 6-6-6-6"></path>
-          </svg>
-        </button>
-
-        <span
-          aria-live="polite"
-          class="gallery-count"
-        >
-          1 / 7
-        </span>
-
-      </div>
-
-      <div class="work-body">
-
-        <span class="tag">
-          Aesthetics Compliance Consultancy
-        </span>
-
-        <h3>
-          Outstanding Compliance
-        </h3>
-
-        <p>
-          <strong>Problem:</strong>
-          A specialist compliance consultancy needed a clearer
-          way to organize its expertise, services, resources,
-          and value for aesthetic practitioners and clinics.
-        </p>
-
-        <p>
-          <strong>What I built:</strong>
-          A multi-page website concept supported by
-          conversion-focused copywriting, service positioning,
-          resource pages, and social content strategy.
-        </p>
-
-        <p>
-          <strong>Built to support:</strong>
-          Stronger professional positioning, clearer service
-          discovery, and a more credible path from education
-          to inquiry.
-        </p>
-
-        <p class="project-disclaimer">
-
-          <strong>
-            Portfolio disclosure:
-          </strong>
-
-          This concept was created as part of my pitch and is
-          shown with the business owner's permission. It was
-          not commissioned or completed as paid client work.
-
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     FAQ
-     ======================================================== -->
-
-<section id="faq">
-
-<div class="wrap">
-
-  <h2 class="reveal">
-    Questions Before You Tell Me About Your Project
-  </h2>
-
-  <!-- FAQ 1 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      I already have a website.
-      Do we need to rebuild everything?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        No. If the existing website can be improved,
-        connected, or extended, there's no reason to rebuild
-        working parts unnecessarily. We first identify where
-        the customer journey or technical workflow is actually
-        breaking.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- FAQ 2 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      I already have a Figma, Canva design, or designer.
-      Can you work from that?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        Yes. I can turn an approved Figma, Canva mockup, or
-        other visual design into a responsive, functioning
-        website while preserving the intended visual direction.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- FAQ 3 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      I already have a CRM or Calendly.
-      Can we keep it?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        Yes. If an existing tool already does its job well,
-        we can keep it and determine whether it should be
-        integrated into the wider customer journey.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- FAQ 4 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      Do I have to stop using SaaS?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        No. The goal isn't to replace useful software just
-        because custom code is possible. We determine what
-        should stay, what can be integrated, and where custom
-        functionality may provide more control or reduce
-        unnecessary subscriptions.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- FAQ 5 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      Does hand-coded automatically mean cheaper?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        No. Custom development has its own build and
-        maintenance costs. Its advantage is control: the
-        architecture can be designed around the functionality
-        your business actually needs instead of automatically
-        paying for large platforms filled with features you
-        may never use.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- FAQ 6 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      Does hand-coded mean there are no recurring costs?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        No. Domains, hosting, databases, transactional email,
-        APIs, SMS, security, maintenance, and other
-        infrastructure can still have costs.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- FAQ 7 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      Can you automate everything?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        Not everything should be automated. I focus on
-        repetitive, rule-based parts of the workflow where
-        automation genuinely saves time, improves consistency,
-        or reduces manual handoffs.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- FAQ 8 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      Can you guarantee more sales or a specific conversion rate?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        No responsible developer can guarantee an exact
-        conversion rate before qualified traffic uses the
-        funnel. Conversion depends on traffic quality, offer,
-        pricing, market, audience, sales process, competition,
-        trust, and visitor behavior. I build for conversion
-        readiness and use real activity to guide optimization.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- FAQ 9 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      I'm a small business.
-      Do I need all of this?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        Probably not. That's exactly why the system is mapped
-        first. A smaller business may only need a focused
-        funnel, useful lead capture, a simple CRM workflow,
-        booking, and a few carefully chosen automations.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- FAQ 10 -->
-
-  <div class="faq-item">
-
-    <button class="faq-q">
-
-      What if I don't know what should be automated?
-
-      <span class="plus">
-        +
-      </span>
-
-    </button>
-
-    <div class="faq-a">
-
-      <p>
-        You don't need to know. Tell me what currently happens
-        when a lead comes in and what your team repeatedly does
-        afterward. We'll identify the gaps and repetitive work
-        from there.
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
-
-</section>
-
-<!-- ========================================================
-     FINAL CTA
-     ======================================================== -->
-
-<section id="cta">
-
-<div class="wrap reveal">
-
-  <span class="eyebrow-tag">
-    Free AZFlow System Mapping
-  </span>
-
-  <h2>
-    Your Business Doesn't Need Another Website That Just Sits There.
-  </h2>
-
-  <p>
-    Maybe your website looks good but doesn't generate enough
-    action.
-    Maybe inquiries arrive, but everything afterward is manual.
-    Maybe leads are scattered across email, spreadsheets, DMs,
-    and calendars.
-    Maybe bookings still require too much back-and-forth.
-  </p>
-
-  <p>
-    <strong>
-      You don't have to know the technical solution yet.
-    </strong>
-
-    Start with the business problem.
-  </p>
-
-  <p>
-    Tell me what happens when someone finds you, what you want
-    them to do, what currently happens after they take action,
-    what your team still does manually, what tools you already
-    use, and where leads or tasks are getting stuck.
-  </p>
-
-  <h3>
-    Let's Build the System Behind the Click.
-  </h3>
-
-  <div class="priority-callout">
-
-    <span class="priority-dot"></span>
-
-    <div>
-
-      <strong>
-        Want priority for the next available AZFlow build slot?
-      </strong>
-
-      <p>
-        I intentionally keep my active project queue small so
-        I can stay directly involved from system mapping through
-        testing and launch. If your project is a good fit and
-        you're ready to move forward, it can receive priority
-        consideration for the next available opening.
-      </p>
-
-    </div>
-
-  </div>
-
-  <a
-    class="btn btn-primary"
-    href="booking.html"
-  >
-    MAP MY SYSTEM →
-  </a>
-
-  <p class="cta-microcopy">
-    Free 20-minute System Mapping · No commitment required
-  </p>
-
-  <p>
-    <strong>
-      I Don't Just Build the Page Your Customers See.
-      I Build What Happens After They Click.
-    </strong>
-  </p>
-
-</div>
-
-</section>
-
-<!-- ========================================================
+<!-- ======================================================
      FOOTER
-     ======================================================== -->
+====================================================== -->
 
 <footer>
 
-<div class="wrap">
-
-  <span class="brand-wordmark">
-    AZFLOW<span>.STUDIO</span>
-  </span>
-
-  <div class="social-plugins">
-
-    <!-- LinkedIn -->
+  <div class="wrap">
 
     <a
-      aria-label="LinkedIn"
-      href="https://www.linkedin.com/in/amaniixx"
-      rel="noopener noreferrer"
-      target="_blank"
+      class="logo"
+      href="#hero"
+      aria-label="AZFlow.Studio Home"
     >
-
-      <svg viewBox="0 0 24 24">
-        <path d="M4.98 3.5a2.5 2.5 0 11-.02 5.02A2.5 2.5 0 014.98 3.5zM3 9h4v12H3zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.15 1.46-2.15 2.97V21h-4z"></path>
-      </svg>
-
+      <span class="brand-wordmark">
+        AZFLOW<span>.STUDIO</span>
+      </span>
     </a>
 
-    <!-- Facebook -->
 
-    <a
-      aria-label="Facebook"
-      href="https://www.facebook.com/azflow.studio/"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
+    <div class="social-plugins">
 
-      <svg viewBox="0 0 24 24">
-        <path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.93.26-1.56 1.6-1.56h1.7V3.3C15.86 3.16 14.9 3 13.77 3 11.4 3 9.8 4.42 9.8 7.13v2.67H7v3.2h2.8V21z"></path>
-      </svg>
+      <a
+        href="https://www.linkedin.com/in/amaniixx"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        LinkedIn
+      </a>
 
-    </a>
+      <a
+        href="https://www.facebook.com/azflow.studio/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Facebook
+      </a>
 
-    <!-- Instagram -->
+      <a
+        href="https://www.instagram.com/acexxspace/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Instagram
+      </a>
 
-    <a
-      aria-label="Instagram"
-      href="https://www.instagram.com/acexxspace/"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
+      <a
+        href="https://www.onlinejobs.ph/jobseekers/info/2254364"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        OnlineJobs.ph
+      </a>
 
-      <svg viewBox="0 0 24 24">
-        <path d="M12 2.2c2.7 0 3 .01 4.1.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.05 1.06-.22 1.79-.47 2.43-.26.66-.6 1.22-1.15 1.77-.55.55-1.11.9-1.77 1.15-.64.25-1.37.42-2.43.47-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1.06-.05-1.79-.22-2.43-.47-.66-.26-1.22-.6-1.77-1.15-.55-.55-.9-1.11-1.15-1.77-.25-.64-.42-1.37-.47-2.43C1.03 15.07 1.02 14.77 1.02 12s.01-3 .06-4.1c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.9 1.77-1.15.64-.25 1.37-.42 2.43-.47C7.99 2.03 8.3 2.02 11 2.02zm0 4.7a5.1 5.1 0 110 10.2 5.1 5.1 0 010-10.2zm0 1.8a3.3 3.3 0 100 6.6 3.3 3.3 0 000-6.6z"></path>
-      </svg>
+    </div>
 
-    </a>
 
-    <!-- OnlineJobs -->
-
-    <a
-      aria-label="OnlineJobs.ph"
-      href="https://www.onlinejobs.ph/jobseekers/info/2254364"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-
-      <svg viewBox="0 0 24 24">
-        <path d="M4 4h16v16H4V4zm3 3v10h2V7H7zm4 0v10h2v-4.8c0-1.3.6-2.2 1.8-2.2 1.1 0 1.5.8 1.5 2.1V17h2v-5.4c0-2.5-1.3-3.6-3.1-3.6-1.1 0-1.9.5-2.3 1.2V7H11z"></path>
-      </svg>
-
-    </a>
+    <p class="footer-copy">
+      © 2026 AZFlow.Studio, Ariza Balasbas.
+      Built by hand, one line of code at a time.
+    </p>
 
   </div>
 
-</div>
-
-<p class="fine wrap">
-  © 2026 AZFlow.Studio, Ariza Balasbas.
-  Built by hand, one line of code at a time.
-</p>
-
 </footer>
 
-<!-- ========================================================
-     JAVASCRIPT
-     ======================================================== -->
+
+<!-- ======================================================
+     INTERACTIONS
+====================================================== -->
 
 <script>
 
-/* =========================================================
-   PRELOADER
-   ========================================================= */
-
-window.addEventListener('load', () => {
-
-  setTimeout(() => {
-
-    const preloader =
-      document.getElementById('preloader');
-
-    if (preloader) {
-      preloader.classList.add('done');
-    }
-
-    document.body.classList.remove('locked');
-
-  }, 1900);
-
-});
+document.addEventListener("DOMContentLoaded", () => {
 
 
-/* Fallback in case a resource delays the load event */
-
-setTimeout(() => {
+  /* ======================================================
+     PRELOADER
+  ====================================================== */
 
   const preloader =
-    document.getElementById('preloader');
+    document.getElementById("preloader");
 
-  if (preloader) {
-    preloader.classList.add('done');
-  }
+  const unlockPage = () => {
 
-  document.body.classList.remove('locked');
+    document.body.classList.remove("locked");
 
-}, 3500);
-
-
-/* =========================================================
-   MOBILE NAVIGATION
-   ========================================================= */
-
-const burger =
-  document.getElementById('burgerBtn');
-
-const panel =
-  document.getElementById('mobilePanel');
-
-
-if (burger && panel) {
-
-  burger.addEventListener('click', () => {
-
-    panel.classList.toggle('open');
-
-  });
-
-
-  panel
-    .querySelectorAll('a')
-    .forEach(link => {
-
-      link.addEventListener('click', () => {
-
-        panel.classList.remove('open');
-
-      });
-
-    });
-
-}
-
-
-/* =========================================================
-   SCROLL REVEAL
-   ========================================================= */
-
-const revealObserver =
-  new IntersectionObserver(
-
-    entries => {
-
-      entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add('in');
-
-          revealObserver.unobserve(
-            entry.target
-          );
-
-        }
-
-      });
-
-    },
-
-    {
-      threshold:0.15
+    if (preloader) {
+      preloader.classList.add("done");
     }
 
+  };
+
+  window.addEventListener(
+    "load",
+    () => {
+      window.setTimeout(unlockPage, 350);
+    },
+    { once:true }
+  );
+
+  window.setTimeout(
+    unlockPage,
+    2500
   );
 
 
-document
-  .querySelectorAll('.reveal')
-  .forEach(element => {
+  /* ======================================================
+     MOBILE NAVIGATION
+  ====================================================== */
 
-    revealObserver.observe(element);
+  const burgerBtn =
+    document.getElementById("burgerBtn");
 
-  });
+  const mobilePanel =
+    document.getElementById("mobilePanel");
 
+  if (burgerBtn && mobilePanel) {
 
-/* =========================================================
-   CARD TILT
-   ========================================================= */
+    const closeMobileMenu = () => {
 
-if (
-  window.matchMedia('(hover:hover)').matches
-) {
+      mobilePanel.classList.remove("open");
 
-  document
-    .querySelectorAll('.tilt')
-    .forEach(card => {
+      burgerBtn.classList.remove("open");
 
-      card.addEventListener(
-        'mousemove',
-        event => {
-
-          const rect =
-            card.getBoundingClientRect();
-
-          const x =
-            (
-              event.clientX -
-              rect.left
-            ) /
-            rect.width -
-            0.5;
-
-          const y =
-            (
-              event.clientY -
-              rect.top
-            ) /
-            rect.height -
-            0.5;
-
-          card.style.transform =
-            `perspective(700px)
-             rotateY(${x * 6}deg)
-             rotateX(${-y * 6}deg)
-             translateY(-2px)`;
-
-        }
+      burgerBtn.setAttribute(
+        "aria-expanded",
+        "false"
       );
 
-
-      card.addEventListener(
-        'mouseleave',
-        () => {
-
-          card.style.transform =
-            'perspective(700px) rotateY(0) rotateX(0)';
-
-        }
-      );
-
-    });
-
-}
+    };
 
 
-/* =========================================================
-   FAQ ACCORDION
-   ========================================================= */
-
-document
-  .querySelectorAll('.faq-item')
-  .forEach(item => {
-
-    const question =
-      item.querySelector('.faq-q');
-
-    const answer =
-      item.querySelector('.faq-a');
-
-
-    if (!question || !answer) {
-      return;
-    }
-
-
-    question.addEventListener(
-      'click',
+    burgerBtn.addEventListener(
+      "click",
       () => {
 
-        const currentlyOpen =
-          item.classList.contains('open');
+        const isOpen =
+          mobilePanel.classList.toggle("open");
+
+        burgerBtn.classList.toggle(
+          "open",
+          isOpen
+        );
+
+        burgerBtn.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+      }
+    );
 
 
-        document
-          .querySelectorAll('.faq-item.open')
-          .forEach(openItem => {
+    mobilePanel
+      .querySelectorAll("a")
+      .forEach(link => {
 
-            openItem.classList.remove('open');
+        link.addEventListener(
+          "click",
+          closeMobileMenu
+        );
 
-            const openAnswer =
-              openItem.querySelector('.faq-a');
-
-            if (openAnswer) {
-              openAnswer.style.maxHeight = null;
-            }
-
-          });
+      });
 
 
-        if (!currentlyOpen) {
+    window.addEventListener(
+      "resize",
+      () => {
 
-          item.classList.add('open');
-
-          answer.style.maxHeight =
-            answer.scrollHeight + 'px';
-
+        if (window.innerWidth > 900) {
+          closeMobileMenu();
         }
 
       }
     );
 
-  });
+  }
 
 
-/* =========================================================
-   PORTFOLIO GALLERIES
-   ========================================================= */
+  /* ======================================================
+     REVEAL ON SCROLL
+  ====================================================== */
 
-document
-  .querySelectorAll('[data-gallery]')
-  .forEach(gallery => {
+  const revealItems =
+    document.querySelectorAll(".reveal");
 
-    const slides = [
-      ...gallery.querySelectorAll(
-        '.gallery-slide'
-      )
-    ];
+  if (
+    "IntersectionObserver" in window &&
+    revealItems.length
+  ) {
 
-    const previousButton =
-      gallery.querySelector('.prev');
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
 
-    const nextButton =
-      gallery.querySelector('.next');
+          entries.forEach(entry => {
 
-    const count =
-      gallery.querySelector(
-        '.gallery-count'
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("in");
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold:.12,
+          rootMargin:"0px 0px -30px 0px"
+        }
       );
 
 
-    if (!slides.length) {
-      return;
-    }
+    revealItems.forEach(item => {
+      revealObserver.observe(item);
+    });
+
+  } else {
+
+    revealItems.forEach(item => {
+      item.classList.add("in");
+    });
+
+  }
 
 
-    let currentIndex = 0;
+  /* ======================================================
+     CARD TILT
+  ====================================================== */
 
+  const canTilt =
+    window.matchMedia(
+      "(hover:hover) and (pointer:fine)"
+    ).matches;
 
-    function showSlide(newIndex) {
+  if (canTilt) {
 
-      const oldSlide =
-        slides[currentIndex];
+    document
+      .querySelectorAll(".tilt")
+      .forEach(card => {
 
-      oldSlide.classList.remove(
-        'active'
-      );
+        card.addEventListener(
+          "mousemove",
+          event => {
 
+            const rect =
+              card.getBoundingClientRect();
 
-      const oldVideo =
-        oldSlide.querySelector(
-          'video'
+            const x =
+              event.clientX - rect.left;
+
+            const y =
+              event.clientY - rect.top;
+
+            const rotateY =
+              ((x / rect.width) - .5) * 5;
+
+            const rotateX =
+              ((y / rect.height) - .5) * -5;
+
+            card.style.transform =
+              `perspective(1000px)
+               rotateX(${rotateX}deg)
+               rotateY(${rotateY}deg)
+               translateY(-2px)`;
+
+          }
         );
 
-      if (oldVideo) {
-        oldVideo.pause();
+
+        card.addEventListener(
+          "mouseleave",
+          () => {
+
+            card.style.transform = "";
+
+          }
+        );
+
+      });
+
+  }
+
+
+  /* ======================================================
+     FAQ
+  ====================================================== */
+
+  document
+    .querySelectorAll(".faq-item")
+    .forEach(item => {
+
+      const button =
+        item.querySelector(".faq-q");
+
+      const answer =
+        item.querySelector(".faq-a");
+
+      if (!button || !answer) {
+        return;
       }
 
-
-      currentIndex =
-        (
-          newIndex +
-          slides.length
-        ) %
-        slides.length;
+      button.setAttribute(
+        "aria-expanded",
+        "false"
+      );
 
 
-      slides[currentIndex]
-        .classList.add('active');
-
-
-      if (count) {
-
-        count.textContent =
-          `${currentIndex + 1} / ${slides.length}`;
-
-      }
-
-    }
-
-
-    if (previousButton) {
-
-      previousButton.addEventListener(
-        'click',
+      button.addEventListener(
+        "click",
         () => {
 
-          showSlide(
-            currentIndex - 1
-          );
+          const isOpen =
+            item.classList.contains("open");
+
+
+          document
+            .querySelectorAll(".faq-item.open")
+            .forEach(openItem => {
+
+              if (openItem === item) {
+                return;
+              }
+
+              openItem.classList.remove("open");
+
+              const openButton =
+                openItem.querySelector(".faq-q");
+
+              const openAnswer =
+                openItem.querySelector(".faq-a");
+
+              if (openButton) {
+                openButton.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+              }
+
+              if (openAnswer) {
+                openAnswer.style.maxHeight = null;
+              }
+
+            });
+
+
+          if (isOpen) {
+
+            item.classList.remove("open");
+
+            button.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            answer.style.maxHeight = null;
+
+          } else {
+
+            item.classList.add("open");
+
+            button.setAttribute(
+              "aria-expanded",
+              "true"
+            );
+
+            answer.style.maxHeight =
+              answer.scrollHeight + "px";
+
+          }
 
         }
       );
 
-    }
+    });
 
 
-    if (nextButton) {
+  /* ======================================================
+     PROJECT GALLERIES
+  ====================================================== */
 
-      nextButton.addEventListener(
-        'click',
-        () => {
+  document
+    .querySelectorAll("[data-gallery]")
+    .forEach(gallery => {
 
-          showSlide(
-            currentIndex + 1
-          );
+      const slides =
+        Array.from(
+          gallery.querySelectorAll(
+            ".gallery-slide"
+          )
+        );
+
+      const prevButton =
+        gallery.querySelector(".prev");
+
+      const nextButton =
+        gallery.querySelector(".next");
+
+      const counter =
+        gallery.querySelector(
+          ".gallery-count"
+        );
+
+      if (!slides.length) {
+        return;
+      }
+
+      let currentIndex = 0;
+
+
+      const pauseVideos = () => {
+
+        slides.forEach(slide => {
+
+          const video =
+            slide.querySelector("video");
+
+          if (video) {
+            video.pause();
+          }
+
+        });
+
+      };
+
+
+      const showSlide = index => {
+
+        pauseVideos();
+
+        currentIndex =
+          (
+            index +
+            slides.length
+          ) %
+          slides.length;
+
+
+        slides.forEach(
+          (slide, slideIndex) => {
+
+            slide.classList.toggle(
+              "active",
+              slideIndex === currentIndex
+            );
+
+          }
+        );
+
+
+        if (counter) {
+
+          counter.textContent =
+            `${currentIndex + 1} / ${slides.length}`;
 
         }
-      );
 
-    }
+      };
 
 
-    /* Hide unnecessary arrows when
-       the gallery only contains one item */
+      if (slides.length <= 1) {
 
-    if (slides.length === 1) {
+        if (prevButton) {
+          prevButton.hidden = true;
+        }
 
-      if (previousButton) {
-        previousButton.style.display =
-          'none';
+        if (nextButton) {
+          nextButton.hidden = true;
+        }
+
       }
+
+
+      if (prevButton) {
+
+        prevButton.addEventListener(
+          "click",
+          event => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            showSlide(
+              currentIndex - 1
+            );
+
+          }
+        );
+
+      }
+
 
       if (nextButton) {
-        nextButton.style.display =
-          'none';
+
+        nextButton.addEventListener(
+          "click",
+          event => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            showSlide(
+              currentIndex + 1
+            );
+
+          }
+        );
+
       }
 
-    }
 
-  });
+      showSlide(0);
+
+    });
+
+
+  /* ======================================================
+     SMOOTH INTERNAL ANCHORS
+  ====================================================== */
+
+  document
+    .querySelectorAll(
+      'a[href^="#"]'
+    )
+    .forEach(anchor => {
+
+      anchor.addEventListener(
+        "click",
+        event => {
+
+          const targetId =
+            anchor.getAttribute("href");
+
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
+          }
+
+          const target =
+            document.querySelector(
+              targetId
+            );
+
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+          });
+
+        }
+      );
+
+    });
+
+
+});
+
 
 </script>
 
